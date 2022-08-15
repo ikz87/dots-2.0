@@ -1,0 +1,81 @@
+configuration {
+  font: "Caskaydia Cove Nerd Font 20";
+  modi: "window,run,drun";
+  location: 3;
+  xoffset: -40;
+  yoffset: 65;
+}
+
+@theme "/home/kz87/.config/rofi/theme.rasi"
+
+window {
+  width: 415;
+  border: 5;
+  border-color: @borders;
+  border-radius: 0 0 20 20;
+}
+
+element {
+  padding: 15 0 15 0 ;
+  text-color: @fg;
+  background-color: @bg-alt;
+  border-radius: 5;
+  orientation: vertical;
+}
+
+element selected {
+  text-color: @bg;
+  background-color: @fg-alt;
+  border: 5;
+  border-color: @borders-alt;
+}
+
+element-text {
+  background-color: inherit;
+  margin: 5 0 5 -3;
+  text-color: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+
+element-icon {
+  size: 64;
+  margin: 0 0 0 0;
+  horizontal-align: 0.5;
+  background-color: inherit;
+
+}
+
+entry {
+  background-color: @bg-alt;
+  padding: 12;
+  margin: 0 0 0 -10;
+  text-color: @fg;
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+listview {
+  padding: 15 15 15 15;
+  background-color: #00000000;
+  columns: 5;
+  lines: 1;
+  fixed-lines: true;
+  //fixed-columns: true;
+}
+
+mainbox {
+  background-color: @bg;
+  children: [listview];
+}
+
+prompt {
+  background-color: @bg-alt;
+  enabled: true;
+  padding: 12 0 0 12;
+  text-color: @fg;
+}
+
+

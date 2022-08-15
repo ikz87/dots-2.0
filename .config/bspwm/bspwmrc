@@ -1,0 +1,74 @@
+#!/bin/sh
+
+# wgtk stuff
+wpg -R wallpaper.png 
+wpg -s wallpaper.png
+source "${HOME}/.cache/wal/colors.sh" 
+
+# Set environment
+export BSPWM_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/bspwm"
+
+bspc monitor -d 0 1 2 3 4 
+
+bspc config border_width        5
+bspc config window_gap          20
+#bspc config border_radius       2
+bspc config focus_follows_pointer       true
+bspc config gapless_monocle             true
+#bspc config pointer_follows_focus       true
+#bspc config single_monocle              true
+bspc config top_monocle_padding          20
+bspc config left_monocle_padding         20 
+bspc config right_monocle_padding        20 
+bspc config bottom_monocle_padding       20 
+#bspc config ignore_ewmh_fullscreen       enter
+
+bspc rule --add Blueman-manager             state=floating rectangle=610x610+650+235
+bspc rule --add Surf                        layer=above border=off rectangle=415x1100+0+0 
+bspc rule --add Surfdload                   state=floating layer=above border=off rectangle=415x75+0+0 sticky=on focus=off
+bspc rule --add Brave-browser               rectangle=1130x800+395+140
+bspc rule --add Polkit-gnome-authentication-agent-1 rectangle=810x280+555+399
+bspc rule --add Polybar                     layer=below manage=off
+bspc rule --add kozu                        state=floating rectangle=1910x200+0+870 layer=above
+bspc rule --add cava                        state=floating manage=off rectangle=1920x1050+0+50 border=off sticky=on locked=on layer=below focus=off 
+#bspc rule --add Pqiv                        manage=off border=off  #rectangle=110x50+260+20
+bspc rule --add Nautilus                    state=floating
+bspc rule --add mpv                         state=floating border=off
+bspc rule --add Rofi 												manage=off
+bspc rule --add Pavucontrol					state=floating rectangle=610x610+650+235
+bspc rule --add Yad                         state=floating
+bspc rule --add Thunar 					    rectangle=650x500+635+290
+bspc rule --add flameshot                   state=floating border=off
+
+
+# Colors
+bspc config focused_border_color            "$color9"
+bspc config active_border_color             "$color9"
+bspc config normal_border_color             "$color1"
+bspc config urgent_border_color             "$color1"
+bspc config presel_feedback_color           "$color1"
+bspc config focused_locked_border_color     "$color1"
+bspc config active_locked_border_color      "$color1"
+bspc config normal_locked_border_color      "$color1"
+bspc config focused_sticky_border_color     "$color1"
+bspc config active_sticky_border_color      "$color1"
+bspc config normal_sticky_border_color      "$color1"
+bspc config focused_private_border_color    "$color1"
+bspc config active_private_border_color     "$color1"
+bspc config normal_private_border_color     "$color1"
+
+# Load session
+# shellcheck source=/dev/null
+. "$BSPWM_CONFIG/restore.cfg"
+if [ -e "$BSPWM_STATE" ] ; then
+	bspc wm --load-state "$BSPWM_STATE"
+	bspc wm --adopt-orphans
+	rm "$BSPWM_STATE"
+fi
+
+#Move thumbnails
+#xdotool search "pqiv: /tmp/thumbnail.png" windowmove 256 20
+
+# Autostart
+"$BSPWM_CONFIG/autostart" &
+
