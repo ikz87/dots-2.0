@@ -1,0 +1,53 @@
+#!/bin/bash
+
+eww="eww -c $HOME/.config/eww/mybar"
+set -e
+
+get_kbdlayout() {{
+  layout=$(setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)')
+  variant=$(setxkbmap -query | grep -oP 'variant:\s*\K(\w+)')
+  echo "$layout" "$variant"
+}}
+
+set_kbdlayout() {{
+  eval "array=($1)"
+  setxkbmap "${{array[@]}}"
+  if [[ "${{array[@]}}" == "us" ]]
+  then
+    $eww update us_color="rgba({color15.rgb},1)"
+    $eww update es_color="rgba({color15.rgb},0.4)"
+  else
+    $eww update us_color="rgba({color15.rgb},0.4)"
+    $eww update es_color="rgba({color15.rgb},1)"
+  fi;
+}}
+
+cycle() {{
+  current_layout=$(get_kbdlayout | xargs)
+  layouts=("$@" "$1") # add the first one at the end so that it cycles
+  index=0
+  while [ "${{layouts[$index]}}" != "$current_layout" ] && [ $index -lt "${{#layouts[@]}}" ]; do index=$[index +1]; done
+  next_index=$[index +1]
+  next_layout=${{layouts[$next_index]}}
+  set_kbdlayout "$next_layout"
+  upper=$(echo $next_layout | tr '[:lower:]' '[:upper:]')
+
+  pop_report -m $upper -t keyboard > /dev/null     
+}}
+
+
+subcommand="$1"
+shift || (echo "Please specify one of: get, set <layout>, cycle <layout1> <layout2> ... <layoutN>, i3status" && exit)
+
+case $subcommand in
+  "get")
+    echo -n $(get_kbdlayout)
+    ;;
+  "set")
+    set_kbdlayout "$1"
+    ;;
+  "cycle")
+    cycle "$@"
+    ;;
+esac
+
