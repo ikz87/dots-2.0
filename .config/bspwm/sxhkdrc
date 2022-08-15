@@ -189,19 +189,4 @@ control+alt+a
 		bspc node focused -l normal; \
 	fi;
 
-#Mouse clicks
-#q
-#	xdotool click --clearmodifiers 1
-
-#Autistic sounds
-alt+e
-	play ~/Documents/Sounds/sound1.wav
-
-alt+p
-	play -v 0.4 ~/Documents/Sounds/sound2.wav
-alt+r
-	play ~/Documents/Sounds/sound1.wav
-
-alt+space
-	play ~/Documents/Sounds/sound3.wav
 
