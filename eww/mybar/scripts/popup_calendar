@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+eww="eww -c $HOME/.config/eww/mybar"
+
+$eww close calendar || (\
+    $eww update day="`scripts/time_info --day`"; \
+    $eww update month="`scripts/time_info --month`"; \
+    $eww update year="`scripts/time_info --year`"; \
+    $eww open calendar ) 

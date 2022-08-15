@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+total=`xdotool get_num_desktops`    
+icon1=○
+icon2=◎
+icon3=●
+eww="eww -c $HOME/.config/eww/mybar/"
+
+bspc subscribe desktop_focus node_add node_remove 2> /dev/null | while read line; do
+	currwp=$((`xdotool get_desktop`))
+	for (( i = 0; i < $total; i++));    
+	do    
+	    if [[ $i -eq $currwp ]]    
+	    then    
+	        $eww update wp$i=$icon3    
+	    else    
+	        [[ `bspc query -N -d $i | wc -l` -gt 0 ]] && $eww update wp$i=$icon2 || $eww update wp$i=$icon1     
+	    fi;    
+	done
+	echo cycle
+done

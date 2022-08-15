@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+
+# Selects player based on if they're playing or if they have a cover
+# Note: Being played takes priority
+select_player () {
+	playingplayer=""
+	coverplayer=""
+	totalplayer=""
+	playerctl -l | while read -r player;
+	do
+		art=`playerctl --player="$player" metadata mpris:artUrl 2> /dev/null`
+		status=`playerctl --player="$player" status 2> /dev/null`
+		[[ $status == "Playing" ]] && playingplayer="$player"
+		[[ $art != "" ]] && coverplayer="$player"
+		[[ $status == "Playing" && $art != "" ]] && totalplayer="$player"
+		[[ ! -z $coverplayer ]] && player="$coverplayer"
+		[[ ! -z $playingplayer ]] && player="$playingplayer"
+		[[ ! -z $totalplayer ]] && player="$totalplayer"
+		echo "$player"
+	done;
+}	
+
+update_cover () {
+	if [[ -z $newimg ]] 
+    then
+		newimg="$imgdir/music.png"
+		cp "$newimg" "$imgdir/currmedia.png"
+		echo "Image is unknown, using template"
+	elif [[ `echo $newimg | grep -c "file://"` -gt 0 ]]
+	then
+		cp "`echo $newimg | sed 's/file:\/\///g'`" "$imgdir/currmedia.png"
+		echo "Image is a file, succesfully coppied"
+	else
+		curl "$newimg" -o "$imgdir/currmedia.png" -s
+		echo "Image is an url, succesfully downloaded"
+	fi;
+	$eww update cover="$imgdir/currmedia.png"
+}
+
+
+imgdir="$HOME/.config/eww/mybar/images"
+lastimg="none"
+eww="eww -c $HOME/.config/eww/mybar"
+
+while true; do
+	if [[ ! -z `playerctl status` ]]
+	then
+		player=`select_player | tail -1`
+		status=""
+		status=`playerctl --player="$player" status`
+		echo "Selected $player as player"
+
+		# Update status button
+		if [[ $status == "Playing" ]]
+		then
+			$eww update media_status=""
+		else
+			$eww update media_status=""
+		fi;
+		
+		# Update title and artist
+		title=`playerctl --player="$player" metadata xesam:title`
+		[[ -z $title ]] && title="No title"
+		title_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$title"`
+		$eww update title="$title"
+		$eww update title_parsed="$title_parsed"
+
+		artist=`playerctl --player="$player" metadata xesam:artist`
+		[[ -z $artist ]] && artist="No artist"
+		artist_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$artist"`
+		$eww update artist="$artist"
+		$eww update artist_parsed="$artist_parsed"
+
+		# Update length and position
+		position=`playerctl --player="$player" position`
+		[[ -z $position ]] && position=0
+		$eww update position="$position"
+		length=`playerctl --player="$player" metadata mpris:length`
+		length=`python -c "print($length/1000000)"`
+		[[ -z $length ]] && length=100
+		$eww update length="$length"
+
+		newimg=`playerctl --player="$player" metadata mpris:artUrl 2> /dev/null\
+                | sed "s/https:\/\/i.ytimg.com\/vi\//https:\/\/img.youtube.com\/vi\//g"\
+                | sed "s/hq/maxres/g"`
+
+	    if [[ "$newimg" != "$lastimg" ]]
+	    then
+	        echo "New image $newimg detected"
+	        lastimg=$newimg
+			update_cover&
+        fi;
+	else
+		# Update everything to default values
+		$eww update media_status=""
+		$eww update title_parsed="No title"
+		$eww update title="No title"
+		$eww update artist="No artist"
+		$eww update artist_parsed="No artist"
+		$eww update position=0
+		$eww update length=100
+		$eww update cover="images/music.png"
+		lastimg=""
+	fi;
+	sleep 1
+    echo ""
+done;	

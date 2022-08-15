@@ -1,0 +1,243 @@
+// EWW.SCSS 
+// GLOBALS
+*{
+    all: unset;
+    font-family: "Nova Mono";
+    font-weight: 800;
+}
+
+.bars {
+    background-image: url("images/background.png");
+    background-color: #120010;
+    border: 5px solid #ff1475;
+    border-radius: 40px;
+}
+
+
+// LEFT MODULES
+// Workspaces
+.workspaces {
+    margin-left: 10px;
+    margin-top: -4px;
+}
+.workspace_buttons {
+    font-family: Hack;
+    font-size: 30px;
+    margin: 0 3 0 2;
+    color: #e6dafc;
+}
+
+// Layout
+.layout {
+    all: unset;
+    color: #e6dafc;
+    font-size: 25;
+    margin: -6 0 -6 10;
+}
+
+// Music
+.music_box { 
+}
+.music_box_popup {
+    background-color: #120010;
+    background-image: url("images/background.png");
+    border: solid 5px #ff1475;
+    border-radius: 0 0 20 20;
+}
+.media_art {
+    border-right: solid 5px #ff1475;
+    border-left: solid 5px #ff1475;
+    margin-left: 14px;
+    margin-right: 3px;
+}
+.media_art_popup {
+    border: solid 5px #dd266e;
+    border-radius: 5px;
+    margin: 15 0 15 15;
+}
+.media_data { 
+    margin-left: 10px;
+    margin-right: 17px;
+}
+.media_data_popup {
+}
+.media_title {
+    //font-family: "Meiryo";
+    font-size: 15px;
+    color: #e6dafc;
+    margin-top: -100px;
+    margin-bottom: -70px;
+}
+.media_title_popup {
+    font-size: 18px;
+    margin: 0 15 -30 10;
+    color: #e6dafc;
+}
+.media_artist_popup {
+    font-size: 14px;
+    margin: 0 15 0 10;
+    color: #3081c6;
+//    background-color: #43013b;
+}
+.media_buttons {
+    font-size: 20px;
+    margin-bottom: 2px;
+    min-height: 22px;
+}
+.playpause_popup {
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #3081c6;
+}
+.move_popup {
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #e6dafc;
+}
+.nextprev_popup {
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #ff4c5f;
+}
+.media_buttons_box_popup {
+    
+}
+.toggle_button {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.bar_normal_popup scale trough highlight {
+    all: unset;
+    background-color: #DC1C5E;
+    border-radius: 15px;
+}
+.bar_normal_popup scale trough {
+    all: unset;
+    background-color: rgba(230,218,252, 0.4);
+    min-height: 15px;
+    margin: 0 15 15 15;
+    border-radius: 15px;
+    border: solid 5px #dd266e;
+}
+.bar_highlighted_popup scale trough highlight {
+    all: unset;
+    background-color: #dd266e;
+    border-radius: 15px;
+}
+.bar_highlighted_popup scale trough {
+    all: unset;
+    background-color: rgba(230,218,252, 1);
+    min-height: 15px;
+    margin: 0 15 15 15;
+    border-radius: 15px;
+    border: solid 5px #dd266e;
+}
+.bar_normal scale trough highlight {
+    all: unset;
+    background-color: #2F638F;
+    border-radius: 10px;
+}
+.bar_normal scale trough {
+    all: unset;
+    background-color: rgba(230,218,252, 0.4);
+    min-width: 173px;
+    min-height: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+.bar_highlighted scale trough highlight {
+    all: unset;
+    background-color: #3081c6;
+    border-radius: 10px;
+}
+.bar_highlighted scale trough {
+    all: unset;
+    background-color: #e6dafc;
+    min-width: 173px;
+    min-height: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+// CENTER MODULES
+.center_icons {
+    margin-right: 5px;
+    margin-left: 15px;
+}
+.center_labels {
+    font-size: 15px;
+    margin-bottom: -3px;
+    margin-top: 1px;
+    color: #e6dafc;
+}
+.center_revealers {
+    border-radius: 5px;
+    background-color: rgba(18,0,16, 1);
+    min-height: 32px;
+    border: solid 2px #ffff01;
+    color: #3081c6;
+}
+.center_info scale trough highlight {
+    all: unset;
+    background: #FFCD01;
+    border-radius: 10px;            
+    border: solid 2px #ffff01;
+}
+.center_info scale trough {
+    all: unset;
+    background-color: rgba(230,218,252, 0.4);
+    border-radius: 10px;
+    min-width: 110px;
+    min-height: 10px;               
+}
+
+
+// RIGHT MODULES 
+.power_button {
+    color: #ff4c5f;
+    font-size: 20px;
+    margin: -10 15 -10 15;
+}
+.time_box {
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+.time {
+    color: #e6dafc;
+    font-size: 25px;
+    margin-bottom: -20px;
+    margin-top: -20px;
+}
+.date {
+    color: #e6dafc;
+    font-size: 25px;
+    margin-top: 8px;
+}
+.kb_box {
+    color: #e6dafc;
+    font-size: 15px;
+    margin-left: 2px;
+    margin-right: 10px;
+}
+.kb_button_us {
+    font-size: 15px;
+    margin-bottom: -3px;
+}
+.kb_button_es {
+    font-size: 15px;
+    margin-top: -2px;
+}
+.cal {
+    font-size: 16px;
+    background-color: #120010;
+    background-image: url("images/background.png");
+    color: #e6dafc;
+    border: 5px solid #ff1475;
+    border-radius: 0 0 20 20;
+    padding: 10px;
+}

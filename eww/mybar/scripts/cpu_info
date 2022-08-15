@@ -1,0 +1,21 @@
+#!/bin/sh
+cpu_usage=$(mpstat 1 1 | awk '/Average:/ {printf("%s\n", $(NF-9))}')
+
+cpu_whole=`printf ${cpu_usage%.*}`
+
+if [[ $cpuwhole -ge 80 ]]
+then
+    true
+    #update var
+elif [[ $cpuwhole -ge 70 ]]
+then
+    true
+    #update var
+else
+    true
+    #update var
+fi;
+
+echo $cpu_usage
+
+

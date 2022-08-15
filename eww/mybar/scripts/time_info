@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+case $1 in
+    "--hour")
+        date "+%I"
+        ;;
+    "--minutes")
+        date "+%M"
+        ;;
+    "--type")
+        date "+%p"
+        ;;
+    "--date")
+        date "+ %a, %b %d"
+        ;;
+    "--day")
+        date "+%d"
+        ;;
+    "--month")
+        $(( `date "+%m"` -1 ))
+        ;;
+    "--year")
+        date "+%y"
+        ;;
+    *)
+        true
+        ;;
+esac
+
