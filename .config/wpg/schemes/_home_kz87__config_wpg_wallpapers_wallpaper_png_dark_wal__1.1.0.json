@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/kz87/.config/wpg/wallpapers/wallpaper.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#120010",
+        "foreground": "#e6dafc",
+        "cursor": "#e6dafc"
+    },
+    "colors": {
+        "color0": "#120010",
+        "color1": "#DC1C5E",
+        "color2": "#EEA21B",
+        "color3": "#FFCD01",
+        "color4": "#2F638F",
+        "color5": "#E34A56",
+        "color6": "#A02857",
+        "color7": "#aca3bc",
+        "color8": "#43013b",
+        "color9": "#ff1475",
+        "color10": "#ffd711",
+        "color11": "#ffff01",
+        "color12": "#3081c6",
+        "color13": "#ff4c5f",
+        "color14": "#dd266e",
+        "color15": "#e6dafc"
+    }
+}
