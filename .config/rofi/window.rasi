@@ -1,0 +1,86 @@
+configuration {
+  display-windowcd: "Focus window";
+  window-format: "{t}";
+  font: "Nova Mono Bold 12";
+  modi: "window,run,drun";
+  show-icons: true;
+  location: 1;
+  xoffset: 40;
+  yoffset: 65;
+  kb-accept-entry: "!Alt-Tab,!Alt_L,!Alt+Alt_L,Return";
+  kb-row-down: "Alt+Tab";
+  selected-row: 1;
+}
+
+@theme "/home/kz87/.config/rofi/theme.rasi"
+
+window {
+  width: 415;
+  border: 5;
+  border-radius: 0 0 20 20;
+  border-color: @borders;
+}
+
+element {
+  padding: 5 0 5 0 ;
+  text-color: @fg;
+  background-color: @bg-alt;
+  border-radius: 5;
+  orientation: vertical;
+}
+
+element selected {
+  text-color: @bg;
+  background-color: @fg-alt;
+  border: 5;
+  border-color: @borders-alt;
+}
+
+element-text {
+  background-color: inherit;
+  padding: 0 15 5 15;
+  text-color: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+
+element-icon {
+  size: 64;
+  margin: 0 0 -15 0;
+  horizontal-align: 0.5;
+  background-color: inherit;
+
+}
+
+entry {
+  background-color: @bg-alt;
+  padding: 12;
+  margin: 0 0 0 -10;
+  text-color: @fg;
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+listview {
+  padding: 15 15 15 15;
+  background-color: #00000000;
+  columns: 1;
+  lines: 1;
+  fixed-lines: false;
+  //fixed-columns: true;
+}
+
+mainbox {
+  background-color: @bg;
+  children: [listview];
+}
+
+prompt {
+  background-color: @bg-alt;
+  enabled: false;
+  padding: 12 0 0 12;
+  text-color: @fg;
+}
+

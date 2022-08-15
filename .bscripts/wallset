@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+[[ $# -ne 1 ]] && echo "Usage: wallset [path_to_wallpaper]" && exit
+
+wallpaper=$1
+
+if ! [[ -f $wallpaper ]] || ! identify $wallpaper > /dev/null 2> /dev/null; 
+    then
+        echo "$wallpaper is not a valid image"
+        exit
+fi;
+cp $wallpaper ~/Pictures/Important/wallpaper.png
+
+bspc wm -r

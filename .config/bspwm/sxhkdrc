@@ -1,0 +1,207 @@
+#Config file for simple X hotkey daemon
+
+#"Pausing" sxhkd
+super+Return
+	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send.sh "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace=420 -u critical&
+
+#Apps and programs
+control+alt+w  
+	brave
+control+alt+t  
+	kitty
+#control+alt+g  
+#	lutris
+control+alt+f 
+	thunar 
+super+shift+c
+	/home/kz87/.bscripts/wc.sh
+
+#rofi things
+#Launch apps
+super+shift+e 
+	~/.bscripts/rofi.sh drun
+	
+#Window switcher
+alt+Tab
+	~/.bscripts/rofi.sh window
+
+#Configuration launcher
+super+shift+s
+	~/.bscripts/rofi.sh config
+
+#Resolution switcher
+#control+shift+p
+	#bash -c "~/.bscripts/rofi.sh resolution" 
+
+#Screenshot
+Print  
+	~/.bscripts/ss.sh
+#Delayed screenshot
+super+Print
+    sleep 3 && ~/.bscripts/ss.sh
+
+#Color picker
+control+alt+c
+	colorpicker --short --one-shot | xclip -selection "clipboard"
+
+#Suspend the pc
+super+o
+	~/.bscripts/lock.sh
+
+#Osu stuff
+control+alt+o 
+    xsetwacom --set "HUION 420 Pen stylus" Area 1000 0 5000 3700
+shift+control+o 
+	xsetwacom set "HUION 420 Pen stylus" ResetArea
+#super+x 
+#	~/.osuthings/surfdirect.sh raise
+#super+z
+#	~/.osuthings/surfdirect.sh lower
+
+#Window and workspace shenanigans
+super+c 
+	wmctrl -c `xdotool getwindowfocus` -i 
+alt+F4 
+	xdotool getwindowfocus windowclose
+control+period
+	~/.bscripts/wpm_reports.sh move +1
+control+comma
+	~/.bscripts/wpm_reports.sh move -1
+control+alt+period
+	~/.bscripts/wpm_reports.sh select +1
+control+alt+comma
+	~/.bscripts/wpm_reports.sh select -1
+super+{1,2,3,4,5}
+	~/.bscripts/wpm_reports.sh jump {0,1,2,3,4}
+
+#Weeb
+control+alt+b
+	~/.mangaread
+
+#Display stuff
+super+control+p 
+	xrandr --output HDMI1 --auto --left-of eDP1
+super+shift+p
+	xrandr -s 0
+
+# Toggle picom
+super+p
+    [[ `pgrep -c picom` -eq 0 ]] && picom || killall picom
+    
+#Keyboard layouts
+super+space 
+	  ~/.config/eww/mybar/scripts/kb_layouts cycle es us
+
+#Media controls
+alt+period
+	~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
+alt+comma 
+	~/.bscripts/volume.sh down #&& pkill -RTMIN+2 i3blocks 
+alt+m
+	~/.bscripts/volume.sh mute 
+XF86AudioRaiseVolume 
+    ~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
+XF86AudioLowerVolume 
+    ~/.bscripts/volume.sh down#&& pkill -RTMIN+2 i3blocks 
+XF86AudioMute
+    ~/.bscripts/volume.sh mute #&& pkill -RTMIN+2 i3blocks 
+alt+shift+period
+	~/.bscripts/brightness.sh up
+alt+shift+comma
+	~/.bscripts/brightness.sh down
+Pause
+	playerctl play-pause
+XF86AudioPlay
+	playerctl play-pause
+XF86AudioPause 
+	playerctl play-pause
+XF86AudioNext
+	playerctl next
+XF86AudioPrev
+	playerctl previous
+	
+#Open-close eww
+control+alt+e
+	~/.config/eww/dashboard/launch_dashboard
+super+m 
+	~/.config/eww/mybar/scripts/popup_music
+
+#bspwm stuff
+super+s
+    bspc desktop focused --layout next && polybar-msg hook layout 1 
+super+shift+q
+    ~/.bscripts/rofi.sh outopts
+XF86PowerOff
+    ~/.bscripts/rofi.sh outopts
+#super+shift+r
+#	bspc wm -r
+control+alt+space
+	~/.bscripts/toggle_float.sh
+super+shift+{k,j,h,l}
+	play -v 0.4 ~/Documents/Sounds/tile.wav& ~/.bscripts/bsmove.sh {north,south,west,east}
+super+{k,j,h,l}
+	~/.bscripts/bselect.sh {north,south,west,east}
+	
+super+alt+l
+	bspc node focused -z right 15 0
+super+alt+h
+	bspc node focused -z left -15 0
+super+alt+k
+	bspc node focused -z top 0 -15
+super+alt+j
+	bspc node focused -z bottom 0 15
+super+{d,a}
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node @/ -C {forward,backward}
+alt+{d,a}
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
+super+e
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor --balance 
+
+control+shift+h
+	bspc node focused -z right -15 0
+control+shift+l
+	bspc node focused -z left 15 0
+control+shift+j
+	bspc node focused -z top 0 15
+control+shift+k
+	bspc node focused -z bottom 0 -15
+	
+super+f
+   if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \
+        bspc node focused -t fullscreen; \
+    else \
+        bspc node focused -t tiled; \
+ fi;
+super+KP_Add
+	bspc config window_gap $(( 5 + `bspc config window_gap` ))
+super+KP_Subtract
+	bspc config window_gap $(( -5 + `bspc config window_gap` ))
+
+control+alt+{k,j,h,l}
+	bspc node --presel-dir ~{north,south,west,east}
+
+control+alt+a
+	if [[ ! -z "$(bspc query -N -n focused.normal)" ]]; then \
+		bspc node focused -l above; \
+	elif [[ ! -z "$(bspc query -N -n focused.above)" ]]; then \
+		bspc node focused -l below; \
+	else \
+		bspc node focused -l normal; \
+	fi;
+
+#Mouse clicks
+#q
+#	xdotool click --clearmodifiers 1
+
+#Autistic sounds
+alt+e
+	play ~/Documents/Sounds/sound1.wav
+
+alt+p
+	play -v 0.4 ~/Documents/Sounds/sound2.wav
+alt+r
+	play ~/Documents/Sounds/sound1.wav
+
+alt+space
+	play ~/Documents/Sounds/sound3.wav
+
