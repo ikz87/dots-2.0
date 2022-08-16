@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Lock the screen for the first time
-#pgrep sxhkd || (lock.sh; 
 killall bspc
 
 # Splashscreen
@@ -23,10 +21,6 @@ source "${HOME}/.cache/wal/colors.sh"
 # Walllpaper
 hsetroot -cover ~/Pictures/Important/wallpaper.png
 
-# Color for cava
-killall playcheck.sh
-#~/.ricing/playcheck.sh 2> /dev/null &
-
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
@@ -37,7 +31,6 @@ killall inotifywait
 ~/.osuthings/osucheck.sh "/home/$USER/Downloads"&
 
 # Tablet drivers
-#killall otd
 otd&
 
 # Statusbar
@@ -46,12 +39,6 @@ eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
 killall polybar
 polybar -c ~/.config/eww/mybar/polybar_tray.ini tray&
-
-# needed scripts for statusbar 
-#killall workspaces
-killall bmediaimg.sh
-#~/.config/eww/mybar/scripts/workspaces&
-#~/.config/polybar/scripts/bmediaimg.sh > /dev/null 2> /dev/null&
 
 #Applets
 killall blueman-applet
@@ -92,19 +79,6 @@ pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
 
 # borders
 #.bscripts/borders.sh&
-
-# Windows-like alt+tab
-killall alttab
-#alttab -i 120x120 -bg "$color0" -fg "$foreground" -frame "$color9" -bc "$foreground" -bw 2 -font 'xft:CascadiaCode-12'&
-
-
-# media thumbnail
-killall bmediaimg.sh
-killall cava
-killall bappicons.sh
-#~/.config/polybar/scripts/bappicons.sh > /dev/null 2> /dev/null&
-#~/.config/polybar/scripts/bmediaimg.sh > /dev/null 2> /dev/null&
-
 
 # Launch keybinding daemon
 killall sxhkd
