@@ -1,24 +1,11 @@
 #!/bin/bash
-killall alttab
-killall bappicons.sh
-killall osucheck
-killall polybar
 killall blueman-applet
 killall pa-applet
 killall nm-applet
-killall bspswallow
 killall sxhkd
 killall dunst
-#killall xwinwrap
 killall idle.sh
-killall av.sh
-#killall pqiv
-#killall picom
-killall bmediaimg.sh
-killall bspwm
-killall cava
-killall python3
-killall playcheck.sh
 killall eww
 killall some.sh
 killall dbus-daemon
+killall bspwm
