@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 secondlast=""
 lastline=""
 bspc subscribe desktop_focus node_state node_add node_remove| \

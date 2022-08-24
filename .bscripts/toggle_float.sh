@@ -1,3 +1,4 @@
+#!/bin/sh
 if [ -z "$(bspc query -N -n focused.floating)" ];
 then
     #play -v 0.2 ~/Documents/Sounds/float.wav& 

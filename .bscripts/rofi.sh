@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 source "${HOME}/.cache/wal/colors.sh" 
 roficonf="$HOME/.config/rofi/"
 color0=\#$alpha`echo $color0 | sed 's/\#//g'`

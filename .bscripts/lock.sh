@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 pkill -SIGUSR1 dunst # pause 
 mantablockscreen -sc        

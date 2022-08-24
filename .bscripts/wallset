@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/sh
 
 [[ $# -ne 1 ]] && echo "Usage: wallset [path_to_wallpaper]" && exit
 

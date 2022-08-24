@@ -8,7 +8,7 @@ configuration {
   yoffset: 65;
 }
 
-@theme "${HOME}/.config/rofi/theme.rasi"
+@theme "~/.config/rofi/theme.rasi"
 
 window {
   width: 890;

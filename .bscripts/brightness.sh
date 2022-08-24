@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # You can call this script like this:
 # $./brightness.sh up
