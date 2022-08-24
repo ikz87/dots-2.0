@@ -18,31 +18,31 @@ rm -f ~/.config/picom.conf
 mkdir -p ~/.config > /dev/null
 
 # link
-ln -s ./.bscripts ~/
-ln -s ./colors.sh ~/
-ln -s ./Documents/Sounds ~/Documents/
-ln -s ./Pictures/Important ~/Pictures/
-ln -s ./Pictures/Wallpapers ~/Pictures/
+ln -s ~/Dots/.bscripts ~/
+ln -s ~/Dots/colors.sh ~/
+ln -s ~/Dots/Documents/Sounds/ ~/Documents/
+ln -s ~/Dots/Pictures/Important/ ~/Pictures/
+ln -s ~/Dots/Pictures/Wallpapers/ ~/Pictures/
 
-ln -s ./.config/bspwm ~/.config/
-ln -s ./.config/dunst ~/.config/
-ln -s ./.config/eww ~/.config/
-ln -s ./.config/rofi ~/.config/
-ln -s ./.config/wpg ~/.config/
-ln -s ./.config/picom.conf ~/.config/
+ln -s ~/Dots/.config/bspwm ~/.config/
+ln -s ~/Dots/.config/dunst ~/.config/
+ln -s ~/Dots/.config/eww ~/.config/
+ln -s ~/Dots/.config/rofi ~/.config/
+ln -s ~/Dots/.config/wpg ~/.config/
+ln -s ~/Dots/.config/picom.conf ~/.config/
 
 #permissions
-chmod +x ./colors.sh
+chmod +x ~/Dots/colors.sh
 
-chmod +x ./.bscripts/*
+chmod +x ~/Dots/.bscripts/*
 
-chmod +x ./.config/bspwm/autostart
-chmod +x ./.config/bspwm/hkpause
-chmod +x ./.config/bspwm/bspwmrc
-chmod +x ./.config/bspwm/quit.sh
+chmod +x ~/Dots/.config/bspwm/autostart
+chmod +x ~/Dots/.config/bspwm/hkpause
+chmod +x ~/Dots/.config/bspwm/bspwmrc
+chmod +x ~/Dots/.config/bspwm/quit.sh
 
-chmod +x ./.config/eww/mybar/scripts/*
+chmod +x ~/Dots/.config/eww/mybar/scripts/*
 
-chmod +x ./.config/wpg/wp_init.sh
+chmod +x ~/Dots/.config/wpg/wp_init.sh
 
 
