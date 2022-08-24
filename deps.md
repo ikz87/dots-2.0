@@ -8,15 +8,13 @@ This is not an exhaustive list. This is an attempt to identify the dependencies 
 - eww
 - flameshot
 - xdg-desktop-portal-gnome
-- discover-overlay
-- eww-calendar
+- discover-overlay <- discord overlay
 - cairo-clock
 - pavucontrol
 - polycal
 - dunst
 - surf
 - rofi
-- eww-music
 - brave-browser
 - vlc
 - i3lock

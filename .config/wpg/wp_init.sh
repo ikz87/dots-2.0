@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
+#!/bin/sh
 wpg -nrs 'wallpaper.png' 'wallpaper.png'

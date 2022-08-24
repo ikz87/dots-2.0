@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 eww="eww -c $HOME/.config/eww/mybar"
 
 bspc subscribe desktop_focus desktop_layout | while read line; do

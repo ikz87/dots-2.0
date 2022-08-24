@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 killall alttab
 killall bappicons.sh
 killall osucheck

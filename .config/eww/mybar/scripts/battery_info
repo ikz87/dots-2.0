@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 notify()
 {
     case $1 in 

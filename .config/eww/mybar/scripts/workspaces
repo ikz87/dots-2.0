@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 total=`xdotool get_num_desktops`    
 icon1=○
