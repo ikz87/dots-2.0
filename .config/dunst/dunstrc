@@ -176,7 +176,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/rofi -config /home/kz87/.config/rofi/drun.rasi -no-show-icons -dmenu -p dunst:
+    dmenu = /usr/bin/rofi -config ~/.config/rofi/drun.rasi -no-show-icons -dmenu -p dunst:
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/brave -new-tab

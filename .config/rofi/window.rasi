@@ -12,7 +12,7 @@ configuration {
   selected-row: 1;
 }
 
-@theme "/home/kz87/.config/rofi/theme.rasi"
+@theme "${HOME}/.config/rofi/theme.rasi"
 
 window {
   width: 415;
