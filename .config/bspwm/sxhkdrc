@@ -14,7 +14,7 @@ control+alt+t
 control+alt+f 
 	thunar 
 super+shift+c
-	/home/kz87/.bscripts/wc.sh
+	~/.bscripts/wc.sh
 
 #rofi things
 #Launch apps
@@ -48,11 +48,11 @@ control+alt+c
 super+o
 	~/.bscripts/lock.sh
 
-#Osu stuff
-control+alt+o 
-    xsetwacom --set "HUION 420 Pen stylus" Area 1000 0 5000 3700
-shift+control+o 
-	xsetwacom set "HUION 420 Pen stylus" ResetArea
+##Osu stuff
+#control+alt+o 
+    #xsetwacom --set "HUION 420 Pen stylus" Area 1000 0 5000 3700
+#shift+control+o 
+	#xsetwacom set "HUION 420 Pen stylus" ResetArea
 #super+x 
 #	~/.osuthings/surfdirect.sh raise
 #super+z
@@ -75,8 +75,8 @@ super+{1,2,3,4,5}
 	~/.bscripts/wpm_reports.sh jump {0,1,2,3,4}
 
 #Weeb
-control+alt+b
-	~/.mangaread
+#control+alt+b
+	#~/.mangaread
 
 #Display stuff
 super+control+p 

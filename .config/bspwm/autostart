@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 killall bspc
 
@@ -24,14 +24,18 @@ hsetroot -cover ~/Pictures/Important/wallpaper.png
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
-# mapcheck
-killall osucheck.sh
-killall inotifywait
-~/.osuthings/osucheck.sh "/home/$USER/.osutmp"&
-~/.osuthings/osucheck.sh "/home/$USER/Downloads"&
+
+## ======================================
+###  Turned off thing
+## ======================================
+## mapcheck
+#killall osucheck.sh
+#killall inotifywait
+#~/.osuthings/osucheck.sh "/home/$USER/.osutmp"&
+#~/.osuthings/osucheck.sh "/home/$USER/Downloads"&
 
 # Tablet drivers
-otd&
+#otd&
 
 # Statusbar
 eww -c ~/.config/eww/mybar open bar_right
