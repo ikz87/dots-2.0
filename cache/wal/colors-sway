@@ -1,0 +1,21 @@
+set $wallpaper /home/kz87/.config/wpg/wallpapers/wallpaper.png
+
+set $background #101012
+set $foreground #fffdf8
+
+set $color0 #101012
+set $color1 #CFBFC0
+set $color2 #64AFA9
+set $color3 #CFB5AD
+set $color4 #E6D5CB
+set $color5 #AD9E98
+set $color6 #6DC8BF
+set $color7 #e9e2dd
+set $color8 #27272c
+set $color9 #ffdbdf
+set $color10 #70f5ea
+set $color11 #ffdec8
+set $color12 #fff4d5
+set $color13 #f5c4b0
+set $color14 #79ffff
+set $color15 #fffdf8

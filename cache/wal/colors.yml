@@ -1,0 +1,24 @@
+wallpaper: "/home/kz87/.config/wpg/wallpapers/wallpaper.png"
+
+special:
+    background: "#101012"
+    foreground: "#fffdf8"
+    cursor: "#fffdf8"
+
+colors:
+    color0: "#101012"
+    color1: "#CFBFC0"
+    color2: "#64AFA9"
+    color3: "#CFB5AD"
+    color4: "#E6D5CB"
+    color5: "#AD9E98"
+    color6: "#6DC8BF"
+    color7: "#e9e2dd"
+    color8: "#27272c"
+    color9: "#ffdbdf"
+    color10: "#70f5ea"
+    color11: "#ffdec8"
+    color12: "#fff4d5"
+    color13: "#f5c4b0"
+    color14: "#79ffff"
+    color15: "#fffdf8"

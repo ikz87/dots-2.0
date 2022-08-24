@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/kz87/.config/wpg/wallpapers/wallpaper.png"
+let background = "#101012"
+let foreground = "#fffdf8"
+let cursor     = "#fffdf8"
+
+" Colors
+let color0  = "#101012"
+let color1  = "#CFBFC0"
+let color2  = "#64AFA9"
+let color3  = "#CFB5AD"
+let color4  = "#E6D5CB"
+let color5  = "#AD9E98"
+let color6  = "#6DC8BF"
+let color7  = "#e9e2dd"
+let color8  = "#27272c"
+let color9  = "#ffdbdf"
+let color10 = "#70f5ea"
+let color11 = "#ffdec8"
+let color12 = "#fff4d5"
+let color13 = "#f5c4b0"
+let color14 = "#79ffff"
+let color15 = "#fffdf8"
