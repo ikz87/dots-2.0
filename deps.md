@@ -1,0 +1,47 @@
+# Identified Dependencies
+
+This is not an exhaustive list. This is an attempt to identify the dependencies I needed for my machine. Your mileage may vary.
+
+- polybar
+- pqiv
+- bspwm
+- eww
+- flameshot
+- xdg-desktop-portal-gnome
+- discover-overlay
+- eww-calendar
+- cairo-clock
+- pavucontrol
+- polycal
+- dunst
+- surf
+- rofi
+- eww-music
+- brave-browser
+- vlc
+- i3lock
+- looking-glass-client
+- sm64ex <- super mario 64
+- mpv
+- sxhkd
+- picom (fork)
+- xsetroot
+- hsetroot
+- polkit-gnome
+- blueman-applet
+- pa-applet
+- nm-applet
+- thunar
+- kozy
+- cava
+- nautilus
+- yad
+- alttab
+- bspswallow
+- dbus-daemon
+- kitty
+- colorpicker
+- wmctrl
+- xdotool
+- xrandr
+- platerctl
