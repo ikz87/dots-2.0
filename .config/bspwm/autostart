@@ -2,9 +2,6 @@
 
 killall bspc
 
-# Splashscreen
-pgrep sxhkd || mpv --fullscreen     --no-input-default-bindings     --no-config     --on-all-workspaces     ~/Videos/Renders/splash.mp4 
-
 # Compositor
 picom &
 
@@ -12,7 +9,7 @@ picom &
 xsetroot -cursor_name left_ptr &
 
 # apply colorscheme to spotify
-~/.ricing/wal-spotify.sh > /dev/null&
+~/.bscripts/wal-spotify.sh > /dev/null&
 
 # Source the colorscheme
 echo alpha="ff" >> "${HOME}/.cache/wal/colors.sh"
