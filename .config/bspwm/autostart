@@ -1,38 +1,28 @@
 #!/bin/sh
 
+# Kill any running instances of bspc to prevent multiple
+# instances of ~/.config/eww/mybar/scripts/workspaces to run at once
 killall bspc
 
 # Compositor
 picom &
 
-# cursor
+# Set cursor
 xsetroot -cursor_name left_ptr &
 
-# apply colorscheme to spotify
+# Apply colorscheme to spotify (requieres spicetify https://github.com/spicetify/spicetify-cli)
 ~/.bscripts/wal-spotify.sh > /dev/null&
 
-# Source the colorscheme
+# Source the colorscheme, can change the alpha value to be used in certain scripts
+# like ~/.bscripts/rofi.sh
 echo alpha="ff" >> "${HOME}/.cache/wal/colors.sh"
 source "${HOME}/.cache/wal/colors.sh"
 
-# Walllpaper
+# Set Wallpaper
 hsetroot -cover ~/Pictures/Important/wallpaper.png
 
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
-
-
-## ======================================
-###  Turned off thing
-## ======================================
-## mapcheck
-#killall osucheck.sh
-#killall inotifywait
-#~/.osuthings/osucheck.sh "/home/$USER/.osutmp"&
-#~/.osuthings/osucheck.sh "/home/$USER/Downloads"&
-
-# Tablet drivers
-#otd&
 
 # Statusbar
 eww -c ~/.config/eww/mybar open bar_right
@@ -63,24 +53,12 @@ dunst -lf  $foreground \
       -cb  $color0$alpha \
       -cfr $color9 > /dev/null 2>&1 &
 thunar --daemon&
-
-
-# Master layout
-for (( i=1; i < 10; i++));do
-    #bsp-layout set tiled $i
-    true
-done
+killall sxhkd
+sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
 
 # Sounds
 ~/.bscripts/sounds.sh&
 
-# idle
+# Idle
 killall idle.sh
 pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
-
-# borders
-#.bscripts/borders.sh&
-
-# Launch keybinding daemon
-killall sxhkd
-sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
