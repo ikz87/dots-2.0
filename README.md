@@ -2,10 +2,10 @@
 
 ## An updated, revised version of my dotfiles 
 
-https://www.reddit.com/r/unixporn/comments/wosl44/bspwm_decided_to_finally_learn_how_to_use_eww/
+Dotfiles for this [post](https://www.reddit.com/r/unixporn/comments/wosl44/bspwm_decided_to_finally_learn_how_to_use_eww/).
 
 I started using eww as a bar so I wrote everything from scratch and took the opportunity to be more organized. Remember to make scripts in .bscripts and .config/eww/mybar/scripts executable
 
-Note: Some shell sripts (like the bspwm config file) might include a line like "source path", this is supposed to be used as a global colorscheme for all of them, you can either delete those lines and set colors manually or use wpgtk https://github.com/deviantfero/wpgtk with the templates provided in my configs to actually make use of the colorscheme system
+Note: This configs heavily depend on [wpgtk](https://github.com/deviantfero/wpgtk). The configs are all set for it to work out of the box, just download it and enjoy having a colorscheme specifically made for your wallpaper! (which you should put in ~/Pictures/Important/wallpaper.png)
 
 TODO: Full dependency list
