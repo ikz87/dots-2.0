@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 time=900000
 #time= 10000
