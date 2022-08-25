@@ -142,7 +142,7 @@ super+KP_Subtract
 	bspc config window_gap $(( -5 + `bspc config window_gap` ))
 
 control+alt+{k,j,h,l}
-	bspc node --presel-dir ~{north,south,west,east}
+	bspc node --presel-dir \~{north,south,west,east}
 
 control+alt+a
 	if [[ ! -z "$(bspc query -N -n focused.normal)" ]]; then \
