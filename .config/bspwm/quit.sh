@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 killall blueman-applet
 killall pa-applet
 killall nm-applet

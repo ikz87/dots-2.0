@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 raw=`df -h / | grep /dev/`
 
