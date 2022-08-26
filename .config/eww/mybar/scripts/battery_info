@@ -16,7 +16,7 @@ notify()
             if  [[ $lstate -gt 1 ]] 
             then
                 echo 1 > /tmp/batstate
-                ~/.ricing/notify-send.sh "Warning: $bat_level% Battery left" -i "~/Pictures/Important/icons/other/battery_mid.png" -t 10000 --replace=550 -u critical
+                ~/.bscripts/notify-send.sh "Warning: $bat_level% Battery left" -i "~/Pictures/Important/icons/other/battery_mid.png" -t 10000 --replace=550 -u critical
             fi;
         ;;
         low)
