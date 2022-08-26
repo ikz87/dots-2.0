@@ -32,11 +32,8 @@ bspc rule --add Blueman-manager             state=floating rectangle=610x610+650
 bspc rule --add Brave-browser               rectangle=1130x800+395+140
 bspc rule --add Polkit-gnome-authentication-agent-1 rectangle=810x280+555+399
 bspc rule --add Polybar                     layer=below manage=off
-bspc rule --add Nautilus                    state=floating
-bspc rule --add mpv                         state=floating border=off
 bspc rule --add Rofi 			    manage=off
 bspc rule --add Pavucontrol		    state=floating rectangle=610x610+650+235
-bspc rule --add Yad                         state=floating
 bspc rule --add Thunar 			    rectangle=650x500+635+290
 bspc rule --add flameshot                   state=floating border=off
 
