@@ -273,14 +273,14 @@
     foreground = "#FFFFFF"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
-    icon = /usr/share/icons/Arc-X-D/status/16/dialog-information.png
+    # icon = /usr/share/icons/Arc-X-D/status/16/dialog-information.png
 
 [urgency_normal]
     background = "#272a34"
     foreground = "#FFFFFF"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
-    icon = /usr/share/icons/Arc-X-D/status/16/dialog-question.png
+    #icon = /usr/share/icons/Arc-X-D/status/16/dialog-question.png
 
 [urgency_critical]
     background = "#272a34"
@@ -288,7 +288,7 @@
     #frame_color = "#ff7f7f"
     timeout = 120
     # Icon for notifications with critical urgency, uncomment to enable
-    icon = /usr/share/icons/Arc-X-D/status/16/dialog-warning.png
+    #icon = /usr/share/icons/Arc-X-D/status/16/dialog-warning.png
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
