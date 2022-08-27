@@ -20,3 +20,5 @@ yay -Sy acpi alsa-utils-git blueman brave-browser bspwm colorpicker dunst eww-gi
 - [pop_report](https://github.com/ikz87/pop_report) used in some scripts
 
 Please let me know if any packages are still missing
+
+TODO: install script (probs the only thing that's left)
