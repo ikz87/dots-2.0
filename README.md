@@ -17,6 +17,7 @@ yay -Sy acpi alsa-utils-git blueman brave-browser bspwm colorpicker dunst eww-gi
 
 ### Other 
 - [brightlight](https://github.com/multiplexd/brightlight) since for some reason xbacklight doesn't work on my machine. It's only used in `.bscripts/brightness.sh` so feel free to edit that script if you wanna use xbacklight instead.
+- [pop_report](https://github.com/ikz87/pop_report) used in some scripts
 
 ### Fonts
 - [Nova Mono](https://fonts.google.com/specimen/Nova+Mono?query=nova+mono)
