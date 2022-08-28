@@ -8,8 +8,8 @@
 
 .bars {
     background-image: url("images/background.png");
-    background-color: #120010;
-    border: 5px solid #ff1475;
+    background-color: #0E1F2F;
+    border: 5px solid #ff4647;
     border-radius: 40px;
 }
 
@@ -21,16 +21,16 @@
     margin-top: -4px;
 }
 .workspace_buttons {
-    font-family: Hack;
+    font-family: "Hack";
     font-size: 30px;
     margin: 0 3 0 2;
-    color: #e6dafc;
+    color: #ffc994;
 }
 
 // Layout
 .layout {
     all: unset;
-    color: #e6dafc;
+    color: #ffc994;
     font-size: 25;
     margin: -6 0 -6 10;
 }
@@ -39,20 +39,25 @@
 .music_box { 
 }
 .music_box_popup {
-    background-color: #120010;
+    background-color: #0E1F2F;
     background-image: url("images/background.png");
-    border: solid 5px #ff1475;
+    border: solid 5px #ff4647;
     border-radius: 0 0 20 20;
 }
 .media_art {
-    border-right: solid 5px #ff1475;
-    border-left: solid 5px #ff1475;
+    border-right: solid 5px #ff4647;
+    border-left: solid 5px #ff4647;
+    background-color: #ff4647;
     margin-left: 14px;
     margin-right: 3px;
+
 }
 .media_art_popup {
-    border: solid 5px #dd266e;
+    border: solid 5px #8dffff;
     border-radius: 5px;
+    min-height: 130px;
+    min-width: 130px;
+    background-color: #8dffff;
     margin: 15 0 15 15;
 }
 .media_data { 
@@ -64,20 +69,20 @@
 .media_title {
     //font-family: "Meiryo";
     font-size: 15px;
-    color: #e6dafc;
+    color: #ffc994;
     margin-top: -100px;
     margin-bottom: -70px;
 }
 .media_title_popup {
     font-size: 18px;
     margin: 0 15 -30 10;
-    color: #e6dafc;
+    color: #ffc994;
 }
 .media_artist_popup {
     font-size: 14px;
     margin: 0 15 0 10;
-    color: #3081c6;
-//    background-color: #43013b;
+    color: #019fb8;
+//    background-color: #193855;
 }
 .media_buttons {
     font-size: 20px;
@@ -88,19 +93,19 @@
     font-size: 30px;
     margin-right: 10px;
     margin-left: 10px;
-    color: #3081c6;
+    color: #019fb8;
 }
 .move_popup {
     font-size: 30px;
     margin-right: 10px;
     margin-left: 10px;
-    color: #e6dafc;
+    color: #ffc994;
 }
 .nextprev_popup {
     font-size: 30px;
     margin-right: 10px;
     margin-left: 10px;
-    color: #ff4c5f;
+    color: #ff6156;
 }
 .media_buttons_box_popup {
     
@@ -111,38 +116,38 @@
 }
 .bar_normal_popup scale trough highlight {
     all: unset;
-    background-color: #DC1C5E;
+    background-color: #E94546;
     border-radius: 15px;
 }
 .bar_normal_popup scale trough {
     all: unset;
-    background-color: rgba(230,218,252, 0.4);
+    background-color: rgba(255,201,148, 0.4);
     min-height: 15px;
     margin: 0 15 15 15;
     border-radius: 15px;
-    border: solid 5px #dd266e;
+    border: solid 5px #8dffff;
 }
 .bar_highlighted_popup scale trough highlight {
     all: unset;
-    background-color: #dd266e;
+    background-color: #8dffff;
     border-radius: 15px;
 }
 .bar_highlighted_popup scale trough {
     all: unset;
-    background-color: rgba(230,218,252, 1);
+    background-color: rgba(255,201,148, 1);
     min-height: 15px;
     margin: 0 15 15 15;
     border-radius: 15px;
-    border: solid 5px #dd266e;
+    border: solid 5px #8dffff;
 }
 .bar_normal scale trough highlight {
     all: unset;
-    background-color: #2F638F;
+    background-color: #027A8D;
     border-radius: 10px;
 }
 .bar_normal scale trough {
     all: unset;
-    background-color: rgba(230,218,252, 0.4);
+    background-color: rgba(255,201,148, 0.4);
     min-width: 173px;
     min-height: 10px;
     border-radius: 10px;
@@ -151,12 +156,12 @@
 }
 .bar_highlighted scale trough highlight {
     all: unset;
-    background-color: #3081c6;
+    background-color: #019fb8;
     border-radius: 10px;
 }
 .bar_highlighted scale trough {
     all: unset;
-    background-color: #e6dafc;
+    background-color: #ffc994;
     min-width: 173px;
     min-height: 10px;
     border-radius: 10px;
@@ -173,24 +178,24 @@
     font-size: 15px;
     margin-bottom: -3px;
     margin-top: 1px;
-    color: #e6dafc;
+    color: #ffc994;
 }
 .center_revealers {
     border-radius: 5px;
-    background-color: rgba(18,0,16, 1);
+    background-color: rgba(14,31,47, 1);
     min-height: 32px;
-    border: solid 2px #ffff01;
-    color: #3081c6;
+    border: solid 2px #ffcb83;
+    color: #019fb8;
 }
 .center_info scale trough highlight {
     all: unset;
-    background: #FFCD01;
+    background: #F1A277;
     border-radius: 10px;            
-    border: solid 2px #ffff01;
+    border: solid 2px #ffcb83;
 }
 .center_info scale trough {
     all: unset;
-    background-color: rgba(230,218,252, 0.4);
+    background-color: rgba(255,201,148, 0.4);
     border-radius: 10px;
     min-width: 110px;
     min-height: 10px;               
@@ -199,7 +204,7 @@
 
 // RIGHT MODULES 
 .power_button {
-    color: #ff4c5f;
+    color: #ff6156;
     font-size: 20px;
     margin: -10 15 -10 15;
 }
@@ -208,18 +213,18 @@
     margin-bottom: -10px;
 }
 .time {
-    color: #e6dafc;
+    color: #ffc994;
     font-size: 25px;
     margin-bottom: -20px;
     margin-top: -20px;
 }
 .date {
-    color: #e6dafc;
+    color: #ffc994;
     font-size: 25px;
     margin-top: 8px;
 }
 .kb_box {
-    color: #e6dafc;
+    color: #ffc994;
     font-size: 15px;
     margin-left: 2px;
     margin-right: 10px;
@@ -234,10 +239,10 @@
 }
 .cal {
     font-size: 16px;
-    background-color: #120010;
+    background-color: #0E1F2F;
     background-image: url("images/background.png");
-    color: #e6dafc;
-    border: 5px solid #ff1475;
+    color: #ffc994;
+    border: 5px solid #ff4647;
     border-radius: 0 0 20 20;
     padding: 10px;
 }
