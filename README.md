@@ -12,7 +12,7 @@ Note: For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to 
 ### AUR packages
 just run this for this section (assuming you use yay):
 ```
-yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot kitty mantablockscreen network-manager-applet pa-applet-git picom-pijulius-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot spicetify-cli spotify sxhkd thunar wmctrl wpgtk xclip xdotool xprintidle --needed
+yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot jq kitty mantablockscreen network-manager-applet pa-applet-git picom-pijulius-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot spicetify-cli spotify sxhkd thunar wmctrl wpgtk xclip xdotool xprintidle --needed
 ```
 
 ### Other 
