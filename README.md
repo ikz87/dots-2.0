@@ -53,8 +53,6 @@ If you're not using arch, this is the dependency list, install in wathever way y
 
 Please let me know if any packages are still missing
 
-TODO: install script (probs the only thing that's left)
-
 ## Installing
 just run install.sh:
 ``` 
