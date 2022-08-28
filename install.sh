@@ -38,18 +38,18 @@ cp -r ~/.config/* $old/.config/
 cp -r ~/Documents/Sounds/* $old/Documents/Sounds/
 cp -r ~/Pictures/Important/* $old/Pictures/Important/
 cp -r ~/Pictures/Wallpapers/* $old/Pictures/Wallpapers/
-cp -r ~/Pictures/.cache/wal/* $old/.cache/wal
+cp -r ~/.cache/wal/* $old/.cache/wal
 cp -r ~/.local/share/fonts/* $old/.local/share/fonts/
 echo "done"
 
 echo -n "Applying rice... "
-mv -f $script_dir/.bscripts/* ${HOME}/.bscripts/
-mv -f $script_dir/.config/* ${HOME}/.config/
-mv -f $script_dir/Documents/Sounds/* ${HOME}/Documents/Sounds/
-mv -f $script_dir/Pictures/Important/* ${HOME}/Pictures/Important/
-mv -f $script_dir/Pictures/Wallpapers/* ${HOME}/Pictures/Wallpapers/
-mv -f $script_dir/Pictures/.cache/wal/* ${HOME}/.cache/wal
-mv -f $script_dir/.local/share/fonts/* ${HOME}/.local/share/fonts/
+cp -r -f $script_dir/.bscripts/* ${HOME}/.bscripts/
+cp -r -f $script_dir/.config/* ${HOME}/.config/
+cp -r -f $script_dir/Documents/Sounds/* ${HOME}/Documents/Sounds/
+cp -r -f $script_dir/Pictures/Important/* ${HOME}/Pictures/Important/
+cp -r -f $script_dir/Pictures/Wallpapers/* ${HOME}/Pictures/Wallpapers/
+cp -r -f $script_dir/.cache/wal/* ${HOME}/.cache/wal
+cp -r -f $script_dir/.local/share/fonts/* ${HOME}/.local/share/fonts/
 echo "done"
 
 echo -n "Changing permissions... "
@@ -58,7 +58,7 @@ chmod +x ~/.config/bspwm/autostart
 chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/bspwm/quit.sh
 chmod +x ~/.config/eww/mybar/scripts/*
-chmod +x ~/.config/wpg/wp_init.sh/
+chmod +x ~/.config/wpg/wp_init.sh
 chmod +x ~/.cache/wal/colors-tty.sh
 echo "done"
 
