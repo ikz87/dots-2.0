@@ -55,7 +55,7 @@ while true; do
 		then
 			$eww update media_status=""
 		else
-			$eww update media_status=""
+			$eww update media_status=""
 		fi;
 		
 		# Update title and artist
@@ -84,10 +84,10 @@ while true; do
                 | sed "s/https:\/\/i.ytimg.com\/vi\//https:\/\/img.youtube.com\/vi\//g"\
                 | sed "s/hq/maxres/g"`
 
-	    if [[ "$newimg" != "$lastimg" ]]
-	    then
-	        echo "New image $newimg detected"
-	        lastimg=$newimg
+	   if [[ "$newimg" != "$lastimg" ]]
+	   then
+	       echo "New image $newimg detected"
+	       lastimg=$newimg
 			update_cover&
         fi;
 	else
