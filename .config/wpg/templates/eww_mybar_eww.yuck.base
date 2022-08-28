@@ -26,7 +26,7 @@
 (defvar wp3 "○")
 (defvar wp4 "○")
 (defvar layout_button "")
-(defvar media_status "")
+(defvar media_status "奈")
 (defvar artist "No artist")
 (defvar artist_parsed "No artist") 
 (defvar title "No title") 
@@ -154,6 +154,7 @@
         (box
           :valign "center"
           :halign "start"
+	 :style "min-height: 150px;"
           (image
             :halign "start"
             :class "media_art_popup"
@@ -751,7 +752,7 @@
       :class "power_button"
       :valign "center"
       :onclick "~/.bscripts/rofi.sh outopts"
-      "")))
+      "⏻")))
 
 (defwidget time []
   (eventbox
