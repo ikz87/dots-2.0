@@ -92,7 +92,7 @@ while true; do
         fi;
 	else
 		# Update everything to default values
-		$eww update media_status=""
+		$eww update media_status=""
 		$eww update title_parsed="No title"
 		$eww update title="No title"
 		$eww update artist="No artist"
