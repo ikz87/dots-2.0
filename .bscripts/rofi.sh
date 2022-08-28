@@ -27,7 +27,7 @@ case $1 in
             "")
                 ~/.config/bspwm/quit.sh
             ;;
-            "")
+            "")
                 confirm=`printf "Confirm reboot" | rofi -config $roficonf/logout.rasi -dmenu -font "Nova Mono 15"`
             [[ $confirm == "Confirm reboot" ]] && reboot
             ;;
