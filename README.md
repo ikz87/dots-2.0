@@ -22,3 +22,10 @@ yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git fl
 Please let me know if any packages are still missing
 
 TODO: install script (probs the only thing that's left)
+
+## Installing
+just run install.sh:
+``` 
+chmod +x install.sh
+./install.sh
+```
