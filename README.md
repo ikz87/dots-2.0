@@ -14,6 +14,38 @@ just run this for this section (assuming you use yay):
 ```
 yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot jq kitty mantablockscreen network-manager-applet pa-applet-git picom-pijulius-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd thunar wmctrl wpgtk xclip xdotool xprintidle --needed
 ```
+If you're not using arch, this is the dependency list, install in wathever way you want:
+- acpi
+- alsa-utils
+- blueman
+- brave
+- bspwm
+- colorpicker
+- dunst
+- eww
+- flameshot
+- hsetroot
+- jq
+- kitty
+- mantablockscreen
+- network-manager-appler
+- pa-applet
+- pijulius' picom
+- playerctl
+- polkit-gnome
+- polybar
+- pulseaudio
+- python3
+- rofi
+- scrot sox spicetify-cli
+- spotify
+- sxhkd
+- thunar
+- wmctrl
+- wpgtk
+- xclip
+- xdotool
+- xprintidle
 
 ### Other 
 - [brightlight](https://github.com/multiplexd/brightlight) since for some reason xbacklight doesn't work on my machine. It's only used in `.bscripts/brightness.sh` so feel free to edit that script if you wanna use xbacklight instead.
