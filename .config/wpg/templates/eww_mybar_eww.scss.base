@@ -21,7 +21,7 @@
     margin-top: -4px;
 }}
 .workspace_buttons {{
-    font-family: Hack;
+    font-family: "Hack";
     font-size: 30px;
     margin: 0 3 0 2;
     color: {color15};
@@ -47,12 +47,17 @@
 .media_art {{
     border-right: solid 5px {color9};
     border-left: solid 5px {color9};
+    background-color: {color9};
     margin-left: 14px;
     margin-right: 3px;
+
 }}
 .media_art_popup {{
     border: solid 5px {color14};
     border-radius: 5px;
+    min-height: 130px;
+    min-width: 130px;
+    background-color: {color14};
     margin: 15 0 15 15;
 }}
 .media_data {{ 
