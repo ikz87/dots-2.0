@@ -26,7 +26,7 @@
 (defvar wp3 "○")
 (defvar wp4 "○")
 (defvar layout_button "")
-(defvar media_status "奈")
+(defvar media_status "")
 (defvar artist "No artist")
 (defvar artist_parsed "No artist") 
 (defvar title "No title") 
