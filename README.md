@@ -29,3 +29,5 @@ just run install.sh:
 chmod +x install.sh
 ./install.sh
 ```
+
+TODO: Add a keybinds guide
