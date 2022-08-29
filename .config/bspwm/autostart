@@ -43,15 +43,7 @@ flameshot&
     
 # daemons
 killall dunst
-dunst -lf  $foreground \
-      -lb  $color0$alpha \
-      -lfr $color9\
-      -nf  $foreground \
-      -nb  $color0$alpha \
-      -nfr $color9 \
-      -cf  $foreground \
-      -cb  $color0$alpha \
-      -cfr $color9 > /dev/null 2>&1 &
+dunst > /dev/null 2> &
 thunar --daemon&
 killall sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
