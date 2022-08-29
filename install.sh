@@ -33,13 +33,13 @@ create_dir_tree $old
 echo "done"
 
 echo -n "Backing up current configs... "
-cp -r ~/.bscripts/* $old/.bscripts/
-cp -r ~/.config/* $old/.config/
-cp -r ~/Documents/Sounds/* $old/Documents/Sounds/
-cp -r ~/Pictures/Important/* $old/Pictures/Important/
-cp -r ~/Pictures/Wallpapers/* $old/Pictures/Wallpapers/
-cp -r ~/.cache/wal/* $old/.cache/wal
-cp -r ~/.local/share/fonts/* $old/.local/share/fonts/
+cp -r ~/.bscripts/* $old/.bscripts/ 2> /dev/null
+cp -r ~/.config/* $old/.config/ 2> /dev/null
+cp -r ~/Documents/Sounds/* $old/Documents/Sounds/ 2> /dev/null
+cp -r ~/Pictures/Important/* $old/Pictures/Important/ 2> /dev/null
+cp -r ~/Pictures/Wallpapers/* $old/Pictures/Wallpapers/ 2> /dev/null
+cp -r ~/.cache/wal/* $old/.cache/wal 2> /dev/null
+cp -r ~/.local/share/fonts/* $old/.local/share/fonts/ 2> /dev/null
 echo "done"
 
 echo -n "Applying rice... "
