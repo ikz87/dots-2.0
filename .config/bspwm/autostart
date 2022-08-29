@@ -43,7 +43,7 @@ flameshot&
     
 # daemons
 killall dunst
-dunst > /dev/null 2> &
+dunst > /dev/null 2> /dev/null &
 thunar --daemon&
 killall sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
