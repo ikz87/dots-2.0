@@ -1,9 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 # You can call this script like this:
 # $./brightness.sh up
 # $./brightness.sh down
-# $./brightness.sh mute
 
 function get_brightness {
     
@@ -14,12 +13,12 @@ function get_brightness {
 function send_notification {
     DIR=`dirname "$0"`
     brightness=`get_brightness`
-    icon_name="~/Pictures/Important/icons/other/b.png"
-bn=$(( (brightness + 5) / 5 ))
-bar=$(seq -s "" $bn | sed 's/[0-9]//g')
+    icon_name="${HOME}/Pictures/Important/icons/other/b.png"
+    bn=$(( (brightness + 5) / 5 ))
+    bar=$(seq -s "" $bn | sed 's/[0-9]//g')
 
-# Send the notification
-$DIR/notify-send.sh "Brightness: $brightness%\n\n$bar" -i "$icon_name" -t 1000 --replace=555 -u critical
+    # Send the notification
+    $DIR/notify-send.sh "Brightness: $brightness%\n\n$bar" -i "$icon_name" -t 1000 --replace=555 -u critical
 
 }
 
