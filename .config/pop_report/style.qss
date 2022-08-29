@@ -1,0 +1,7 @@
+border: 5px solid #ffdbdf; 
+border-radius: 20px;
+background-color: #101012;
+color: #fffdf8;
+font-family: CartographCF;
+font-size: 70px;
+padding: 20px;
