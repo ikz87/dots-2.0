@@ -37,7 +37,9 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - pulseaudio
 - python3
 - rofi
-- scrot sox spicetify-cli
+- scrot 
+- sox 
+- spicetify-cli
 - spotify
 - sxhkd
 - thunar
