@@ -25,6 +25,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - eww
 - flameshot
 - hsetroot
+- imagemagick
 - jq
 - kitty
 - mantablockscreen
@@ -52,6 +53,10 @@ If you're not using arch, this is the dependency list, install in wathever way y
 ### Other 
 - [brightlight](https://github.com/multiplexd/brightlight) since for some reason xbacklight doesn't work on my machine. It's only used in `.bscripts/brightness.sh` so feel free to edit that script if you wanna use xbacklight instead.
 - [pop_report](https://github.com/ikz87/pop_report) used in some scripts
+
+### Optional
+- plasma-integration [AUR package](https://aur.archlinux.org/packages/plasma-integration-git) and [chrome extension](https://chrome.google.com/webstore/detail/plasma-integration/cimiefiiaegbelhefglklhhakcgmhkai/related?hl=es) to better integrate media playing in brave with widgets (like having thumbnails of youtube videos show up in the left bar)
+
 
 Please let me know if any packages are still missing
 
