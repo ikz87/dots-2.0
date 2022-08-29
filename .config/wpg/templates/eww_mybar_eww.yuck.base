@@ -26,7 +26,7 @@
 (defvar wp3 "○")
 (defvar wp4 "○")
 (defvar layout_button "")
-(defvar media_status "")
+(defvar media_status "")
 (defvar artist "No artist")
 (defvar artist_parsed "No artist") 
 (defvar title "No title") 
@@ -39,15 +39,15 @@
 (deflisten launch3 "scripts/media_info")
 
 (defpoll cpu_percent :interval "1s" "scripts/cpu_info")
-(defpoll disk_all :interval "10s" "scripts/disk_info --all")
-(defpoll disk_used :interval "10s" "scripts/disk_info --used")
-(defpoll disk_free :interval "10s" "scripts/disk_info --free")
-(defpoll temperature :interval "2s" "scripts/temperature_info")
-(defpoll ram_used :interval "2s" "scripts/ram_info --used")
-(defpoll ram_all :interval "2s" "scripts/ram_info --all")
-(defpoll ram_parsed :interval "2s" "scripts/ram_info --parsed")
-(defpoll battery_percent :interval "3s" "scripts/battery_info --percentage")
-(defpoll battery_time :interval "3s" "scripts/battery_info --time")
+(defpoll disk_all :interval "1s" "scripts/disk_info --all")
+(defpoll disk_used :interval "1s" "scripts/disk_info --used")
+(defpoll disk_free :interval "1s" "scripts/disk_info --free")
+(defpoll temperature :interval "1s" "scripts/temperature_info")
+(defpoll ram_used :interval "1s" "scripts/ram_info --used")
+(defpoll ram_all :interval "1s" "scripts/ram_info --all")
+(defpoll ram_parsed :interval "1s" "scripts/ram_info --parsed")
+(defpoll battery_percent :interval "1s" "scripts/battery_info --percentage")
+(defpoll battery_time :interval "1s" "scripts/battery_info --time")
 (defpoll hour :interval "1s" "scripts/time_info --hour")
 (defpoll minutes :interval "1s" "scripts/time_info --minutes")
 (defpoll type :interval "1s" "scripts/time_info --type")
@@ -154,7 +154,6 @@
         (box
           :valign "center"
           :halign "start"
-	 :style "min-height: 150px;"
           (image
             :halign "start"
             :class "media_art_popup"
@@ -752,7 +751,7 @@
       :class "power_button"
       :valign "center"
       :onclick "~/.bscripts/rofi.sh outopts"
-      "⏻")))
+      "")))
 
 (defwidget time []
   (eventbox
