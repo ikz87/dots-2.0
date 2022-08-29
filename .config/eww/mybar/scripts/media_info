@@ -31,7 +31,8 @@ update_cover () {
 		cp "`echo $newimg | sed 's/file:\/\///g'`" "$imgdir/currmedia.png"
 		echo "Image is a file, succesfully coppied"
 	else
-		curl "$newimg" -o "$imgdir/currmedia.png" -s
+		curl "$newimg" -o "/tmp/currmedia.png" -s
+		convert "/tmp/currmedia.png" -resize 300x300\! "$imgdir/currmedia.png"
 		echo "Image is an url, succesfully downloaded"
 	fi;
 	$eww update cover="$imgdir/currmedia.png"
