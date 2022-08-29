@@ -4,7 +4,7 @@
 
 Dotfiles for this [post](https://www.reddit.com/r/unixporn/comments/wosl44/bspwm_decided_to_finally_learn_how_to_use_eww/).
 
-I started using eww as a bar so I wrote everything from scratch and took the opportunity to be more organized. Remember to make scripts in `.bscripts` and `.config/eww/mybar/scripts` executable
+I started using eww as a bar so I wrote everything from scratch and took the opportunity to be more organized.
 
 Note: For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to wallpaper>`
 
