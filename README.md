@@ -67,4 +67,4 @@ chmod +x install.sh
 ./install.sh
 ```
 
-TODO: Add a keybinds guide
+TODO: Add a keybinds guide, you can read about all keybinds in .config/bspwm/sxhkdrc for now
