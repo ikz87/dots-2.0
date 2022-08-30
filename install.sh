@@ -40,7 +40,7 @@ cp -r ~/Pictures/Important/* $old/Pictures/Important/ 2> /dev/null
 cp -r ~/Pictures/Wallpapers/* $old/Pictures/Wallpapers/ 2> /dev/null
 cp -r ~/.cache/wal/* $old/.cache/wal 2> /dev/null
 cp -r ~/.local/share/fonts/* $old/.local/share/fonts/ 2> /dev/null
-echo "done"
+echo "done, you can find your backups at $old/"
 
 echo -n "Applying rice... "
 cp -r -f $script_dir/.bscripts/* ${HOME}/.bscripts/
