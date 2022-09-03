@@ -29,7 +29,7 @@ status=`playerctl --player="$player" status`
 
 # Toggle play pause and update status accordingly
 toggle () {
-    [[ $status == "Playing" ]] && $eww update media_status=""|| $eww update media_status=""
+    [[ $status == "Playing" ]] && $eww update media_status=""|| $eww update media_status=""
     playerctl --player="$player" play-pause
 }
 

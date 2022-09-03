@@ -26,7 +26,7 @@
 (defvar wp3 "○")
 (defvar wp4 "○")
 (defvar layout_button "")
-(defvar media_status "")
+(defvar media_status "")
 (defvar artist "No artist")
 (defvar artist_parsed "No artist") 
 (defvar title "No title") 
@@ -748,12 +748,10 @@
     :cursor "pointer"
     :tooltip "Logout options"
     (button
+      :class "power_button"
       :valign "center"
       :onclick "~/.bscripts/rofi.sh outopts"
-      (label
-      	:class "power_button"
-	:text ""
-      ))))
+      "")))
 
 (defwidget time []
   (eventbox
