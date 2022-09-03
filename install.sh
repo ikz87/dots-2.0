@@ -50,6 +50,7 @@ cp -r -f $script_dir/Pictures/Important/* ${HOME}/Pictures/Important/
 cp -r -f $script_dir/Pictures/Wallpapers/* ${HOME}/Pictures/Wallpapers/
 cp -r -f $script_dir/.cache/wal/* ${HOME}/.cache/wal
 cp -r -f $script_dir/.local/share/fonts/* ${HOME}/.local/share/fonts/
+cp -r -f $script_dir/.osuthings ${HOME} 
 echo "done"
 
 echo -n "Changing permissions... "
@@ -60,6 +61,7 @@ chmod +x ~/.config/bspwm/quit.sh
 chmod +x ~/.config/eww/mybar/scripts/*
 chmod +x ~/.config/wpg/wp_init.sh
 chmod +x ~/.cache/wal/colors-tty.sh
+chmod +x ~/.osuthings/*
 echo "done"
 
 echo "Install finished, Enjoy my rice c:"
