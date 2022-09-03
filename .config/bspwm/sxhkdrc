@@ -1,44 +1,64 @@
-# Config file for simple X hotkey daemon
+#Config file for simple X hotkey daemon
 
-# "Pausing" sxhkd
+#"Pausing" sxhkd
 super+Return
 	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send.sh "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace=420 -u critical&
 
-# Apps and programs
+#Apps and programs
 control+alt+w  
 	brave
 control+alt+t  
 	kitty
+#control+alt+g  
+#	lutris
 control+alt+f 
 	thunar 
+super+shift+c
+	/home/kz87/.bscripts/wc.sh
 
-# Rofi things
-# Launch apps
+#rofi things
+#Launch apps
 super+shift+e 
-	~/.bscripts/rofi.sh drun	
-# Window switcher
+	~/.bscripts/rofi.sh drun
+	
+#Window switcher
 alt+Tab
 	~/.bscripts/rofi.sh window
-# Configuration launcher
+
+#Configuration launcher
 super+shift+s
 	~/.bscripts/rofi.sh config
-	
-# Screenshot
+
+#Resolution switcher
+#control+shift+p
+	#bash -c "~/.bscripts/rofi.sh resolution" 
+
+#Screenshot
 Print  
 	~/.bscripts/ss.sh
 #Delayed screenshot
 super+Print
     sleep 3 && ~/.bscripts/ss.sh
 
-# Color picker
+#Color picker
 control+alt+c
 	colorpicker --short --one-shot | xclip -selection "clipboard"
 
-# Suspend the pc
+#Suspend the pc
 super+o
 	~/.bscripts/lock.sh
 
-# Window and workspace shenanigans
+#Osu stuff
+control+alt+o 
+    xsetwacom --set "HUION 420 Pen stylus" Area 1000 0 5000 3700
+shift+control+o 
+	xsetwacom set "HUION 420 Pen stylus" ResetArea
+#super+x 
+#	~/.osuthings/surfdirect.sh raise
+#super+z
+#	~/.osuthings/surfdirect.sh lower
+
+#Window and workspace shenanigans
 super+c 
 	wmctrl -c `xdotool getwindowfocus` -i 
 alt+F4 
@@ -54,27 +74,37 @@ control+alt+comma
 super+{1,2,3,4,5}
 	~/.bscripts/wpm_reports.sh jump {0,1,2,3,4}
 
+#Weeb
+control+alt+b
+	~/.mangaread
+
+#Display stuff
+super+control+p 
+	xrandr --output HDMI1 --auto --left-of eDP1
+super+shift+p
+	xrandr -s 0
+
 # Toggle picom
 super+p
     [[ `pgrep -c picom` -eq 0 ]] && picom || killall picom
     
 #Keyboard layouts
 super+space 
-    ~/.config/eww/mybar/scripts/kb_layouts cycle es us
+	  ~/.config/eww/mybar/scripts/kb_layouts cycle es us
 
 #Media controls
 alt+period
-	~/.bscripts/volume.sh up
+	~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
 alt+comma 
-	~/.bscripts/volume.sh down
+	~/.bscripts/volume.sh down #&& pkill -RTMIN+2 i3blocks 
 alt+m
 	~/.bscripts/volume.sh mute 
 XF86AudioRaiseVolume 
-    ~/.bscripts/volume.sh up
+    ~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
 XF86AudioLowerVolume 
-    ~/.bscripts/volume.sh down
+    ~/.bscripts/volume.sh down#&& pkill -RTMIN+2 i3blocks 
 XF86AudioMute
-    ~/.bscripts/volume.sh mute  
+    ~/.bscripts/volume.sh mute #&& pkill -RTMIN+2 i3blocks 
 alt+shift+period
 	~/.bscripts/brightness.sh up
 alt+shift+comma
@@ -90,15 +120,21 @@ XF86AudioNext
 XF86AudioPrev
 	playerctl previous
 	
-# EWW stuff
+#Open-close eww
+control+alt+e
+	~/.config/eww/dashboard/launch_dashboard
 super+m 
 	~/.config/eww/mybar/scripts/popup_music
 
-# BSPWM stuff
+#bspwm stuff
 super+s
-    bspc desktop focused --layout next
+    bspc desktop focused --layout next && polybar-msg hook layout 1 
 super+shift+q
     ~/.bscripts/rofi.sh outopts
+XF86PowerOff
+    ~/.bscripts/rofi.sh outopts
+#super+shift+r
+#	bspc wm -r
 control+alt+space
 	~/.bscripts/toggle_float.sh
 super+shift+{k,j,h,l}
@@ -153,4 +189,19 @@ control+alt+a
 		bspc node focused -l normal; \
 	fi;
 
+#Mouse clicks
+#q
+#	xdotool click --clearmodifiers 1
+
+#Autistic sounds
+alt+e
+	play ~/Documents/Sounds/sound1.wav
+
+alt+p
+	play -v 0.4 ~/Documents/Sounds/sound2.wav
+alt+r
+	play ~/Documents/Sounds/sound1.wav
+
+alt+space
+	play ~/Documents/Sounds/sound3.wav
 
