@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 eww="eww -c $HOME/.config/eww/mybar"
 set -e
@@ -14,11 +14,11 @@ set_kbdlayout() {
   setxkbmap "${array[@]}"
   if [[ "${array[@]}" == "us" ]]
   then
-    $eww update us_color="rgba(230,218,252,1)"
-    $eww update es_color="rgba(230,218,252,0.4)"
+    $eww update us_color="rgba(255,201,148,1)"
+    $eww update es_color="rgba(255,201,148,0.4)"
   else
-    $eww update us_color="rgba(230,218,252,0.4)"
-    $eww update es_color="rgba(230,218,252,1)"
+    $eww update us_color="rgba(255,201,148,0.4)"
+    $eww update es_color="rgba(255,201,148,1)"
   fi;
 }
 
