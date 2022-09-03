@@ -13,7 +13,6 @@
 (defvar right_bg "#0E1F2F")
 (defvar media_bar_class "bar_normal")
 (defvar media_bar_class_popup "bar_normal_popup")
-(defvar battery_image "images/battery_normal.png")
 (defvar us_color "rgba(255,201,148,1)")
 (defvar es_color "rgba(255,201,148,0.4)")
 (defvar battery_image "images/battery_normal.png")
