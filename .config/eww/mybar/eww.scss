@@ -21,7 +21,7 @@
     margin-top: -4px;
 }
 .workspace_buttons {
-    font-family: "Hack";
+    font-family: Hack;
     font-size: 30px;
     margin: 0 3 0 2;
     color: #ffc994;
@@ -47,17 +47,12 @@
 .media_art {
     border-right: solid 5px #ff4647;
     border-left: solid 5px #ff4647;
-    background-color: #ff4647;
     margin-left: 14px;
     margin-right: 3px;
-
 }
 .media_art_popup {
     border: solid 5px #8dffff;
     border-radius: 5px;
-    min-height: 130px;
-    min-width: 130px;
-    background-color: #8dffff;
     margin: 15 0 15 15;
 }
 .media_data { 
@@ -205,8 +200,9 @@
 // RIGHT MODULES 
 .power_button {
     color: #ff6156;
-    font-size: 20px;
-    margin: -10 15 -10 15;
+    font-size: 25px;
+    font-family: Caskaydia Cove Nerd Font;
+    margin: -10 18 -10 15;
 }
 .time_box {
     margin-top: -10px;

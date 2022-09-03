@@ -200,8 +200,9 @@
 // RIGHT MODULES 
 .power_button {{
     color: {color13};
-    font-size: 20px;
-    margin: -10 15 -10 15;
+    font-size: 25px;
+    font-family: Caskaydia Cove Nerd Font;
+    margin: -10 18 -10 15;
 }}
 .time_box {{
     margin-top: -10px;
