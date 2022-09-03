@@ -5,9 +5,9 @@
 Dotfiles for this [post](https://www.reddit.com/r/unixporn/comments/wosl44/bspwm_decided_to_finally_learn_how_to_use_eww/).
 
 <div>
-  <img src="https://user-images.githubusercontent.com/98569017/188286072-d91b2027-7fc7-4a65-a45b-223d378afca0.png" width=33% height=33%>
-  <img src="https://user-images.githubusercontent.com/98569017/188286092-9131b97a-aa50-4fe8-9179-3cda440c1abc.png" width=33% height=33%>
-  <img src="https://user-images.githubusercontent.com/98569017/188286460-d450f8b0-545d-4612-9a8b-99dafe223ed5.png" width=33% height=33%>
+  <img src="https://user-images.githubusercontent.com/98569017/188286072-d91b2027-7fc7-4a65-a45b-223d378afca0.png" width=30% height=30%>
+  <img src="https://user-images.githubusercontent.com/98569017/188286092-9131b97a-aa50-4fe8-9179-3cda440c1abc.png" width=30% height=30%>
+  <img src="https://user-images.githubusercontent.com/98569017/188286460-d450f8b0-545d-4612-9a8b-99dafe223ed5.png" width=30% height=30%>
 </div>
 
 <p align="center">
