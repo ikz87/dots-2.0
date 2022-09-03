@@ -18,7 +18,7 @@ I started using eww as a bar so I wrote everything from scratch and took the opp
 
 Note: For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to wallpaper>`
 
-## Dependency list (may not be complete):
+## Dependency list:
 ### AUR packages
 just run this for this section (assuming you use yay):
 ```
