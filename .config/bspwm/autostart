@@ -1,28 +1,37 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# Kill any running instances of bspc to prevent multiple
-# instances of ~/.config/eww/mybar/scripts/workspaces to run at once
 killall bspc
+
+# Splashscreen
+pgrep sxhkd || mpv --fullscreen --no-input-default-bindings --no-config --on-all-workspaces ~/Videos/Renders/splash.mp4 
 
 # Compositor
 picom &
 
-# Set cursor
+# cursor
 xsetroot -cursor_name left_ptr &
 
-# Apply colorscheme to spotify (requieres spicetify https://github.com/spicetify/spicetify-cli)
+# apply colorscheme to spotify
 ~/.bscripts/wal-spotify.sh > /dev/null&
 
-# Source the colorscheme, can change the alpha value to be used in certain scripts
-# like ~/.bscripts/rofi.sh
+# Source the colorscheme
 echo alpha="ff" >> "${HOME}/.cache/wal/colors.sh"
 source "${HOME}/.cache/wal/colors.sh"
 
-# Set Wallpaper
+# Walllpaper
 hsetroot -cover ~/Pictures/Important/wallpaper.png
 
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
+
+# mapcheck
+killall osucheck.sh
+killall inotifywait
+~/.osuthings/osucheck.sh "/home/$USER/.osutmp"&
+~/.osuthings/osucheck.sh "/home/$USER/Downloads"&
+
+# Tablet drivers
+otd&
 
 # Statusbar
 eww -c ~/.config/eww/mybar open bar_right
@@ -43,14 +52,26 @@ flameshot&
     
 # daemons
 killall dunst
-dunst > /dev/null 2> /dev/null &
+dunst > /dev/null 2>&1 &
 thunar --daemon&
-killall sxhkd
-sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
+
+
+# Master layout
+for (( i=1; i < 10; i++));do
+    #bsp-layout set tiled $i
+    true
+done
 
 # Sounds
 ~/.bscripts/sounds.sh&
 
-# Idle
+# idle
 killall idle.sh
 pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
+
+# borders
+#.bscripts/borders.sh&
+
+# Launch keybinding daemon
+killall sxhkd
+sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
