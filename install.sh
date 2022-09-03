@@ -34,7 +34,14 @@ echo "done"
 
 echo -n "Backing up current configs... "
 cp -r ~/.bscripts/* $old/.bscripts/ 2> /dev/null
-cp -r ~/.config/* $old/.config/ 2> /dev/null
+cp -r ~/.config/bspwm/ $old/.config/bspwm 2> /dev/null
+cp -r ~/.config/eww/ $old/.config 2> /dev/null
+cp -r ~/.config/picom.conf $old/.config 2> /dev/null
+cp -r ~/.config/dunst/ $old/.config 2> /dev/null
+cp -r ~/.config/kitty/ $old/.config 2> /dev/null
+cp -r ~/.config/pop_report/ $old/.config 2> /dev/null
+cp -r ~/.config/wpg/ $old/.config 2> /dev/null
+cp -r ~/.config/rofi/ $old/.config 2> /dev/null
 cp -r ~/Documents/Sounds/* $old/Documents/Sounds/ 2> /dev/null
 cp -r ~/Pictures/Important/* $old/Pictures/Important/ 2> /dev/null
 cp -r ~/Pictures/Wallpapers/* $old/Pictures/Wallpapers/ 2> /dev/null
