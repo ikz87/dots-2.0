@@ -18,13 +18,13 @@ case $1 in
         xdotool keydown Tab
     ;;
     outopts)
-        option=`printf "\n\n\n⏻\n" | \
+        option=`printf "\n\n\n⏻\n" | \
         rofi -config $roficonf/logout.rasi -dmenu -p "Select logout" -font "Caskaydia Cove Nerd Font 18"`
         case $option in
             "")ñ
                 bspc wm -r
             ;;
-            "")
+            "")
                 ~/.config/bspwm/quit.sh
             ;;
             "")
