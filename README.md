@@ -59,6 +59,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - xclip
 - xdotool
 - xprintidle
+- xwinfo
 
 ### Other 
 - [brightlight](https://github.com/multiplexd/brightlight) since for some reason xbacklight doesn't work on my machine. It's only used in `.bscripts/brightness.sh` so feel free to edit that script if you wanna use xbacklight instead.
