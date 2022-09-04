@@ -18,6 +18,8 @@ I started using eww as a bar so I wrote everything from scratch and took the opp
 
 For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to wallpaper>`
 
+Please note that this rice was made for a single 1080p monitor setup, If you have anything different than that you'd have to tweak some things on your own
+
 ## Dependency list:
 ### AUR packages
 just run this for this section (assuming you use yay):
