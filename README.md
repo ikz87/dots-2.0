@@ -20,6 +20,8 @@ For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to wallpa
 
 Please note that this rice was made for a single 1080p monitor setup, If you have anything different than that you'll have to tweak some things on your own.
 
+There might be some graphical glitches due to pijulius picom being a little unstable, please check this [issue](https://github.com/ikz87/dots-2.0/issues/23).
+
 ## Dependency list:
 ### AUR packages
 Just run this for this section (assuming you use yay):
