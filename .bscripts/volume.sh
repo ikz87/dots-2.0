@@ -34,43 +34,41 @@ function send_notification {
         else
             icon_name="${HOME}/Pictures/Important/icons/other/vthigh.png"
     fi;
-    bn=$(( (volume + 5) / 5 ))
+    #bn=$(( (volume + 5) / 5 ))
                                                                                                                                                                     
-  bar=$(seq -s "" $bn | sed 's/[0-9]//g')          
+    #bar=$(seq -s "" $bn | sed 's/[0-9]//g')          
                                                                                                          
-  # Send the notification                                                      
-  $DIR/notify-send.sh "Volume: $overvolume%\n\n$bar" -i "$icon_name" -t 1000 --replace=555 -u critical
-
-
+    # Send the notification                                                      
+    dunstify "Volume: $overvolume%" -h int:value:$volume -i "$icon_name" -t 1000 --replace=555 -u critical
 }
 
 case $1 in
     up)
-	# Set the volume on (if it was muted)
-	pactl set-sink-mute @DEFAULT_SINK@ 0 > /dev/null
-	# Up the volume (+ 5%)
+	    # Set the volume on (if it was muted)
+	    pactl set-sink-mute @DEFAULT_SINK@ 0 > /dev/null
+	    # Up the volume (+ 5%)
     	curvol=`get_volume`
     	rem=$(( (curvol + 5) % 5 ))
     	inc="+$(( 5 - rem ))%"
     	pactl set-sink-volume @DEFAULT_SINK@ $inc > /dev/null
-	send_notification
+	    send_notification
 	;;
     down)
-	pactl set-sink-mute @DEFAULT_SINK@ 0 > /dev/null
-	curvol=`get_volume`
+	    pactl set-sink-mute @DEFAULT_SINK@ 0 > /dev/null
+	    curvol=`get_volume`
     	rem=$(( (curvol - 5) % 5 ))
     	inc="-$(( 5 + rem ))%"
-	pactl set-sink-volume @DEFAULT_SINK@ $inc > /dev/null
-	send_notification
+	    pactl set-sink-volume @DEFAULT_SINK@ $inc > /dev/null
+	    send_notification
 	;;
     mute)
     	# Toggle mute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null
-	if [[ `is_mute` == "Mute: yes" ]] ; then
+	    pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null
+	    if [[ `is_mute` == "Mute: yes" ]] ; then
     	DIR=`dirname "$0"`
     	$DIR/notify-send.sh -i "${HOME}/Pictures/Important/icons/other/mute.png" --replace=555 -u normal "Volume: Mute" -t 1000 -u critical
-	else
-	   send_notification
-	fi
+	    else
+	    send_notification
+	    fi
 	;;
 esac

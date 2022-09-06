@@ -49,16 +49,16 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 15
+    progress_bar_height = 20
 
     # Set the frame width of the progress bar
-    progress_bar_frame_width = 2
+    progress_bar_frame_width = 5
 
     # Set the minimum width for the progress bar
-    progress_bar_min_width = 300
+    progress_bar_min_width = 420
 
     # Set the maximum width for the progress bar
-    progress_bar_max_width = 300
+    progress_bar_max_width = 420
 
 
     # Show how many messages are currently hidden (because of
@@ -310,6 +310,7 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "{color0}"
     foreground = "{color15}"
+    highlight = "{color14}"
     timeout = 5
     fullscreen = delay
     # Icon for notifications with low urgency, uncomment to enable
@@ -318,6 +319,7 @@
 [urgency_normal]
     background = "{color0}"
     foreground = "{color15}"
+    highlight = "{color14}"
     timeout = 5
     fullscreen = delay
     # Icon for notifications with normal urgency, uncomment to enable
@@ -326,6 +328,7 @@
 [urgency_critical]
     background = "{color0}"
     foreground = "{color15}"
+    highlight = "{color14}"
     timeout = 10
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
