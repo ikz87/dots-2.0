@@ -21,7 +21,7 @@ case $1 in
         option=`printf "\n\n\n⏻\n" | \
         rofi -config $roficonf/logout.rasi -dmenu -p "Select logout" -font "Caskaydia Cove Nerd Font 18"`
         case $option in
-            "")ñ
+            "")
                 bspc wm -r
             ;;
             "")
