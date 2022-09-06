@@ -18,6 +18,8 @@ I started using eww as a bar so I wrote everything from scratch and took the opp
 
 For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to wallpaper>`.
 
+To enable lockscreen utilities first cache an image with `mantablockscreen -i <path to lockscreen background>`.
+
 Please note that this rice was made for a single 1080p monitor setup, If you have anything different than that you'll have to tweak some things on your own.
 
 There might be some graphical glitches due to pijulius picom being a little unstable, please check this [issue](https://github.com/ikz87/dots-2.0/issues/23).
