@@ -18,7 +18,7 @@ I started using eww as a bar so I wrote everything from scratch and took the opp
 
 For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to wallpaper>`.
 
-To enable lockscreen utilities first cache an image with `mantablockscreen -i <path to lockscreen background>`. The profile picture shown in the lockscreen can be changed by putting the desired image in `~/.face`.
+The profile picture shown in the lockscreen can be changed by putting the desired image in `~/.face`.
 
 Please note that this rice was made for a single 1080p monitor setup, If you have anything different than that you'll have to tweak some things on your own.
 
