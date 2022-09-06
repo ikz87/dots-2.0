@@ -21,6 +21,9 @@ source "${HOME}/.cache/wal/colors.sh"
 # Walllpaper
 hsetroot -cover ~/Pictures/Important/wallpaper.png
 
+# Cache lockscreen
+mantablockscreen -i ~/Pictures/Important/lockscreen.png&
+
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
