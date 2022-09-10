@@ -22,13 +22,11 @@ The profile picture shown in the lockscreen can be changed by putting the desire
 
 Please note that this rice was made for a single 1080p monitor setup, If you have anything different than that you'll have to tweak some things on your own.
 
-There might be some graphical glitches due to pijulius picom being a little unstable, please check this [issue](https://github.com/ikz87/dots-2.0/issues/23).
-
 ## Dependency list:
 ### AUR packages
 Just run this for this section (assuming you use yay):
 ```
-yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty mantablockscreen network-manager-applet pa-applet-git picom-pijulius-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd thunar wmctrl wpgtk xclip xdotool xprintidle xwinfo-git --needed
+yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty mantablockscreen network-manager-applet pa-applet-git picom-animations-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd thunar wmctrl wpgtk xclip xdotool xprintidle xwinfo-git --needed
 ```
 If you're not using arch, this is the dependency list, install in wathever way you want:
 - acpi
@@ -47,7 +45,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - mantablockscreen
 - network-manager-appler
 - pa-applet
-- pijulius' picom
+- picom-animations-git
 - playerctl
 - polkit-gnome
 - polybar
