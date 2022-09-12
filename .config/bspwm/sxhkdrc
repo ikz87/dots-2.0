@@ -91,6 +91,10 @@ XF86AudioPrev
 	playerctl previous
 	
 # EWW stuff
+# Toggle bar 
+control+alt+e
+	~/.bscripts/toggle_eww.sh
+# Music popup
 super+m 
 	~/.config/eww/mybar/scripts/popup_music
 

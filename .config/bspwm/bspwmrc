@@ -14,27 +14,29 @@ export BSPWM_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/bspwm"
 bspc monitor -d 0 1 2 3 4 
 
 # General bspwm config options
-bspc config border_width        5
-bspc config window_gap          20
-#bspc config border_radius       2
+bspc config border_width				5
+bspc config window_gap					20
+#bspc config border_radius				 2
 bspc config focus_follows_pointer       true
 bspc config gapless_monocle             true
 #bspc config pointer_follows_focus       true
 #bspc config single_monocle              true
-bspc config top_monocle_padding          20
-bspc config left_monocle_padding         20 
-bspc config right_monocle_padding        20 
-bspc config bottom_monocle_padding       20 
-#bspc config ignore_ewmh_fullscreen       enter
+bspc config top_monocle_padding         20
+bspc config left_monocle_padding        20 
+bspc config right_monocle_padding       20 
+bspc config bottom_monocle_padding      20 
+#bspc config ignore_ewmh_fullscreen      enter
+bspc config ignore_ewmh_struts          true
+bspc config top_padding                 70
 
 # Window rules
 bspc rule --add Blueman-manager             state=floating rectangle=610x610+650+235
 bspc rule --add Brave-browser               rectangle=1130x800+395+140
 bspc rule --add Polkit-gnome-authentication-agent-1 rectangle=810x280+555+399
 bspc rule --add Polybar                     layer=below manage=off
-bspc rule --add Rofi 			    manage=off
-bspc rule --add Pavucontrol		    state=floating rectangle=610x610+650+235
-bspc rule --add Thunar 			    rectangle=650x500+635+290
+bspc rule --add Rofi						manage=off
+bspc rule --add Pavucontrol					state=floating rectangle=610x610+650+235
+bspc rule --add Thunar						rectangle=650x500+635+290
 bspc rule --add flameshot                   state=floating border=off
 
 

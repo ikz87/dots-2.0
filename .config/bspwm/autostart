@@ -28,11 +28,12 @@ mantablockscreen -i ~/Pictures/Important/lockscreen.png&
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
 # Statusbar
+eww -c ~/.config/eww/mybar close-all
 eww -c ~/.config/eww/mybar open bar_right
 eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
 killall polybar
-polybar -c ~/.config/eww/mybar/polybar_tray.ini tray&
+polybar -c ~/.config/eww/mybar/polybar_tray.ini tray& > /dev/null
 
 #Applets
 killall blueman-applet
@@ -54,6 +55,6 @@ sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
 # Sounds
 ~/.bscripts/sounds.sh&
 
-# Idle
+# Autosuspend
 killall idle.sh
 pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
