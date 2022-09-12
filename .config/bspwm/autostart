@@ -37,11 +37,12 @@ killall inotifywait
 otd&
 
 # Statusbar
+eww -c ~/.config/eww/mybar close-all
 eww -c ~/.config/eww/mybar open bar_right
 eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
 killall polybar
-polybar -c ~/.config/eww/mybar/polybar_tray.ini tray&
+polybar -c ~/.config/eww/mybar/polybar_tray.ini tray& > /dev/null
 
 #Applets
 killall blueman-applet

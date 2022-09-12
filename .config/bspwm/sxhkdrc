@@ -122,7 +122,7 @@ XF86AudioPrev
 	
 #Open-close eww
 control+alt+e
-	~/.config/eww/dashboard/launch_dashboard
+	~/.bscripts/toggle_eww.sh
 super+m 
 	~/.config/eww/mybar/scripts/popup_music
 

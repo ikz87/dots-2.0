@@ -10,18 +10,20 @@ export BSPWM_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/bspwm"
 
 bspc monitor -d 0 1 2 3 4 
 
-bspc config border_width        5
-bspc config window_gap          20
-#bspc config border_radius       2
+bspc config border_width				5
+bspc config window_gap					20
+#bspc config border_radius				2
 bspc config focus_follows_pointer       true
 bspc config gapless_monocle             true
 #bspc config pointer_follows_focus       true
 #bspc config single_monocle              true
-bspc config top_monocle_padding          20
-bspc config left_monocle_padding         20 
-bspc config right_monocle_padding        20 
-bspc config bottom_monocle_padding       20 
+bspc config top_monocle_padding         20
+bspc config left_monocle_padding        20 
+bspc config right_monocle_padding       20 
+bspc config bottom_monocle_padding		20 
 #bspc config ignore_ewmh_fullscreen       enter
+bspc config ignore_ewmh_struts			true
+bspc config top_padding					70
 
 bspc rule --add Blueman-manager             state=floating rectangle=610x610+650+235
 bspc rule --add Surf                        layer=above border=off rectangle=415x1100+0+0 
@@ -33,7 +35,7 @@ bspc rule --add kozu                        state=floating rectangle=1910x200+0+
 bspc rule --add cava                        state=floating manage=off rectangle=1920x1050+0+50 border=off sticky=on locked=on layer=below focus=off 
 bspc rule --add Nautilus                    state=floating
 bspc rule --add mpv                         state=floating border=off
-bspc rule --add Rofi 												manage=off
+bspc rule --add Rofi 						manage=off
 bspc rule --add Pavucontrol					state=floating rectangle=610x610+650+235
 bspc rule --add Yad                         state=floating
 bspc rule --add Thunar 					    rectangle=650x500+635+290
