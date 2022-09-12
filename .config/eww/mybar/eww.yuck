@@ -58,6 +58,7 @@
 (defwindow bar_left
   :geometry 
     (geometry 
+      :anchor "top left"
       :x "20px"
       :y "20px"
       :width "455px"
@@ -75,7 +76,8 @@
 (defwindow bar_center
   :geometry 
     (geometry 
-      :x "495px"
+      :anchor "top center"
+      :x "0px"
       :y "20px"
       :width "930px"
       :height "50px")
@@ -92,7 +94,8 @@
 (defwindow bar_right
   :geometry 
     (geometry 
-      :x "1445px"
+      :anchor "top right"
+      :x "-20px"
       :y "20px"
       :width "455px"
       :height "50px")
@@ -725,7 +728,7 @@
 
 
 
-      ;; Right widgets
+;; Right widgets
 (defwidget widgets_right []
   (eventbox
     :onhover "${eww} update right_bg=\"#193855\""
