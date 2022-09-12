@@ -4,29 +4,52 @@
 super+Return
 	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send.sh "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace=420 -u critical&
 
+
 # Apps and programs
+
+# Open web browser
 control+alt+w  
 	brave
+
+# Open terminal
 control+alt+t  
 	kitty
+
+# Open file manager	
 control+alt+f 
 	thunar 
 
+# Toggle picom
+super+p
+    [[ `pgrep -c picom` -eq 0 ]] && picom || killall picom
+    
+
 # Rofi things
+
 # Launch apps
 super+shift+e 
 	~/.bscripts/rofi.sh drun	
+
 # Window switcher
 alt+Tab
 	~/.bscripts/rofi.sh window
+
 # Configuration launcher
 super+shift+s
 	~/.bscripts/rofi.sh config
-	
+
+# Logout options
+super+shift+q
+    ~/.bscripts/rofi.sh outopts
+
+
+# Utilities
+
 # Screenshot
 Print  
 	~/.bscripts/ss.sh
-#Delayed screenshot
+
+# Delayed screenshot
 super+Print
     sleep 3 && ~/.bscripts/ss.sh
 
@@ -38,78 +61,117 @@ control+alt+c
 super+o
 	~/.bscripts/lock.sh
 
-# Window and workspace shenanigans
-super+c 
-	wmctrl -c `xdotool getwindowfocus` -i 
-alt+F4 
-	xdotool getwindowfocus windowclose
-control+period
-	~/.bscripts/wpm_reports.sh move +1
-control+comma
-	~/.bscripts/wpm_reports.sh move -1
-control+alt+period
-	~/.bscripts/wpm_reports.sh select +1
-control+alt+comma
-	~/.bscripts/wpm_reports.sh select -1
-super+{1,2,3,4,5}
-	~/.bscripts/wpm_reports.sh jump {0,1,2,3,4}
-
-# Toggle picom
-super+p
-    [[ `pgrep -c picom` -eq 0 ]] && picom || killall picom
-    
-#Keyboard layouts
+# Change keyboard layout
 super+space 
     ~/.config/eww/mybar/scripts/kb_layouts cycle es us
 
-#Media controls
+
+# Window and workspace shenanigans
+
+# Close window
+super+c 
+	wmctrl -c `xdotool getwindowfocus` -i 
+
+# Kill window (for frozen apps)
+alt+F4 
+	xdotool getwindowfocus windowclose
+
+# Move window to the next workspace
+control+period
+	~/.bscripts/wpm_reports.sh move +1
+
+# Move window to the previous workspace
+control+comma
+	~/.bscripts/wpm_reports.sh move -1
+
+# Go to the next workspace
+control+alt+period
+	~/.bscripts/wpm_reports.sh select +1
+
+# Go to previous workspace
+control+alt+comma
+	~/.bscripts/wpm_reports.sh select -1
+
+# Go to workspaces 1 through 5
+super+{1,2,3,4,5}
+	~/.bscripts/wpm_reports.sh jump {0,1,2,3,4}
+
+
+# Media controls
+
+# Raise the volume by 5%
 alt+period
 	~/.bscripts/volume.sh up
-alt+comma 
-	~/.bscripts/volume.sh down
-alt+m
-	~/.bscripts/volume.sh mute 
 XF86AudioRaiseVolume 
     ~/.bscripts/volume.sh up
+
+# Lower the volume by 5%
+alt+comma 
+	~/.bscripts/volume.sh down
 XF86AudioLowerVolume 
     ~/.bscripts/volume.sh down
+
+# Toggle mute
+alt+m
+	~/.bscripts/volume.sh mute 
 XF86AudioMute
     ~/.bscripts/volume.sh mute  
+
+# Raise the brightness by 5%
 alt+shift+period
 	~/.bscripts/brightness.sh up
+
+# Lower the brightness by 5%
 alt+shift+comma
 	~/.bscripts/brightness.sh down
+
+# Toggle media playing
 Pause
 	playerctl play-pause
 XF86AudioPlay
 	playerctl play-pause
 XF86AudioPause 
 	playerctl play-pause
+
+# Go to next media content
 XF86AudioNext
 	playerctl next
+
+# Go to previous media content
 XF86AudioPrev
 	playerctl previous
+
 	
 # EWW stuff
+
 # Toggle bar 
 control+alt+e
 	~/.bscripts/toggle_eww.sh
+
 # Music popup
 super+m 
 	~/.config/eww/mybar/scripts/popup_music
 
+
 # BSPWM stuff
+
+# Cycle layouts (tiled and monocle)
 super+s
     bspc desktop focused --layout next
-super+shift+q
-    ~/.bscripts/rofi.sh outopts
+
+# Toggle floating windows
 control+alt+space
 	~/.bscripts/toggle_float.sh
+
+# Move windows in workspace
 super+shift+{k,j,h,l}
 	play -v 0.4 ~/Documents/Sounds/tile.wav& ~/.bscripts/bsmove.sh {north,south,west,east}
+
+# Select windows in workspace
 super+{k,j,h,l}
 	~/.bscripts/bselect.sh {north,south,west,east}
 	
+# Grow windows
 super+alt+l
 	bspc node focused -z right 15 0
 super+alt+h
@@ -118,13 +180,8 @@ super+alt+k
 	bspc node focused -z top 0 -15
 super+alt+j
 	bspc node focused -z bottom 0 15
-super+{d,a}
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node @/ -C {forward,backward}
-alt+{d,a}
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
-super+e
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor --balance 
 
+# Shrink windows
 control+shift+h
 	bspc node focused -z right -15 0
 control+shift+l
@@ -133,21 +190,40 @@ control+shift+j
 	bspc node focused -z top 0 15
 control+shift+k
 	bspc node focused -z bottom 0 -15
-	
+
+# Rotate tree
+super+{d,a}
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node @/ -C {forward,backward}
+
+# Rotate windows 
+alt+{d,a}
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
+
+# Equalize window sizes
+super+e
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor --balance 
+
+# Toggle fullscreen
 super+f
    if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \
         bspc node focused -t fullscreen; \
     else \
         bspc node focused -t tiled; \
  fi;
+
+# Raise window gap by 5px
 super+KP_Add
 	bspc config window_gap $(( 5 + `bspc config window_gap` ))
+
+# Lower window gap by 5px
 super+KP_Subtract
 	bspc config window_gap $(( -5 + `bspc config window_gap` ))
 
+# Preselect direction for next window
 control+alt+{k,j,h,l}
 	bspc node --presel-dir \~{north,south,west,east}
 
+# Cycle through window layers (above, normal or below)
 control+alt+a
 	if [[ ! -z "$(bspc query -N -n focused.normal)" ]]; then \
 		bspc node focused -l above; \
@@ -156,5 +232,3 @@ control+alt+a
 	else \
 		bspc node focused -l normal; \
 	fi;
-
-
