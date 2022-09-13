@@ -4,19 +4,24 @@
 super+Return
 	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send.sh "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace=420 -u critical&
 
+
 #Apps and programs
+
+#Open Browser
 control+alt+w  
 	brave
+
+#Open Terminal
 control+alt+t  
 	kitty
-#control+alt+g  
-#	lutris
+
+#Open file manager
 control+alt+f 
 	thunar 
-super+shift+c
-	/home/kz87/.bscripts/wc.sh
+
 
 #rofi things
+
 #Launch apps
 super+shift+e 
 	~/.bscripts/rofi.sh drun
@@ -29,22 +34,22 @@ alt+Tab
 super+shift+s
 	~/.bscripts/rofi.sh config
 
-#Resolution switcher
-#control+shift+p
-	#bash -c "~/.bscripts/rofi.sh resolution" 
 
 #Screenshot
 Print  
 	~/.bscripts/ss.sh
+
 #Delayed screenshot
 super+Print
     sleep 3 && ~/.bscripts/ss.sh
 
+
 #Color picker
 control+alt+c
-	colorpicker --short --one-shot | xclip -selection "clipboard"
+	echo -n `colorpicker --short --one-shot` | xclip -selection "clipboard"
 
-#Suspend the pc
+
+#Lock (and suspend) the pc
 super+o
 	~/.bscripts/lock.sh
 
