@@ -55,7 +55,7 @@ super+Print
 
 # Color picker
 control+alt+c
-	colorpicker --short --one-shot | xclip -selection "clipboard"
+	echo -n	`colorpicker --short --one-shot` | xclip -selection "clipboard"
 
 # Suspend the pc
 super+o
