@@ -6,24 +6,24 @@ select_player () {
 	playingplayer=""
 	coverplayer=""
 	totalplayer=""
-	for player in "$player"s
+	playerctl -l | while read -r player;
 	do
 		art=`playerctl --player="$player" metadata mpris:artUrl 2> /dev/null`
 		status=`playerctl --player="$player" status 2> /dev/null`
 		[[ $status == "Playing" ]] && playingplayer="$player"
 		[[ $art != "" ]] && coverplayer="$player"
 		[[ $status == "Playing" && $art != "" ]] && totalplayer="$player"
+		[[ ! -z $coverplayer ]] && player="$coverplayer"
+		[[ ! -z $playingplayer ]] && player="$playingplayer"
+		[[ ! -z $totalplayer ]] && player="$totalplayer"
+		echo "$player"
 	done;
-	player=""
-	[[ ! -z $coverplayer ]] && player=$coverplayer
-	[[ ! -z $playingplayer ]] && player=$playingplayer
-	[[ ! -z $totalplayer ]] && player=$totalplayer
-}	
+}
+	
 
 # Get general info 
 eww="eww -c $HOME/.config/eww/mybar"
-players=`playerctl -l`
-select_player
+player=`select_player | tail -1`
 status=`playerctl --player="$player" status`
 [[ $status == "" ]] && exit
 
