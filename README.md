@@ -22,6 +22,8 @@ The profile picture shown in the lockscreen can be changed by putting the desire
 
 Please note that this rice was made for a single 1080p monitor setup, If you have anything different than that you'll have to tweak some things on your own.
 
+The picom fork used for animations might be a little unstable. For any graphical glitches you may be having, toggle it on and off again with `super+p`
+
 ## Dependency list:
 ### AUR packages
 Just run this for this section (assuming you use yay):
