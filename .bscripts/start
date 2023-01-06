@@ -1,0 +1,5 @@
+[[ $1 == "" ]] && echo "Usage: start <WM>" && exit
+[[ $2 != "" ]] && echo "Usage: start <WM>" && exit
+export GUI=$1
+echo "Starting Xorg with session $GUI..."
+startx
