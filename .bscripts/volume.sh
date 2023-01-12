@@ -15,7 +15,6 @@ function is_mute {
 
 function send_notification {
 
-    DIR=`dirname "$0"`
     overvolume=`get_volume`
     [[ $overvolume -gt 100 ]] && volume=100 || volume=$overvolume
     #Set correct icon
@@ -65,10 +64,9 @@ case $1 in
     	# Toggle mute
 	    pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null
 	    if [[ `is_mute` == "Mute: yes" ]] ; then
-    	DIR=`dirname "$0"`
-    	$DIR/notify-send.sh -i "${HOME}/Pictures/Important/icons/other/mute.png" --replace=555 -u normal "Volume: Mute" -t 1000 -u critical
+    		dunstify -i "${HOME}/Pictures/Important/icons/other/mute.png" --replace=555 -u normal "Volume: Mute" -t 1000 -u critical
 	    else
-	    send_notification
+	    	send_notification
 	    fi
 	;;
 esac
