@@ -99,17 +99,17 @@ super+space
 
 #Media controls
 alt+period
-	~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
+	~/.bscripts/volume.sh up
 alt+comma 
-	~/.bscripts/volume.sh down #&& pkill -RTMIN+2 i3blocks 
+	~/.bscripts/volume.sh down
 alt+m
 	~/.bscripts/volume.sh mute 
 XF86AudioRaiseVolume 
-    ~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
+    ~/.bscripts/volume.sh up 
 XF86AudioLowerVolume 
-    ~/.bscripts/volume.sh down#&& pkill -RTMIN+2 i3blocks 
+    ~/.bscripts/volume.sh down
 XF86AudioMute
-    ~/.bscripts/volume.sh mute #&& pkill -RTMIN+2 i3blocks 
+    ~/.bscripts/volume.sh mute
 alt+shift+period
 	~/.bscripts/brightness.sh up
 alt+shift+comma
