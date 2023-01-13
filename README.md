@@ -130,3 +130,5 @@ chmod +x install.sh
 | Control+Alt+A           | Cycle through window layers (above, normal or below) | 
 
 These are all the kibinds set in the `~/.config/bspwm/sxhkdrc` file, however, if you are gonna use this as your daily driver, I highly encourage you to read that file in its entirity at least once, so you know what's going on behind the scenes.
+
+Media keys should also work for controlling play/pause and changing volume.
