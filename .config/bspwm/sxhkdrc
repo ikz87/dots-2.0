@@ -2,21 +2,27 @@
 
 # "Pausing" sxhkd
 super+Return
-	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send.sh "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace=420 -u critical&
+	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace-id=420 -u critical&
 
 
 # Apps and programs
+super+y
+  ~/.local/share/Telegram/Telegram
+
+# qq
+super+q
+  icalingua
 
 # Open web browser
-control+alt+w  
-	brave
+super+b  
+	firefox
 
 # Open terminal
-control+alt+t  
+super+t
 	kitty
 
 # Open file manager	
-control+alt+f 
+super+f
 	thunar 
 
 # Toggle picom
@@ -27,7 +33,7 @@ super+p
 # Rofi things
 
 # Launch apps
-super+shift+e 
+super+e 
 	~/.bscripts/rofi.sh drun	
 
 # Window switcher
@@ -45,6 +51,9 @@ super+shift+q
 
 # Utilities
 
+# flamshort
+#alt+Print
+# flamshort gui
 # Screenshot
 Print  
 	~/.bscripts/ss.sh
@@ -204,7 +213,7 @@ super+e
 	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor --balance 
 
 # Toggle fullscreen
-super+f
+super+w
    if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \
         bspc node focused -t fullscreen; \
     else \

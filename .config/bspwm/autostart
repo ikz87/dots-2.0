@@ -5,7 +5,7 @@
 killall bspc
 
 # Compositor
-picom &
+picom --config ~/.config/picom.conf&
 
 # Set cursor
 xsetroot -cursor_name left_ptr &
@@ -21,8 +21,9 @@ source "${HOME}/.cache/wal/colors.sh"
 # Set Wallpaper
 hsetroot -cover ~/Pictures/Important/wallpaper.png
 
-# Cache lockscreen 
-mantablockscreen -i ~/Pictures/Important/lockscreen.png&
+# Cache lockscreen  弃用更改为 betterlockscreen
+#mantablockscreen -i ~/Pictures/Important/lockscreen.png&
+# betterlockscreen -u ~/Pictures/Important/lockscreen.png&
 
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
@@ -56,5 +57,9 @@ sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
 ~/.bscripts/sounds.sh&
 
 # Autosuspend
-killall idle.sh
-pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
+#killall idle.sh
+#pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
+
+# fcitx5 
+killall fcitx5
+fcitx5 -d
