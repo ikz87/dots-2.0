@@ -103,7 +103,7 @@ chmod +x install.sh
 | Super+C                 | Close focused window | 
 | Alt+F4                  | Force closing focused window (for frozen programs) | 
 | Control+Period          | Move focused window to next workspace |
-| Contro+Comma            | Move focused window to previous workspace |
+| Control+Comma            | Move focused window to previous workspace |
 | Control+Alt+Period      | Go to next workspace | 
 | Control+Alt+Comma       | Go to previous workspace | 
 | Super+{1,2,3,4,5}       | Jump to workspaces 1 through 5 |
