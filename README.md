@@ -22,13 +22,13 @@ The profile picture shown in the lockscreen can be changed by putting the desire
 
 Please note that this rice was made for a single 1080p monitor setup, If you have anything different than that you'll have to tweak some things on your own.
 
-The picom fork used for animations might be a little unstable. For any graphical glitches you may be having, toggle it off and on again with `super+p`
+~~The picom fork used for animations might be a little unstable~~ (shouldn't be anymore). For any graphical glitches you may be having, toggle it off and on again with `super+p`.
 
 ## Dependency list:
 ### AUR packages
 Just run this for this section (assuming you use yay):
 ```
-yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty mantablockscreen network-manager-applet pa-applet-git picom-animations-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd thunar wmctrl wpgtk-git xclip xdotool xprintidle xwinfo-git --needed
+yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty mantablockscreen network-manager-applet pa-applet-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd thunar wmctrl wpgtk-git xclip xdotool xprintidle xwinfo-git --needed
 ```
 If you're not using arch, this is the dependency list, install in wathever way you want:
 - acpi
@@ -45,9 +45,8 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - jq
 - kitty
 - mantablockscreen
-- network-manager-appler
+- network-manager-applet
 - pa-applet
-- picom-animations-git
 - playerctl
 - polkit-gnome
 - polybar
@@ -69,6 +68,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 
 ### Other 
 - [brightlight](https://github.com/multiplexd/brightlight) since for some reason xbacklight doesn't work on my machine. It's only used in `.bscripts/brightness.sh` so feel free to edit that script if you wanna use xbacklight instead.
+- [FT-Labs-picom](https://github.com/FT-Labs/picom) more stable fork of picom with better looking animations (no shadows for now, as they are glitchy at the moment).
 - [pop_report](https://github.com/ikz87/pop_report) used in some scripts.
 
 ### Optional
@@ -78,7 +78,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 Please let me know if any packages are still missing.
 
 ## Installing
-just run install.sh:
+Just run install.sh:
 ``` 
 chmod +x install.sh
 ./install.sh
