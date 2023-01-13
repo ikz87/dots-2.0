@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Selects player based on if they're playing or if they have a cover
+# Selects player based on if they're playing or if they provide a cover image
 # Note: Being played takes priority
 select_player () {
 	playingplayer=""
@@ -37,7 +37,7 @@ toggle () {
 seek () {
     seekt="$1"    
     position=`playerctl --player=$player position`    
-    if [[ $? -eq 0 ]] && [[ `python -c "print(round(abs($seekt-$position)))"` -gt 3 ]]  
+    if [[ $? -eq 0 ]]
     then
         playerctl --player=$player position $seekt
     fi;
