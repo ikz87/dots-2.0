@@ -5,6 +5,8 @@
   fg: {color15};
   fg-alt: {color6};
 
+  text-color: {color15};
+
   borders: {color9};
   borders-alt: {color14};
   background-color: @bg;
