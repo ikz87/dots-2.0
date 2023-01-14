@@ -32,7 +32,7 @@ yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git fl
 ```
 If you're not using arch, this is the dependency list, install in wathever way you want:
 - acpi
-- alsa-utils
+- alsa-utils541374
 - blueman
 - brave
 - bspwm
@@ -72,7 +72,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - [pop_report](https://github.com/ikz87/pop_report) used in some scripts.
 
 ### Optional
-- plasma-integration [AUR package](https://aur.archlinux.org/packages/plasma-integration-git) and [chrome extension](https://chrome.google.com/webstore/detail/plasma-integration/cimiefiiaegbelhefglklhhakcgmhkai/related?hl=es) to better integrate media playing in brave with widgets (like having thumbnails of youtube videos show up in the left bar).
+- Plasma-integration [AUR package](https://aur.archlinux.org/packages/plasma-integration-git) and [chrome extension](https://chrome.google.com/webstore/detail/plasma-integration/cimiefiiaegbelhefglklhhakcgmhkai/related?hl=es) to better integrate media playing in brave with widgets (like having thumbnails of youtube videos show up in the left bar).
 
 
 Please let me know if any packages are still missing.
@@ -87,47 +87,47 @@ chmod +x install.sh
 ## Keybinds
 | Key combo               | Action |
 |   ---                   |  ---   |
-| Super+Return            | Pause/Resume sxhkd |
-| Control+Alt+W           | Open browser (brave is default) |
-| Control+Alt+T           | Open terminal (kitty is default) |
-| Control+Alt+F           | Open file manager (thunar is default | 
-| Super+P                 | Toggle picom |
-| Super+Shift+E           | Open rofi in drun mode (app launcher) |
-| Alt+Tab                 | Windows-like window switcher using rofi |
-| Super+Shift+Q           | Show logout menu |
-| Print                   | Take a screenshot (Saved to ~/Pictures/Screenshots and clipboard) |
-| Super+Print             | Same as above, but with 3 second delay | 
-| Control+Alt+C           | Color picker, copies color at cursor to clipboard in HEX on click |
-| Super+O                 | Locks the PC (PC suspends after 5 seconds of inactivity while locked) |
-| Super+Space             | Change keyboard layout (Cycles between us spanish and us english layouts) |
-| Super+C                 | Close focused window | 
-| Alt+F4                  | Force closing focused window (for frozen programs) | 
-| Control+Period          | Move focused window to next workspace |
-| Control+Comma            | Move focused window to previous workspace |
-| Control+Alt+Period      | Go to next workspace | 
-| Control+Alt+Comma       | Go to previous workspace | 
-| Super+{1,2,3,4,5}       | Jump to workspaces 1 through 5 |
-| Alt+Period              | Raise the volume by 5% (Warning: No volume cap set, you really shouldn't go above 150%) | 
-| Alt+Comma               | Lower the volume by 5% |
-| Alt+M                   | Toggle mute volume | 
-| Alt+Shift+Period        | Raise brightness by 5% | 
-| Alt+Shift+Comma         | Lower brightness by 5% | 
-| Control+Alt+E           | Toggle status bar |
-| Super+M                 | Toggle eww media control window | 
-| Super+S                 | Toggle monocle BSPWM layout | 
-| Control+Alt+Space       | Toggle floating mode on focused window | 
-| Super+Shift+{K,J,H,L}   | Move window |
-| Super+{K,J,H,L}         | Select window |
-| Super+Alt+{K,J,H,L}     | Grow focused window in desired direction | 
-| Control+Shift+{K,J,H,L} | Shrink focused window in desired direction | 
-| Super+{D,A}             | Rotate BSPWM tree at node (clockwise/counterclockwise) |
-| Alt+{D,A}               | Rotate windows at node (clockwise/counterclockwise) |
-| Super+E                 | Equalize window sizes |
-| Super+F                 | Toggle fullscreen |
-| Super+KP_Add            | Raise window gaps by 5px |
-| Super+KP_Subtract       | Lower window gaps by 5px |
-| Control+Alt+{K,J,H,L}   | Preselect direction for next window | 
-| Control+Alt+A           | Cycle through window layers (above, normal or below) | 
+| `Super+Return`            | Pause/Resume sxhkd |
+| `Control+Alt+W`           | Open browser (brave is default) |
+| `Control+Alt+T`           | Open terminal (kitty is default) |
+| `Control+Alt+F`           | Open file manager (thunar is default) | 
+| `Super+P`                 | Toggle picom |
+| `Super+Shift+E`           | Open rofi in drun mode (app launcher) |
+| `Alt+Tab`                 | Windows-like window switcher using rofi |
+| `Super+Shift+Q`           | Show logout menu |
+| `Print`                   | Take a screenshot (Saved to ~/Pictures/Screenshots and clipboard) |
+| `Super+Print`             | Same as above, but with 3 second delay | 
+| `Control+Alt+C`           | Color picker, copies color at cursor to clipboard in HEX on click |
+| `Super+O`                 | Locks the PC (PC suspends after 5 seconds of inactivity while locked) |
+| `Super+Space`             | Change keyboard layout (Cycles between us spanish and us english layouts) |
+| `Super+C`                 | Close focused window | 
+| `Alt+F4`                  | Force closing focused window (for frozen programs) | 
+| `Control+Period`          | Move focused window to next workspace |
+| `Control+Comma`            | Move focused window to previous workspace |
+| `Control+Alt+Period`      | Go to next workspace | 
+| `Control+Alt+Comma`       | Go to previous workspace | 
+| `Super+{1,2,3,4,5}`       | Jump to workspaces 1 through 5 |
+| `Alt+Period`              | Raise the volume by 5% (Warning: No volume cap set, you really shouldn't go above 150%) | 
+| `Alt+Comma`               | Lower the volume by 5% |
+| `Alt+M`                   | Toggle mute volume | 
+| `Alt+Shift+Period`        | Raise brightness by 5% | 
+| `Alt+Shift+Comma`         | Lower brightness by 5% | 
+| `Control+Alt+E`           | Toggle status bar |
+| `Super+M`                 | Toggle eww media control window | 
+| `Super+S`                 | Toggle monocle BSPWM layout | 
+| `Control+Alt+Space`       | Toggle floating mode on focused window | 
+| `Super+Shift+{K,J,H,L}`   | Move window |
+| `Super+{K,J,H,L}`         | Select window |
+| `Super+Alt+{K,J,H,L}`     | Grow focused window in desired direction | 
+| `Control+Shift+{K,J,H,L}` | Shrink focused window in desired direction | 
+| `Super+{D,A}`             | Rotate BSPWM tree at node (clockwise/counterclockwise) |
+| `Alt+{D,A}`               | Rotate windows at node (clockwise/counterclockwise) |
+| `Super+E`                 | Equalize window sizes |
+| `Super+F`                 | Toggle fullscreen |
+| `Super+KP_Add`            | Raise window gaps by 5px |
+| `Super+KP_Subtract`       | Lower window gaps by 5px |
+| `Control+Alt+{K,J,H,L}`   | Preselect direction for next window | 
+| `Control+Alt+A`           | Cycle through window layers (above, normal or below) | 
 
 These are all the keybinds set in the `~/.config/bspwm/sxhkdrc` file, however, if you are gonna use this as your daily driver, I highly encourage you to read that file in its entirity at least once, so you know what's going on behind the scenes.
 
