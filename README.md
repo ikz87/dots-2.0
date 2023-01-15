@@ -28,7 +28,7 @@ Please note that this rice was made for a single 1080p monitor setup, If you hav
 ### AUR packages
 Just run this for this section (assuming you use yay):
 ```
-yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty lm_sensors mantablockscreen network-manager-applet pa-applet-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd sysstat thunar wmctrl wpgtk-git xclip xdotool xprintidle xwinfo-git --needed
+yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty light mantablockscreen network-manager-applet pa-applet-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd sysstat thunar wmctrl wpgtk-git xclip xdotool xprintidle xwinfo-git --needed
 ```
 If you're not using arch, this is the dependency list, install in wathever way you want:
 - acpi
@@ -44,6 +44,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - imagemagick
 - jq
 - kitty
+- light
 - lm_sensors
 - mantablockscreen
 - network-manager-applet
@@ -69,7 +70,6 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - xwinfo
 
 ### Other 
-- [brightlight](https://github.com/multiplexd/brightlight) since for some reason xbacklight doesn't work on my machine. It's only used in `.bscripts/brightness.sh` so feel free to edit that script if you wanna use xbacklight instead.
 - [FT-Labs-picom](https://github.com/FT-Labs/picom) more stable fork of picom with better looking animations (no shadows for now, as they are glitchy at the moment).
 - [pop_report](https://github.com/ikz87/pop_report) used in some scripts.
 
