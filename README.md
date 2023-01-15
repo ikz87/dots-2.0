@@ -28,11 +28,11 @@ Please note that this rice was made for a single 1080p monitor setup, If you hav
 ### AUR packages
 Just run this for this section (assuming you use yay):
 ```
-yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty light mantablockscreen network-manager-applet pa-applet-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd sysstat thunar wmctrl wpgtk-git xclip xdotool xprintidle xwinfo-git --needed
+yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty light mantablockscreen network-manager-applet pa-applet-git picom-animations-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd sysstat thunar wmctrl wpgtk-git xclip xdotool xprintidle xwinfo-git --needed
 ```
 If you're not using arch, this is the dependency list, install in wathever way you want:
 - acpi
-- alsa-utils541374
+- alsa-utils
 - blueman
 - brave
 - bspwm
@@ -49,6 +49,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - mantablockscreen
 - network-manager-applet
 - pa-applet
+- picom-animations-git
 - playerctl
 - polkit-gnome
 - polybar
@@ -70,7 +71,6 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - xwinfo
 
 ### Other 
-- [FT-Labs-picom](https://github.com/FT-Labs/picom) more stable fork of picom with better looking animations (no shadows for now, as they are glitchy at the moment).
 - [pop_report](https://github.com/ikz87/pop_report) used in some scripts.
 
 ### Optional
