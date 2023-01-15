@@ -6,21 +6,21 @@ script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 create_dir_tree()
 {
-    mkdir $1 || true
-    mkdir $1/.bscripts || true
-    mkdir $1/.config || true
-    mkdir $1/Documents || true
-    mkdir $1/Documents/Sounds || true
-    mkdir $1/Pictures || true
-    mkdir $1/Pictures/Important || true
-    mkdir $1/Pictures/Important/icons || true
-    mkdir $1/Pictures/Important/icons/other || true
-    mkdir $1/Pictures/Wallpapers || true
-    mkdir $1/.cache || true
-    mkdir $1/.cache/wal || true
-    mkdir $1/.local || true
-    mkdir $1/.local/share || true
-    mkdir $1/.local/share/fonts || true
+    mkdir "$1" || true
+    mkdir "$1"/.bscripts || true
+    mkdir "$1"/.config || true
+    mkdir "$1"/Documents || true
+    mkdir "$1"/Documents/Sounds || true
+    mkdir "$1"/Pictures || true
+    mkdir "$1"/Pictures/Important || true
+    mkdir "$1"/Pictures/Important/icons || true
+    mkdir "$1"/Pictures/Important/icons/other || true
+    mkdir "$1"/Pictures/Wallpapers || true
+    mkdir "$1"/.cache || true
+    mkdir "$1"/.cache/wal || true
+    mkdir "$1"/.local || true
+    mkdir "$1"/.local/share || true
+    mkdir "$1"/.local/share/fonts || true
 }
 
 echo -n "Preparing stuff... "
@@ -49,13 +49,13 @@ cp -r ~/.local/share/fonts/* $old/.local/share/fonts/ 2> /dev/null
 echo "done, you can find your backups at $old/"
 
 echo -n "Applying rice... "
-cp -r -f $script_dir/.bscripts/* ${HOME}/.bscripts/
-cp -r -f $script_dir/.config/* ${HOME}/.config/
-cp -r -f $script_dir/Documents/Sounds/* ${HOME}/Documents/Sounds/
-cp -r -f $script_dir/Pictures/Important/* ${HOME}/Pictures/Important/
-cp -r -f $script_dir/Pictures/Wallpapers/* ${HOME}/Pictures/Wallpapers/
-cp -r -f $script_dir/.cache/wal/* ${HOME}/.cache/wal
-cp -r -f $script_dir/.local/share/fonts/* ${HOME}/.local/share/fonts/
+cp -r -f "$script_dir"/.bscripts/* ${HOME}/.bscripts/
+cp -r -f "$script_dir"/.config/* ${HOME}/.config/
+cp -r -f "$script_dir"/Documents/Sounds/* ${HOME}/Documents/Sounds/
+cp -r -f "$script_dir"/Pictures/Important/* ${HOME}/Pictures/Important/
+cp -r -f "$script_dir"/Pictures/Wallpapers/* ${HOME}/Pictures/Wallpapers/
+cp -r -f "$script_dir"/.cache/wal/* ${HOME}/.cache/wal
+cp -r -f "$script_dir"/.local/share/fonts/* ${HOME}/.local/share/fonts/
 echo "done"
 
 echo -n "Changing permissions... "
@@ -67,5 +67,9 @@ chmod +x ~/.config/eww/mybar/scripts/*
 chmod +x ~/.config/wpg/wp_init.sh
 chmod +x ~/.cache/wal/colors-tty.sh
 echo "done"
+
+echo "Running wpg-install.sh -g for the gtk colorscheme"
+chmod +x "$script_dir"/.bscripts/wpg-install.sh 
+"$script_dir"/.bscripts/wpg-install.sh -g 
 
 echo "Install finished, Enjoy my rice c:"
