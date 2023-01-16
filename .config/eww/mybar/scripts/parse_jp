@@ -35,10 +35,13 @@ def cjk_substrings(string):
     i += 1
 
 ogstring = str(sys.argv[1])
-string = ogstring[0:20]
-if len(ogstring) > len(string):
-  string = string + "…"
+if len(ogstring) > 21:
+  ogstring += "    "
+
+scroll = int(sys.argv[2])
+string = ogstring[scroll:] + ogstring[:scroll]
+
 for sub in cjk_substrings(string):
   string = string.replace(sub, "<span font-family= \"M PLUS 1\" font-size=\"x-small\" rise=\"3pt\" font-weight=\"bold\">" + sub + "</span>")
-print(string)
+print(string[0:20])
 
