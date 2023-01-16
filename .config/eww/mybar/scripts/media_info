@@ -38,12 +38,24 @@ update_cover () {
 	$eww update cover="$imgdir/currmedia.png"
 }
 
+scroll_text () {
+	scroll_index=0
+	text=$1
+	text_len=$2
+	eww_var=$3
+	$eww update $eww_var="$text"
+	while true; do
+		text_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$text" "$scroll_index"`
+		scroll_index=$(( (scroll_index + 1) % (text_len + 8) )) 
+		$eww update $eww_var\_parsed="$text_parsed"
+		# Change the value below to control how fast text should scroll
+		sleep 0.3
+	done
+}
 
 imgdir="$HOME/.config/eww/mybar/images"
 lastimg="none"
 eww="eww -c $HOME/.config/eww/mybar"
-title_scroll=0
-artist_scroll=0
 
 while true; do
 	if [[ ! -z `playerctl status` ]]
@@ -65,47 +77,41 @@ while true; do
 		last_title="$title"
 		title=`playerctl --player="$player" metadata xesam:title`
 		[[ -z $title ]] && title="No title"
-		if [[ $title == $last_title ]]
+		if [[ $title != $last_title ]]
 		then
-			title_len=${#title}
-			if [[ $title_len -gt 21 ]]
-			then
-				title_scroll=$(( (title_scroll + 1) % (title_len + 4) )) 
-			else
-				title_scroll=0
-			fi;
-			title_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$title" "$title_scroll"`
-			$eww update title="$title"
-			$eww update title_parsed="$title_parsed"
+			kill $title_job_pid 2> /dev/null && echo "killed job at $title_job_pid"
 
-		else
-			title_scroll=0
-			title_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$title" "0"`
-			$eww update title="$title"
-			$eww update title_parsed="$title_parsed"
+			title_len=${#title}
+			if [[ $title_len -gt 21 ]] 
+			then
+				echo "started job"
+				scroll_text "$title" "$title_len" "title" &
+				title_job_pid=$!
+			else
+				title_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$title" "0"`
+				$eww update title="$title"
+				$eww update title_parsed="$title_parsed"
+			fi;
 		fi;
 
 		last_artist="$artist"
 		artist=`playerctl --player="$player" metadata xesam:artist`
 		[[ -z $artist ]] && artist="No artist"
-		if [[ $artist == $last_artist ]]
+		if [[ $artist != $last_artist ]]
 		then
-			artist_len=${#artist}
-			if [[ $artist_len -gt 21 ]]
-			then
-				artist_scroll=$(( (artist_scroll + 1) % (artist_len + 4) )) 
-			else
-				artist_scroll=0
-			fi;
-			artist_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$artist" "$artist_scroll"`
-			$eww update artist="$artist"
-			$eww update artist_parsed="$artist_parsed"
+			kill $artist_job_pid 2> /dev/null && echo "killed job at $artist_job_pid"
 
-		else
-			artist_scroll=0
-			artist_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$artist" "0"`
-			$eww update artist="$artist"
-			$eww update artist_parsed="$artist_parsed"
+			artist_len=${#artist}
+			if [[ $artist_len -gt 21 ]] 
+			then
+				echo "started job"
+				scroll_text "$artist" "$artist_len" "artist" &
+				title_job_pid=$!
+			else
+				artist_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$artist" "0"`
+				$eww update artist="$artist"
+				$eww update artist_parsed="$artist_parsed"
+			fi;
 		fi;
 
 		# Update length and position
@@ -129,6 +135,8 @@ while true; do
         fi;
 	else
 		# Update everything to default values
+		kill $title_job_pid
+		kill $artist_job_pid
 		$eww update media_status=""
 		$eww update title_parsed="No title"
 		$eww update title="No title"
