@@ -79,7 +79,10 @@ while true; do
 		[[ -z $title ]] && title="No title"
 		if [[ $title != $last_title ]]
 		then
-			kill $title_job_pid 2> /dev/null && echo "killed job at $title_job_pid"
+			jobs -l | grep "scroll_text \"\$title\"" | while read line; do
+				title_job_pid=`echo $line | awk '{printf$2}'`
+				kill $title_job_pid 2> /dev/null && echo "killed job at $title_job_pid"
+			done;
 
 			title_len=${#title}
 			if [[ $title_len -gt 21 ]] 
@@ -99,7 +102,10 @@ while true; do
 		[[ -z $artist ]] && artist="No artist"
 		if [[ $artist != $last_artist ]]
 		then
-			kill $artist_job_pid 2> /dev/null && echo "killed job at $artist_job_pid"
+			jobs -l | grep "scroll_text \"\$artist\"" | while read line; do
+				artist_job_pid=`echo $line | awk '{printf$2}'`
+				kill $artist_job_pid 2> /dev/null && echo "killed job at $artist_job_pid"
+			done;
 
 			artist_len=${#artist}
 			if [[ $artist_len -gt 21 ]] 
@@ -134,9 +140,10 @@ while true; do
 			update_cover&
         fi;
 	else
+		jobs -p | while read pid; do
+			kill $pid 2> /dev/null && echo "killed job at $pid"
+			done;
 		# Update everything to default values
-		kill $title_job_pid
-		kill $artist_job_pid
 		$eww update media_status=""
 		$eww update title_parsed="No title"
 		$eww update title="No title"
