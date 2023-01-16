@@ -32,7 +32,7 @@ yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git fl
 ```
 If you're not using arch, this is the dependency list, install in wathever way you want:
 - acpi
-- alsa-utils541374
+- alsa-utils
 - blueman
 - brave
 - bspwm
