@@ -63,7 +63,7 @@ while true; do
 		player=`select_player | tail -1`
 		status=""
 		status=`playerctl --player="$player" status`
-		echo "Selected $player as player"
+		#echo "Selected $player as player"
 
 		# Update status button
 		if [[ $status == "Playing" ]]
@@ -77,19 +77,19 @@ while true; do
 		last_title="$title"
 		title=`playerctl --player="$player" metadata xesam:title`
 		[[ -z $title ]] && title="No title"
-		if [[ $title != $last_title ]]
+		if [[ "$title" != "$last_title" ]]
 		then
 			jobs -l | grep "scroll_text \"\$title\"" | while read line; do
 				title_job_pid=`echo $line | awk '{printf$2}'`
+				echo $title_job_pid
 				kill $title_job_pid 2> /dev/null && echo "killed job at $title_job_pid"
 			done;
 
 			title_len=${#title}
 			if [[ $title_len -gt 21 ]] 
 			then
-				echo "started job"
+				echo "Started a text scroll job for title" 
 				scroll_text "$title" "$title_len" "title" &
-				title_job_pid=$!
 			else
 				title_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$title" "0"`
 				$eww update title="$title"
@@ -100,7 +100,7 @@ while true; do
 		last_artist="$artist"
 		artist=`playerctl --player="$player" metadata xesam:artist`
 		[[ -z $artist ]] && artist="No artist"
-		if [[ $artist != $last_artist ]]
+		if [[ "$artist" != "$last_artist" ]]
 		then
 			jobs -l | grep "scroll_text \"\$artist\"" | while read line; do
 				artist_job_pid=`echo $line | awk '{printf$2}'`
@@ -110,9 +110,8 @@ while true; do
 			artist_len=${#artist}
 			if [[ $artist_len -gt 21 ]] 
 			then
-				echo "started job"
+				echo "Started a text scroll job for artist" 
 				scroll_text "$artist" "$artist_len" "artist" &
-				title_job_pid=$!
 			else
 				artist_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$artist" "0"`
 				$eww update artist="$artist"
@@ -155,5 +154,4 @@ while true; do
 		lastimg=""
 	fi;
 	sleep 1
-    echo ""
 done;	
