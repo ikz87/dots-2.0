@@ -1,3 +1,6 @@
+;; COLORSCHEME
+(include "./colors.yuck")
+
 ;; VARS
 (defvar eww "eww -c $HOME/.config/eww/mybar")
 (defvar music_reveal false)
@@ -8,13 +11,8 @@
 (defvar ram_reveal false)
 (defvar date_reveal false)
 (defvar battery_reveal false)
-(defvar left_bg "#0E1F2F")
-(defvar center_bg "#0E1F2F")
-(defvar right_bg "#0E1F2F")
 (defvar media_bar_class "bar_normal")
 (defvar media_bar_class_popup "bar_normal_popup")
-(defvar us_color "rgba(255,201,148,1)")
-(defvar es_color "rgba(255,201,148,0.4)")
 (defvar battery_image "images/battery_normal.png")
 (defvar day "0")
 (defvar month "0")
@@ -32,6 +30,8 @@
 (defvar title_parsed "No title") 
 (defvar length 100)
 (defvar position 0) 
+(defvar us_class "kb_button_active") 
+(defvar es_class "kb_button_inactive") 
 
 (deflisten launch1 "scripts/workspaces")
 (deflisten launch2 "scripts/layout")
@@ -244,8 +244,8 @@
 ;; Left widgets
 (defwidget widgets_left []
   (eventbox
-    :onhover "${eww} update left_bg=\"#193855\""
-    :onhoverlost "${eww} update left_bg=\"#0E1F2F\""
+    :onhover "${eww} update left_bg=\"${color8}\""
+    :onhoverlost "${eww} update left_bg=\"${color0}\""
     (box 
       :spacing 0
       :space-evenly "false"
@@ -408,7 +408,6 @@
               :onhover "${eww} update media_bar_class=bar_highlighted"
               :onhoverlost "${eww} update media_bar_class=bar_normal"
               (scale
-                ;; :active "false"
                 :min 0
                 :max length
                 :value position
@@ -420,8 +419,8 @@
 ;; Central widgets
 (defwidget widgets_center []
   (eventbox
-    :onhover "${eww} update center_bg=\"#193855\""
-    :onhoverlost "${eww} update center_bg=\"#0E1F2F\""
+    :onhover "${eww} update center_bg=\"${color8}\""
+    :onhoverlost "${eww} update center_bg=\"${color0}\""
     (box 
       :spacing 0
       :space-evenly "true"
@@ -730,8 +729,8 @@
 ;; Right widgets
 (defwidget widgets_right []
   (eventbox
-    :onhover "${eww} update right_bg=\"#193855\""
-    :onhoverlost "${eww} update right_bg=\"#0E1F2F\""
+    :onhover "${eww} update right_bg=\"${color8}\""
+    :onhoverlost "${eww} update right_bg=\"${color0}\""
     (box 
       :spacing 0
       :space-evenly "false"
@@ -796,24 +795,22 @@
     (box
       :orientation "v"
       :space-evenly "false"
-      :valign "fill"
+      :valign "center"
       :halign "center"
       (eventbox 
         :cursor "pointer"
         :tooltip "Change layout to US english"
         (button
-          :class "kb_button_us"
+          :class "${us_class}"
           :onclick "scripts/kb_layouts set us"
-          :style "color: ${us_color}"
           :valign "center"
           "US"))
       (eventbox
         :cursor "pointer"
         :tooltip "Change layout to US spanish"
         (button
-          :class "kb_button_es"
+          :class "${es_class}"
           :onclick "scripts/kb_layouts set es"
-          :style "color: ${es_color}"
           :valign "center"
           "ES")
           ))))

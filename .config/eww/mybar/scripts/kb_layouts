@@ -14,11 +14,11 @@ set_kbdlayout() {
   setxkbmap "${array[@]}"
   if [[ "${array[@]}" == "us" ]]
   then
-    $eww update us_color="rgba(255,201,148,1)"
-    $eww update es_color="rgba(255,201,148,0.4)"
+    $eww update us_class="kb_button_active"
+    $eww update es_class="kb_button_inactive"
   else
-    $eww update us_color="rgba(255,201,148,0.4)"
-    $eww update es_color="rgba(255,201,148,1)"
+    $eww update us_class="kb_button_inactive"
+    $eww update es_class="kb_button_active"
   fi;
 }
 

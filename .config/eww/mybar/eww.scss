@@ -1,5 +1,8 @@
 // EWW.SCSS 
 // GLOBALS
+
+@import 'colors.scs';
+
 *{
     all: unset;
     font-family: "Nova Mono";
@@ -8,8 +11,8 @@
 
 .bars {
     background-image: url("images/background.png");
-    background-color: #0E1F2F;
-    border: 5px solid #ff4647;
+    background-color: $color0;
+    border: 5px solid $color9;
     border-radius: 40px;
 }
 
@@ -24,13 +27,13 @@
     font-family: Hack;
     font-size: 30px;
     margin: 0 3 0 2;
-    color: #ffc994;
+    color: $color15;
 }
 
 // Layout
 .layout {
     all: unset;
-    color: #ffc994;
+    color: $color15;
     font-size: 25;
     margin: -6 0 -6 10;
 }
@@ -39,24 +42,24 @@
 .music_box { 
 }
 .music_box_popup {
-    background-color: #0E1F2F;
+    background-color: $color0;
     background-image: url("images/background.png");
-    border: solid 5px #ff4647;
+    border: solid 5px $color9;
     border-radius: 0 0 20 20;
 }
 .media_art {
-    border-right: solid 5px #ff4647;
-    border-left: solid 5px #ff4647;
-    background-color: #ff4647;
+    border-right: solid 5px $color9;
+    border-left: solid 5px $color9;
+    background-color: $color9;
     margin-left: 14px;
     margin-right: 3px;
 }
 .media_art_popup {
-    border: solid 5px #8dffff;
+    border: solid 5px $color14;
     border-radius: 5px;
     min-height: 130px;
     min-width: 130px;
-    background-color: #8dffff;
+    background-color: $color14;
     margin: 15 0 15 15;
 }
 .media_data { 
@@ -68,20 +71,24 @@
 .media_title {
     //font-family: "Meiryo";
     font-size: 15px;
-    color: #ffc994;
+    color: $color15;
     margin-top: -100px;
     margin-bottom: -70px;
+    margin-right: -1000px;
+    margin-left: -1000px;
 }
 .media_title_popup {
     font-size: 18px;
     margin: 0 15 -30 10;
-    color: #ffc994;
+    margin-right: -1000px;
+    margin-left: -1000px;
+    color: $color15;
 }
 .media_artist_popup {
     font-size: 14px;
     margin: 0 15 0 10;
-    color: #019fb8;
-//    background-color: #193855;
+    color: $color12;
+//    background-color: #31225a;
 }
 .media_buttons {
     font-size: 20px;
@@ -92,19 +99,19 @@
     font-size: 30px;
     margin-right: 10px;
     margin-left: 10px;
-    color: #019fb8;
+    color: $color12;
 }
 .move_popup {
     font-size: 30px;
     margin-right: 10px;
     margin-left: 10px;
-    color: #ffc994;
+    color: $color15;
 }
 .nextprev_popup {
     font-size: 30px;
     margin-right: 10px;
     margin-left: 10px;
-    color: #ff6156;
+    color: $color13;
 }
 .media_buttons_box_popup {
     
@@ -115,38 +122,38 @@
 }
 .bar_normal_popup scale trough highlight {
     all: unset;
-    background-color: #E94546;
+    background-color: $color1;
     border-radius: 15px;
 }
 .bar_normal_popup scale trough {
     all: unset;
-    background-color: rgba(255,201,148, 0.4);
+    background-color: rgba($color15, 0.4);
     min-height: 15px;
     margin: 0 15 15 15;
     border-radius: 15px;
-    border: solid 5px #8dffff;
+    border: solid 5px $color14;
 }
 .bar_highlighted_popup scale trough highlight {
     all: unset;
-    background-color: #8dffff;
+    background-color: $color14;
     border-radius: 15px;
 }
 .bar_highlighted_popup scale trough {
     all: unset;
-    background-color: rgba(255,201,148, 1);
+    background-color: rgba($color15, 1);
     min-height: 15px;
     margin: 0 15 15 15;
     border-radius: 15px;
-    border: solid 5px #8dffff;
+    border: solid 5px $color14;
 }
 .bar_normal scale trough highlight {
     all: unset;
-    background-color: #027A8D;
+    background-color: $color4;
     border-radius: 10px;
 }
 .bar_normal scale trough {
     all: unset;
-    background-color: rgba(255,201,148, 0.4);
+    background-color: rgba($color15, 0.4);
     min-width: 173px;
     min-height: 10px;
     border-radius: 10px;
@@ -155,12 +162,12 @@
 }
 .bar_highlighted scale trough highlight {
     all: unset;
-    background-color: #019fb8;
+    background-color: $color12;
     border-radius: 10px;
 }
 .bar_highlighted scale trough {
     all: unset;
-    background-color: #ffc994;
+    background-color: $color15;
     min-width: 173px;
     min-height: 10px;
     border-radius: 10px;
@@ -177,24 +184,24 @@
     font-size: 15px;
     margin-bottom: -3px;
     margin-top: 1px;
-    color: #ffc994;
+    color: $color15;
 }
 .center_revealers {
     border-radius: 5px;
-    background-color: rgba(14,31,47, 1);
+    background-color: rgba($color0, 1);
     min-height: 32px;
-    border: solid 2px #ffcb83;
-    color: #019fb8;
+    border: solid 2px $color11;
+    color: $color12;
 }
 .center_info scale trough highlight {
     all: unset;
-    background: #F1A277;
+    background: $color3;
     border-radius: 10px;            
-    border: solid 2px #ffcb83;
+    border: solid 2px $color11;
 }
 .center_info scale trough {
     all: unset;
-    background-color: rgba(255,201,148, 0.4);
+    background-color: rgba($color15, 0.4);
     border-radius: 10px;
     min-width: 110px;
     min-height: 10px;               
@@ -203,7 +210,7 @@
 
 // RIGHT MODULES 
 .power_button {
-    color: #ff6156;
+    color: $color13;
     font-size: 25px;
     font-family: Caskaydia Cove Nerd Font;
     margin: -10 18 -10 15;
@@ -213,36 +220,40 @@
     margin-bottom: -10px;
 }
 .time {
-    color: #ffc994;
+    color: $color15;
     font-size: 25px;
     margin-bottom: -20px;
     margin-top: -20px;
 }
 .date {
-    color: #ffc994;
+    color: $color15;
     font-size: 25px;
     margin-top: 8px;
 }
 .kb_box {
-    color: #ffc994;
+    color: $color15;
     font-size: 15px;
     margin-left: 2px;
     margin-right: 10px;
 }
-.kb_button_us {
+.kb_button_active {
     font-size: 15px;
     margin-bottom: -3px;
+    margin-top: -3px;
+    color: rgba($color15, 1);
 }
-.kb_button_es {
+.kb_button_inactive {
     font-size: 15px;
-    margin-top: -2px;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    color: rgba($color15, 0.4);
 }
 .cal {
     font-size: 16px;
-    background-color: #0E1F2F;
+    background-color: $color0;
     background-image: url("images/background.png");
-    color: #ffc994;
-    border: 5px solid #ff4647;
+    color: $color15;
+    border: 5px solid $color9;
     border-radius: 0 0 20 20;
     padding: 10px;
 }

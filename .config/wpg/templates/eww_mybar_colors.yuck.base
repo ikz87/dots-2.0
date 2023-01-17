@@ -1,0 +1,23 @@
+;; Normal colors
+(defvar color0 "{color0}")
+(defvar color1 "{color1}")
+(defvar color2 "{color2}")
+(defvar color3 "{color3}")
+(defvar color4 "{color4}")
+(defvar color5 "{color5}")
+(defvar color6 "{color6}")
+(defvar color7 "{color7}")
+(defvar color8 "{color8}")
+(defvar color9 "{color9}")
+(defvar color10 "{color10}")
+(defvar color11 "{color11}")
+(defvar color12 "{color12}")
+(defvar color13 "{color13}")
+(defvar color14 "{color14}")
+(defvar color15 "{color15}")
+
+;; Specials 
+(defvar left_bg "{color0}")
+(defvar center_bg "{color0}")
+(defvar right_bg "{color0}")
+
