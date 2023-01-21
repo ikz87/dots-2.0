@@ -404,16 +404,17 @@
             :vexpand "false"
             :hexpand "false"
             (eventbox
-              :cursor "pointer"
-              :onhover "${eww} update media_bar_class=bar_highlighted"
-              :onhoverlost "${eww} update media_bar_class=bar_normal"
+              ;;:cursor "pointer"
+              ;;:onhover "${eww} update media_bar_class=bar_highlighted"
+              ;;:onhoverlost "${eww} update media_bar_class=bar_normal"
               (scale
+                :active "false"
                 :min 0
                 :max length
                 :value position
                 :orientation "h"
                 :tooltip "Seek"
-                :onchange "scripts/media_control --seek {}"
+                ;;:onchange "scripts/media_control --seek {}"
                 )))))))
         
 ;; Central widgets
