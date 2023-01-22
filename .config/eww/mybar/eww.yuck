@@ -223,10 +223,8 @@
                 )))
       (eventbox
         :cursor "pointer"
-        :onhover "${eww} update media_bar_class_popup=\"bar_highlighted_popup\" && 
-                 ${eww} update media_bar_is_active_popup=true"
-        :onhoverlost "${eww} update media_bar_class_popup=\"bar_normal_popup\" &&
-                 ${eww} update media_bar_is_active_popup=false"
+        :onhover "${eww} update media_bar_class_popup=\"bar_highlighted_popup\" && ${eww} update media_bar_is_active_popup=true"
+        :onhoverlost "${eww} update media_bar_class_popup=\"bar_normal_popup\" && ${eww} update media_bar_is_active_popup=false"
         (box
           :active media_bar_is_active_popup
           :orienttion "h"
