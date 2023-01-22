@@ -12,7 +12,9 @@
 (defvar date_reveal false)
 (defvar battery_reveal false)
 (defvar media_bar_class "bar_normal")
+(defvar media_bar_is_active false)
 (defvar media_bar_class_popup "bar_normal_popup")
+(defvar media_bar_is_active_popup false)
 (defvar battery_image "images/battery_normal.png")
 (defvar day "0")
 (defvar month "0")
@@ -221,9 +223,12 @@
                 )))
       (eventbox
         :cursor "pointer"
-        :onhover "${eww} update media_bar_class_popup=\"bar_highlighted_popup\""
-        :onhoverlost "${eww} update media_bar_class_popup=\"bar_normal_popup\""
+        :onhover "${eww} update media_bar_class_popup=\"bar_highlighted_popup\" && 
+                 ${eww} update media_bar_is_active_popup=true"
+        :onhoverlost "${eww} update media_bar_class_popup=\"bar_normal_popup\" &&
+                 ${eww} update media_bar_is_active_popup=false"
         (box
+          :active media_bar_is_active_popup
           :orienttion "h"
           :valign "fill"
           :halign "fill"
@@ -233,7 +238,7 @@
             :max length
             :value position
             :orientation "h"
-            :onchange "scripts/media_control --seek {}"
+            :onchange "scripts/media_control --seek {} ${media_bar_is_active_popup}"
           )))
       ))
 
@@ -404,17 +409,17 @@
             :vexpand "false"
             :hexpand "false"
             (eventbox
-              ;;:cursor "pointer"
-              ;;:onhover "${eww} update media_bar_class=bar_highlighted"
-              ;;:onhoverlost "${eww} update media_bar_class=bar_normal"
+              :cursor "pointer"
+              :onhover "${eww} update media_bar_class=bar_highlighted && ${eww} update media_bar_is_active=true"
+              :onhoverlost "${eww} update media_bar_class=bar_normal && ${eww} update media_bar"
               (scale
-                :active "false"
+                :active media_bar_is_active
                 :min 0
                 :max length
                 :value position
                 :orientation "h"
                 :tooltip "Seek"
-                ;;:onchange "scripts/media_control --seek {}"
+                :onchange "scripts/media_control --seek {} ${media_bar_is_active}"
                 )))))))
         
 ;; Central widgets
