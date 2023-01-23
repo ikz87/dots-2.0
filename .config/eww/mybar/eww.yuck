@@ -409,7 +409,7 @@
             (eventbox
               :cursor "pointer"
               :onhover "${eww} update media_bar_class=bar_highlighted && ${eww} update media_bar_is_active=true"
-              :onhoverlost "${eww} update media_bar_class=bar_normal && ${eww} update media_bar"
+              :onhoverlost "${eww} update media_bar_class=bar_normal && ${eww} update media_bar_is_active=false"
               (scale
                 :active media_bar_is_active
                 :min 0
