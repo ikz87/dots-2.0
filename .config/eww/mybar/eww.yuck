@@ -158,13 +158,15 @@
         (box
           :valign "center"
           :halign "start"
-          (image
-            :halign "start"
-            :class "media_art_popup"
-            :tooltip "${title} by ${artist}"
-            :path cover
-            :image-height 130
-            :image-width 130))
+          :height 130
+          :class "media_art_popup_box"
+            (image
+              :valign "center"
+              :class "media_art_popup"
+              :tooltip "${title} by ${artist}"
+              :path cover
+              :image-width 130
+            ))
         (box
           :valign "center"
           :halign "fill"

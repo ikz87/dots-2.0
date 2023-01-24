@@ -57,10 +57,10 @@
 .media_art_popup {
     border: solid 5px $color14;
     border-radius: 5px;
-    min-height: 130px;
-    min-width: 130px;
-    background-color: $color14;
+}
+.media_art_popup_box {
     margin: 15 0 15 15;
+    min-height: 140px;
 }
 .media_data { 
     margin-left: 10px;
