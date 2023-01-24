@@ -227,7 +227,7 @@
         :onhoverlost "${eww} update media_bar_class_popup=\"bar_normal_popup\" && ${eww} update media_bar_is_active_popup=false"
         (box
           :active media_bar_is_active_popup
-          :orienttion "h"
+          :orientation "h"
           :valign "fill"
           :halign "fill"
           :class media_bar_class_popup
