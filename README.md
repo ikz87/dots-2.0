@@ -70,7 +70,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - xwinfo
 
 ### Other 
-- [FT-Labs-picom](https://github.com/FT-Labs/picom) more stable fork of picom with better looking animations (no shadows for now, as they are glitchy at the moment).
+- [FT-Labs-picom](https://github.com/FT-Labs/picom) more stable fork of picom with better looking animations.
 - [pop_report](https://github.com/ikz87/pop_report) used in some scripts.
 
 ### Optional
