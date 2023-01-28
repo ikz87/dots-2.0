@@ -1,7 +1,16 @@
 #!/bin/sh
 
-time=900000
-#time= 10000
+# This script locks the PC after a <normal_time> amount of "idle" miliseconds
+# When unlocked, idle time is considered as time where no cursor movement
+# or any X input (anything that xev can notice) is detected *and* no audio
+# is being played. This makes it so that the PC doesn't lock while you game
+# even when gamepad activity is generally not detected by X.
+# When screen is locked, only X activity is considered for idle time, and 
+# the PC will suspend after <locked_time> miliseconds.
+
+locked_time=10000
+normal_time=900000
+
 idle=0
 lastsi=0
 
@@ -12,16 +21,14 @@ do
 	[[ `pgrep -c Xorg` -gt 0 ]] && true || exit 
 	while [[ `ps -e | grep -c i3lock` -gt 0 ]];
 		do
-			[[ `xprintidle` -gt 5000 ]] && systemctl suspend 
+			[[ `xprintidle` -gt $locked_time ]] && systemctl suspend && sleep $locked_time
 			sleep 1
 		done;
 	idle=`xprintidle` 		
-	[[ `pacmd list-sink-inputs | grep -c 'state: RUNNING'` -gt 0 ]] && lastsi=$idle
+	[[ `pactl list short sinks | grep -c 'RUNNING'` -gt 0 ]] && lastsi=$idle && echo running
 	[[ $idle -lt 1000 ]] && lastsi=0
-	printf "idle is $idle and lastsi is $lastsi, so ridle is "
 	ridle=$(( idle - lastsi ))	
-	echo $ridle
-	if [[ $ridle -gt $time ]]
+	if [[ $ridle -gt $normal_time ]]
 	then
 		~/.bscripts/lock.sh&
 	fi;
