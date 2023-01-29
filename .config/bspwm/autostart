@@ -10,9 +10,6 @@ picom &
 # Set cursor
 xsetroot -cursor_name left_ptr &
 
-# Apply colorscheme to spotify (requieres spicetify https://github.com/spicetify/spicetify-cli)
-~/.bscripts/wal-spotify.sh > /dev/null&
-
 # Source the colorscheme, can change the alpha value to be used in certain scripts
 # like ~/.bscripts/rofi.sh
 echo alpha="ff" >> "${HOME}/.cache/wal/colors.sh"
