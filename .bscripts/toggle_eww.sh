@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Toggles eww bar and pop up windows
+
 eww="eww -c ${HOME}/.config/eww/mybar/"
 
 $eww close bar_center

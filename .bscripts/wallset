@@ -1,6 +1,10 @@
 #!/bin/sh 
 
-[[ $# -ne 1 ]] && echo "Usage: wallset [path_to_wallpaper]" && exit
+# Sets a wallpaper, updates the colorscheme and restarts bspwm.
+# you can call this script like this:
+# wallset <path_to_wallpaper>
+
+[[ $# -ne 1 ]] && echo "Usage: wallset <path_to_wallpaper>" && exit
 
 wallpaper=$1
 

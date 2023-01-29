@@ -1,4 +1,7 @@
 #!/bin/sh
+
+# Play different sounds on WM events.
+
 secondlast=""
 lastline=""
 bspc subscribe desktop_focus node_state node_add node_remove| \

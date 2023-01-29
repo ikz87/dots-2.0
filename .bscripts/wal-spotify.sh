@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Sets spicetify colors to fit the colorscheme
+
 source "${HOME}/.cache/wal/colors.sh"
 
 spicetify color text "$color9" 

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Toggles floating state on focused window.
+# If window is put into floating mode, 
+# window position is set to be horizontally centered
+# and vertically just below eww bars
+
 if [ -z "$(bspc query -N -n focused.floating)" ];
 then
     #play -v 0.2 ~/Documents/Sounds/float.wav& 

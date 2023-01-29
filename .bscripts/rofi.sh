@@ -1,7 +1,11 @@
 #!/bin/sh
-source "${HOME}/.cache/wal/colors.sh" 
+
+# This script is used to run rofi with different configurations
+# based on desired usage.
+# You can call this script like this:
+# rofi.sh [drun|config|window|outopts]
+
 roficonf="$HOME/.config/rofi/"
-color0=\#$alpha`echo $color0 | sed 's/\#//g'`
 
 case $1 in 
     drun)    

@@ -1,8 +1,8 @@
 #!/bin/bash
 
+# Change brightness level with `light`.
 # You can call this script like this:
-# $./brightness.sh up
-# $./brightness.sh down
+# brightness.sh [up|down]
 
 function get_brightness {
     var=`light -G`

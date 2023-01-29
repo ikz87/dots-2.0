@@ -1,9 +1,10 @@
 #!/bin/sh
 
+# Changes de volume of the default sink
+# Warning: This script offers no cap for volume, 
+# I'd advice to not go above 150% (which is the standard cap).
 # You can call this script like this:
-# $./volume.sh up
-# $./volume.sh down
-# $./volume.sh mute
+# volume.sh [up|down|mute]
 
 function get_volume {
 	pactl get-sink-volume @DEFAULT_SINK@ | awk '{printf $5}' | cut -d '%' -f 1
