@@ -3,10 +3,6 @@
 # Source colorscheme
 source "${HOME}/.cache/wal/colors.sh"
 
-# Kill any running instances of bspc to prevent multiple
-# instances of ~/.config/eww/mybar/scripts/workspaces to run at once
-killall bspc
-
 # Compositor
 picom &
 
@@ -23,6 +19,9 @@ mantablockscreen -i ~/Pictures/Important/lockscreen.png&
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
 # Statusbar
+killall workspaces    
+killall media_info    
+killall layout  
 eww -c ~/.config/eww/mybar kill 
 eww -c ~/.config/eww/mybar daemon    
 ~/.config/eww/mybar/scripts/ewwcolorscheme  
@@ -50,6 +49,7 @@ killall sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
 
 # Sounds
+killall sounds.sh
 ~/.bscripts/sounds.sh&
 
 # Autosuspend
