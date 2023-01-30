@@ -1,5 +1,27 @@
 ;; COLORSCHEME
-(include "./colors.yuck")
+;; Normal colors (set at launch by scripts/ewwcolorscheme)
+(defvar color0 "#0E1F2F")
+(defvar color1 "#E94546")
+(defvar color2 "#B2856C")
+(defvar color3 "#F1A277")
+(defvar color4 "#027A8D")
+(defvar color5 "#DE5952")
+(defvar color6 "#7fcfec")
+(defvar color7 "#F1966F")
+(defvar color8 "#193855")
+(defvar color9 "#ff4647")
+(defvar color10 "#f9a779")
+(defvar color11 "#ffcb83")
+(defvar color12 "#019fb8")
+(defvar color13 "#ff6156")
+(defvar color14 "#8dffff")
+(defvar color15 "#ffc994")
+
+;; Specials 
+(defvar left_bg "#0E1F2F")
+(defvar center_bg "#0E1F2F")
+(defvar right_bg "#0E1F2F")
+
 
 ;; VARS
 (defvar eww "eww -c $HOME/.config/eww/mybar")

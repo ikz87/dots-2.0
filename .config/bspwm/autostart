@@ -23,7 +23,9 @@ mantablockscreen -i ~/Pictures/Important/lockscreen.png&
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
 # Statusbar
-eww -c ~/.config/eww/mybar close-all
+eww -c ~/.config/eww/mybar kill 
+eww -c ~/.config/eww/mybar daemon    
+~/.config/eww/mybar/scripts/ewwcolorscheme  
 eww -c ~/.config/eww/mybar open bar_right
 eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
