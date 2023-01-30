@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Source colorscheme
+source "${HOME}/.cache/wal/colors.sh"
+
 # Kill any running instances of bspc to prevent multiple
 # instances of ~/.config/eww/mybar/scripts/workspaces to run at once
 killall bspc
@@ -9,11 +12,6 @@ picom &
 
 # Set cursor
 xsetroot -cursor_name left_ptr &
-
-# Source the colorscheme, can change the alpha value to be used in certain scripts
-# like ~/.bscripts/rofi.sh
-echo alpha="ff" >> "${HOME}/.cache/wal/colors.sh"
-source "${HOME}/.cache/wal/colors.sh"
 
 # Set Wallpaper
 hsetroot -cover ~/Pictures/Important/wallpaper.png
