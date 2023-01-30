@@ -122,7 +122,7 @@
 }
 .bar_normal_popup scale trough highlight {
     all: unset;
-    background-color: $color1;
+    background-color: $color13;
     border-radius: 15px;
 }
 .bar_normal_popup scale trough {
@@ -135,12 +135,12 @@
 }
 .bar_highlighted_popup scale trough highlight {
     all: unset;
-    background-color: $color14;
+    background-color: $color15;
     border-radius: 15px;
 }
 .bar_highlighted_popup scale trough {
     all: unset;
-    background-color: rgba($color15, 1);
+    background-color: rgba($color15, 0.4);
     min-height: 15px;
     margin: 0 15 15 15;
     border-radius: 15px;
@@ -148,7 +148,7 @@
 }
 .bar_normal scale trough highlight {
     all: unset;
-    background-color: $color4;
+    background-color: $color12;
     border-radius: 10px;
 }
 .bar_normal scale trough {
@@ -162,12 +162,12 @@
 }
 .bar_highlighted scale trough highlight {
     all: unset;
-    background-color: $color12;
+    background-color: $color15;
     border-radius: 10px;
 }
 .bar_highlighted scale trough {
     all: unset;
-    background-color: $color15;
+    background-color: rgba($color15, 0.4);
     min-width: 173px;
     min-height: 10px;
     border-radius: 10px;
