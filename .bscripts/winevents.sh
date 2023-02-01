@@ -7,9 +7,11 @@ bspc subscribe desktop_focus node_state node_add node_remove| \
         case $line in
             node_add*)
                 play -v 0.3 ~/Documents/Sounds/add.wav 2> /dev/null&
+                ~/.bscripts/toggle_bar.sh test_fullscreen
                 ;;
             node_remove*)
                 play -v 0.4 ~/Documents/Sounds/remove.wav 2> /dev/null&
+                ~/.bscripts/toggle_bar.sh test_fullscreen
                 ;;
             *\ fullscreen\ on)
                 play -v 0.4 ~/Documents/Sounds/fullscreen.wav 2> /dev/null&
@@ -26,12 +28,7 @@ bspc subscribe desktop_focus node_state node_add node_remove| \
                 ;;
             desktop_focus*)
                 play -v 0.1 ~/Documents/Sounds/change_workspace.wav 2> /dev/null&
-                if [[ -z "$(bspc query -N -n focused.fullscreen)" ]]
-                then
-                    ~/.bscripts/toggle_bar.sh on&
-                else
-                    ~/.bscripts/toggle_bar.sh off&
-                fi;
+                ~/.bscripts/toggle_bar.sh test_fullscreen
                 ;;
             *)
                 :
