@@ -26,6 +26,12 @@ bspc subscribe desktop_focus node_state node_add node_remove| \
                 ;;
             desktop_focus*)
                 play -v 0.1 ~/Documents/Sounds/change_workspace.wav 2> /dev/null&
+                if [[ -z "$(bspc query -N -n focused.fullscreen)" ]]
+                then
+                    ~/.bscripts/toggle_bar.sh on&
+                else
+                    ~/.bscripts/toggle_bar.sh off&
+                fi;
                 ;;
             *)
                 :
