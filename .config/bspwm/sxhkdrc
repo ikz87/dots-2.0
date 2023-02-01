@@ -34,10 +34,6 @@ super+shift+e
 alt+Tab
 	~/.bscripts/rofi.sh window
 
-# Configuration launcher
-super+shift+s
-	~/.bscripts/rofi.sh config
-
 # Logout options
 super+shift+q
     ~/.bscripts/rofi.sh outopts
@@ -146,7 +142,7 @@ XF86AudioPrev
 
 # Toggle bar 
 control+alt+e
-	~/.bscripts/toggle_eww.sh
+	~/.bscripts/toggle_bar.sh auto
 
 # Music popup
 super+m 
@@ -161,7 +157,7 @@ super+s
 
 # Toggle floating windows
 control+alt+space
-	~/.bscripts/toggle_float.sh
+	~/.bscripts/toggle_winprops.sh float
 
 # Move windows in workspace
 super+shift+{k,j,h,l}
@@ -205,11 +201,7 @@ super+e
 
 # Toggle fullscreen
 super+f
-   if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \
-        bspc node focused -t fullscreen; \
-    else \
-        bspc node focused -t tiled; \
- fi;
+	~/.bscripts/toggle_winprops.sh fullscreen
 
 # Raise window gap by 5px
 super+KP_Add
@@ -225,10 +217,4 @@ control+alt+{k,j,h,l}
 
 # Cycle through window layers (above, normal or below)
 control+alt+a
-	if [[ ! -z "$(bspc query -N -n focused.normal)" ]]; then \
-		bspc node focused -l above; \
-	elif [[ ! -z "$(bspc query -N -n focused.above)" ]]; then \
-		bspc node focused -l below; \
-	else \
-		bspc node focused -l normal; \
-	fi;
+	~/.bscripts/toggle_winprops.sh layer

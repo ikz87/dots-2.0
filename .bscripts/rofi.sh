@@ -11,11 +11,6 @@ case $1 in
     drun)    
         rofi -config $roficonf/drun.rasi -show drun
     ;;
-    config)
-        program=`cat ~/.config/programlist | \
-        rofi -config $roficonf/drun.rasi -dmenu -no-show-icons  -p "Configure"`
-        kitty config $program 
-    ;;
     window)
         (rofi -config $roficonf/window.rasi -show windowcd; xdotool keyup Tab)&
         xdotool keyup Tab

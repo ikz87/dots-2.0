@@ -49,8 +49,8 @@ killall sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
 
 # Sounds
-killall sounds.sh
-~/.bscripts/sounds.sh&
+killall winevents.sh
+~/.bscripts/winevents.sh&
 
 # Autosuspend
 killall idle.sh
