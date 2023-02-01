@@ -1,0 +1,26 @@
+#!/bin/sh 
+
+source "${HOME}/.cache/wal/colors.sh"
+
+eww="eww -c ${HOME}/.config/eww/mybar"
+
+$eww update color0=$color0
+$eww update color1=$color1
+$eww update color2=$color2
+$eww update color3=$color3
+$eww update color4=$color4
+$eww update color5=$color5
+$eww update color6=$color6
+$eww update color7=$color7
+$eww update color8=$color8
+$eww update color9=$color9
+$eww update color10=$color10
+$eww update color11=$color11
+$eww update color12=$color12
+$eww update color13=$color13
+$eww update color14=$color14
+$eww update color15=$color15
+
+$eww update left_bg=$color0
+$eww update center_bg=$color0
+$eww update right_bg=$color0
