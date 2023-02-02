@@ -777,13 +777,12 @@
     :cursor "pointer"
     :tooltip "Logout options"
     :width "20px" 
-    :height "20px"
     (button
-      :valign "center"
+      :valign "fill"
       :onclick "~/.bscripts/rofi.sh outopts&"
       (label
       	:class "power_button"
-	    :text ""
+        :text ""
       ))))
 
 (defwidget time []
