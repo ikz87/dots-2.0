@@ -8,6 +8,7 @@ create_home_dir_tree()
 {
     mkdir "$1"/.bscripts || true
     mkdir "$1"/.config || true
+    mkdir "$1"/.cache || true
     mkdir -p "$1"/.local/share/fonts || true
 }
 
@@ -18,6 +19,29 @@ create_normal_dir_tree()
     mkdir -p "$1"/Configs || true
     mkdir -p "$1"/Fonts || true
     mkdir -p "$1"/Walcache || true
+}
+
+create_backup()
+{
+    create_normal_dir_tree $old
+    echo "done"
+
+    echo -n "Backing up current configs... "
+    mv ~/.config/rice_assets $old/Assets/ 2> /dev/null
+    mv ~/.bscripts/ $old/Bscripts/ 2> /dev/null
+    mv ~/.config/bspwm $old/Configs/ 2> /dev/null
+    mv ~/.config/eww $old/Configs/ 2> /dev/null
+    mv ~/.config/dunst $old/Configs/ 2> /dev/null
+    mv ~/.config/kitty $old/Configs/ 2> /dev/null
+    mv ~/.config/rofi $old/Configs/ 2> /dev/null
+    mv ~/.config/pop_report $old/Configs/ 2> /dev/null
+    mv ~/.config/wpg $old/Configs/ 2> /dev/null
+    mv ~/.config/picom.conf $old/Configs/ 2> /dev/null
+    mv ~/.config/rice_assets/ $old/Assets/ 2> /dev/null
+    cp -r ~/.local/share/fonts/ "$script_dir"/Fonts 2> /dev/null
+    mv ~/.local/share/fonts/ $old/Fonts 2> /dev/null
+    mv ~/.cache/wal/ $old/Walcache/ 2> /dev/null
+    echo "done, you can find your backups at $old/"
 }
 
 echo -n "Preparing stuff... "
@@ -33,39 +57,32 @@ then
     read input
     if [[ "$input" == "y" ]] || [[ "$input" == "Y" ]] 
     then
-        rm -rf $old
+        rm -rf "$old"
         echo -n "Redoing directory tree... "
+        create_backup
     else
-        echo "Aborting rice install"
+        echo "Do you want to intall the rice without backing up (y/N)?"
+        read input
+        if [[ "$input" != "y" ]] && [[ "$input" != "Y" ]] 
+        then
+            echo "Aborting rice install"
+            exit
+        fi;
     fi;
+else
+    create_backup
+fi;
 
-create_dir_tree $old
-echo "done"
-
-echo -n "Backing up current configs... "
-mv ~/.bscripts/* $old/Bscripts/ 2> /dev/null
-mv ~/.config/bspwm $old/Configs/ 2> /dev/null
-mv ~/.config/eww $old/Configs/ 2> /dev/null
-mv ~/.config/dunst $old/Configs/ 2> /dev/null
-mv ~/.config/rofi $old/Configs/ 2> /dev/null
-mv ~/.config/pop_report $old/Configs/ 2> /dev/null
-mv ~/.config/wpg $old/Configs/ 2> /dev/null
-mv ~/.config/picom.conf $old/Configs/ 2> /dev/null
-mv ~/.config/rice_assets/* $old/Assets/ 2> /dev/null
-cp -r ~/.local/share/fonts/* "$script_dir"/Fonts 2> /dev/null
-mv ~/.local/share/fonts/* $old/Fonts 2> /dev/null
-mv ~/.cache/wal/* $old/Walcache/ 2> /dev/null
-echo "done, you can find your backups at $old/"
 
 echo -n "Applying rice... "
 for file in `ls "$script_dir"/Configs/`;
 do 
-    ln -s "$script_dir"/Configs/"$file" ${HOME}/.config/"$file"
+    ln -s ${HOME}/.config/"$file" "$script_dir"/Configs/"$file" 
 done
-ln -s "$script_dir"/Assets ${HOME}/.config/rice_assets
-ln -s "$script_dir"/Bscripts/* ${HOME}/.bscripts/
-cp "$script_dir"/Walcache ${HOME}/.cache/wal
-ln -s "$script_dir"/Fonts ${HOME}/.local/share/fonts/
+ln -s ${HOME}/.config/rice_assets "$script_dir"/Assets
+ln -s ${HOME}/.bscripts "$script_dir"/Bscripts 
+cp -r ${HOME}/.cache/wal "$script_dir"/Walcache 
+ln -s ${HOME}/.local/share/fonts "$script_dir"/Fonts 
 echo "done"
 
 echo -n "Changing script permissions... "
