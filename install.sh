@@ -95,4 +95,6 @@ echo "Running wpg-install.sh -g for the gtk colorscheme"
 chmod +x "$script_dir"/.bscripts/wpg-install.sh 
 "$script_dir"/.bscripts/wpg-install.sh -g 
 
-echo "Install finished, Enjoy my rice c:"
+echo "Install finished"
+echo "There's no need to run this again, to update just run git pull"
+echo "Enjoy my rice :)"
