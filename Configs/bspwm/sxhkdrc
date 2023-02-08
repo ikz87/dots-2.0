@@ -2,7 +2,7 @@
 
 # "Pausing" sxhkd
 super+Return
-	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace=420 -u critical&
+	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 --replace=420 -u critical&
 
 
 # Apps and programs
@@ -161,7 +161,7 @@ control+alt+space
 
 # Move windows in workspace
 super+shift+{k,j,h,l}
-	play -v 0.4 ~/Documents/Sounds/tile.wav& ~/.bscripts/bsmove.sh {north,south,west,east}
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& ~/.bscripts/bsmove.sh {north,south,west,east}
 
 # Select windows in workspace
 super+{k,j,h,l}
@@ -189,15 +189,15 @@ control+shift+k
 
 # Rotate tree
 super+{d,a}
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node @/ -C {forward,backward}
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node @/ -C {forward,backward}
 
 # Rotate windows 
 alt+{d,a}
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
 
 # Equalize window sizes
 super+e
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor --balance 
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node first_ancestor --balance 
 
 # Toggle fullscreen
 super+f

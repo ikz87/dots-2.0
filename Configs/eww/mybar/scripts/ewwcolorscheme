@@ -24,3 +24,5 @@ $eww update color15=$color15
 $eww update left_bg=$color0
 $eww update center_bg=$color0
 $eww update right_bg=$color0
+
+cp ~/.cache/wal/colors.scss ~/.config/eww/mybar/colors.scss

@@ -27,20 +27,20 @@ create_backup()
     echo "done"
 
     echo -n "Backing up current configs... "
-    mv ~/.config/rice_assets $old/Assets/ 2> /dev/null
-    mv ~/.bscripts/ $old/Bscripts/ 2> /dev/null
-    mv ~/.config/bspwm $old/Configs/ 2> /dev/null
-    mv ~/.config/eww $old/Configs/ 2> /dev/null
-    mv ~/.config/dunst $old/Configs/ 2> /dev/null
-    mv ~/.config/kitty $old/Configs/ 2> /dev/null
-    mv ~/.config/rofi $old/Configs/ 2> /dev/null
-    mv ~/.config/pop_report $old/Configs/ 2> /dev/null
-    mv ~/.config/wpg $old/Configs/ 2> /dev/null
-    mv ~/.config/picom.conf $old/Configs/ 2> /dev/null
-    mv ~/.config/rice_assets/ $old/Assets/ 2> /dev/null
+    cp -r ~/.config/rice_assets $old/Assets/ 2> /dev/null
+    cp -r ~/.bscripts/ $old/Bscripts/ 2> /dev/null
+    cp -r ~/.config/bspwm $old/Configs/ 2> /dev/null
+    cp -r ~/.config/eww $old/Configs/ 2> /dev/null
+    cp -r ~/.config/dunst $old/Configs/ 2> /dev/null
+    cp -r ~/.config/kitty $old/Configs/ 2> /dev/null
+    cp -r ~/.config/rofi $old/Configs/ 2> /dev/null
+    cp -r ~/.config/pop_report $old/Configs/ 2> /dev/null
+    cp -r ~/.config/wpg $old/Configs/ 2> /dev/null
+    cp -r ~/.config/picom.conf $old/Configs/ 2> /dev/null
+    cp -r ~/.config/rice_assets/ $old/Assets/ 2> /dev/null
     cp -r ~/.local/share/fonts/ "$script_dir"/Fonts 2> /dev/null
-    mv ~/.local/share/fonts/ $old/Fonts 2> /dev/null
-    mv ~/.cache/wal/ $old/Walcache/ 2> /dev/null
+    cp -r ~/.local/share/fonts/ $old/Fonts 2> /dev/null
+    cp -r ~/.cache/wal/ $old/Walcache/ 2> /dev/null
     echo "done, you can find your backups at $old/"
 }
 
@@ -77,12 +77,12 @@ fi;
 echo -n "Applying rice... "
 for file in `ls "$script_dir"/Configs/`;
 do 
-    ln -s ${HOME}/.config/"$file" "$script_dir"/Configs/"$file" 
+    ln -s "$script_dir"/Configs/"$file" ${HOME}/.config/ 
 done
-ln -s ${HOME}/.config/rice_assets "$script_dir"/Assets
-ln -s ${HOME}/.bscripts "$script_dir"/Bscripts 
-cp -r ${HOME}/.cache/wal "$script_dir"/Walcache 
-ln -s ${HOME}/.local/share/fonts "$script_dir"/Fonts 
+ln -s -f "$script_dir"/Assets ${HOME}/.config/rice_assets
+ln -s -f "$script_dir"/Bscripts ${HOME}/.bscripts
+cp -r -f "$script_dir"/Walcache ${HOME}/.cache/wal
+ln -s -f "$script_dir"/Fonts ${HOME}/.local/share/fonts
 echo "done"
 
 echo -n "Changing script permissions... "

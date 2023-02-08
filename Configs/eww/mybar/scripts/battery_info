@@ -16,7 +16,7 @@ notify()
             if  [[ $lstate -gt 1 ]] 
             then
                 echo 1 > /tmp/batstate
-                dunstify "Warning: $bat_level% Battery left" -i "${HOME}/Pictures/Important/icons/other/battery_mid.png" -t 10000 --replace=550 -u critical
+                dunstify "Warning: $bat_level% Battery left" -i "${HOME}/.config/rice_assets/Icons/battery_mid.png" -t 10000 --replace=550 -u critical
             fi;
         ;;
         low)

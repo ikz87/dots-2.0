@@ -10,10 +10,10 @@ picom &
 xsetroot -cursor_name left_ptr &
 
 # Set Wallpaper
-hsetroot -cover ~/Pictures/Important/wallpaper.png
+hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png
 
 # Cache lockscreen 
-mantablockscreen -i ~/Pictures/Important/lockscreen.png&
+mantablockscreen -i ~/.config/rice_assets/Images/lockscreen.png&
 
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
@@ -48,7 +48,7 @@ thunar --daemon&
 killall sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
 
-# Sounds
+# Window event monitoring
 killall winevents.sh
 ~/.bscripts/winevents.sh&
 
