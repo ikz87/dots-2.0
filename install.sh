@@ -92,8 +92,8 @@ chmod +x ~/.cache/wal/colors-tty.sh
 echo "done"
 
 echo "Running wpg-install.sh -g for the gtk colorscheme"
-chmod +x "$script_dir"/.bscripts/wpg-install.sh 
-"$script_dir"/.bscripts/wpg-install.sh -g 
+chmod +x "$script_dir"/wpg-install.sh 
+"$script_dir"/wpg-install.sh -g 
 
 echo "Install finished"
 echo "There's no need to run this again, to update just run git pull"
