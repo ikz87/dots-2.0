@@ -61,13 +61,9 @@ then
         echo -n "Redoing directory tree... "
         create_backup
     else
-        echo "Do you want to intall the rice without backing up (y/N)?"
-        read input
-        if [[ "$input" != "y" ]] && [[ "$input" != "Y" ]] 
-        then
-            echo "Aborting rice install"
-            exit
-        fi;
+        echo "Delete $old manually before installing"
+        echo "Installation aborted"
+        exit
     fi;
 else
     create_backup
