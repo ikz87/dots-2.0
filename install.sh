@@ -73,7 +73,7 @@ fi;
 echo -n "Applying rice... "
 for file in `ls "$script_dir"/Configs/`;
 do 
-    ln -s "$script_dir"/Configs/"$file" ${HOME}/.config/ 
+    ln -s -f "$script_dir"/Configs/"$file" ${HOME}/.config/ 
 done
 ln -s -f "$script_dir"/Assets ${HOME}/.config/rice_assets
 ln -s -f "$script_dir"/Bscripts ${HOME}/.bscripts
