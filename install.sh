@@ -13,10 +13,11 @@ create_home_dir_tree()
 
 create_normal_dir_tree()
 {
-    mkdir "$1"/Assets || true
-    mkdir "$1"/Bscripts || true
-    mkdir "$1"/Configs || true
-    mkdir "$1"/Walcache || true
+    mkdir -p "$1"/Assets || true
+    mkdir -p "$1"/Bscripts || true
+    mkdir -p "$1"/Configs || true
+    mkdir -p "$1"/Fonts || true
+    mkdir -p "$1"/Walcache || true
 }
 
 echo -n "Preparing stuff... "
