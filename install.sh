@@ -4,61 +4,70 @@
 old="${HOME}/.rice-old"
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-create_dir_tree()
+create_home_dir_tree()
 {
-    mkdir "$1" || true
     mkdir "$1"/.bscripts || true
     mkdir "$1"/.config || true
-    mkdir "$1"/Documents || true
-    mkdir "$1"/Documents/Sounds || true
-    mkdir "$1"/Pictures || true
-    mkdir "$1"/Pictures/Important || true
-    mkdir "$1"/Pictures/Important/icons || true
-    mkdir "$1"/Pictures/Important/icons/other || true
-    mkdir "$1"/Pictures/Wallpapers || true
-    mkdir "$1"/.cache || true
-    mkdir "$1"/.cache/wal || true
-    mkdir "$1"/.local || true
-    mkdir "$1"/.local/share || true
-    mkdir "$1"/.local/share/fonts || true
+    mkdir -p "$1"/.local/share/fonts || true
+}
+
+create_normal_dir_tree()
+{
+    mkdir "$1"/Assets || true
+    mkdir "$1"/Bscripts || true
+    mkdir "$1"/Configs || true
+    mkdir "$1"/Walcache || true
 }
 
 echo -n "Preparing stuff... "
-create_dir_tree ${HOME} 2> /dev/null
+create_home_dir_tree ${HOME} 2> /dev/null
 echo "done"
 
-echo -n "Creating backup folders... "
-rm -rf $old || true
+echo -n "Creating backup directory tree... "
+if [[ -d "$old" ]] 
+then
+    echo ""
+    echo "WARNING: There seems to already be a backup at '$old'"
+    echo "Do you wanna overwrite it (y/N)?"
+    read input
+    if [[ "$input" == "y" ]] || [[ "$input" == "Y" ]] 
+    then
+        rm -rf $old
+        echo -n "Redoing directory tree... "
+    else
+        echo "Aborting rice install"
+    fi;
+
 create_dir_tree $old
 echo "done"
 
 echo -n "Backing up current configs... "
-cp -r ~/.bscripts/* $old/.bscripts/ 2> /dev/null
-cp -r ~/.config/bspwm $old/.config/ 2> /dev/null
-cp -r ~/.config/eww $old/.config/ 2> /dev/null
-cp -r ~/.config/dunst $old/.config/ 2> /dev/null
-cp -r ~/.config/rofi $old/.config/ 2> /dev/null
-cp -r ~/.config/pop_report $old/.config/ 2> /dev/null
-cp -r ~/.config/wpg $old/.config/ 2> /dev/null
-cp -r ~/.config/picom.conf $old/.config/ 2> /dev/null
-cp -r ~/Documents/Sounds/* $old/Documents/Sounds/ 2> /dev/null
-cp -r ~/Pictures/Important/* $old/Pictures/Important/ 2> /dev/null
-cp -r ~/Pictures/Wallpapers/* $old/Pictures/Wallpapers/ 2> /dev/null
-cp -r ~/.cache/wal/* $old/.cache/wal 2> /dev/null
-cp -r ~/.local/share/fonts/* $old/.local/share/fonts/ 2> /dev/null
+mv ~/.bscripts/* $old/Bscripts/ 2> /dev/null
+mv ~/.config/bspwm $old/Configs/ 2> /dev/null
+mv ~/.config/eww $old/Configs/ 2> /dev/null
+mv ~/.config/dunst $old/Configs/ 2> /dev/null
+mv ~/.config/rofi $old/Configs/ 2> /dev/null
+mv ~/.config/pop_report $old/Configs/ 2> /dev/null
+mv ~/.config/wpg $old/Configs/ 2> /dev/null
+mv ~/.config/picom.conf $old/Configs/ 2> /dev/null
+mv ~/.config/rice_assets/* $old/Assets/ 2> /dev/null
+cp -r ~/.local/share/fonts/* "$script_dir"/Fonts 2> /dev/null
+mv ~/.local/share/fonts/* $old/Fonts 2> /dev/null
+mv ~/.cache/wal/* $old/Walcache/ 2> /dev/null
 echo "done, you can find your backups at $old/"
 
 echo -n "Applying rice... "
-cp -r -f "$script_dir"/.bscripts/* ${HOME}/.bscripts/
-cp -r -f "$script_dir"/.config/* ${HOME}/.config/
-cp -r -f "$script_dir"/Documents/Sounds/* ${HOME}/Documents/Sounds/
-cp -r -f "$script_dir"/Pictures/Important/* ${HOME}/Pictures/Important/
-cp -r -f "$script_dir"/Pictures/Wallpapers/* ${HOME}/Pictures/Wallpapers/
-cp -r -f "$script_dir"/.cache/wal/* ${HOME}/.cache/wal
-cp -r -f "$script_dir"/.local/share/fonts/* ${HOME}/.local/share/fonts/
+for file in `ls "$script_dir"/Configs/`;
+do 
+    ln -s "$script_dir"/Configs/"$file" ${HOME}/.config/"$file"
+done
+ln -s "$script_dir"/Assets ${HOME}/.config/rice_assets
+ln -s "$script_dir"/Bscripts/* ${HOME}/.bscripts/
+cp "$script_dir"/Walcache ${HOME}/.cache/wal
+ln -s "$script_dir"/Fonts ${HOME}/.local/share/fonts/
 echo "done"
 
-echo -n "Changing permissions... "
+echo -n "Changing script permissions... "
 chmod +x ~/.bscripts/*
 chmod +x ~/.config/bspwm/autostart
 chmod +x ~/.config/bspwm/bspwmrc
