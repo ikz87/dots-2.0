@@ -6,7 +6,6 @@ script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 create_home_dir_tree()
 {
-    mkdir "$1"/.bscripts || true
     mkdir "$1"/.config || true
     mkdir "$1"/.cache || true
     mkdir -p "$1"/.local/share/fonts || true
@@ -75,10 +74,10 @@ for file in `ls "$script_dir"/Configs/`;
 do 
     ln -s -f "$script_dir"/Configs/"$file" ${HOME}/.config/ 
 done
-ln -s -f "$script_dir"/Assets ${HOME}/.config/rice_assets
-ln -s -f "$script_dir"/Bscripts ${HOME}/.bscripts
-cp -r -f "$script_dir"/Walcache ${HOME}/.cache/wal
-ln -s -f "$script_dir"/Fonts ${HOME}/.local/share/fonts
+ln -s -f -T "$script_dir"/Assets ${HOME}/.config/rice_assets
+ln -s -f -T "$script_dir"/Bscripts ${HOME}/.bscripts
+cp -r -f -T "$script_dir"/Walcache ${HOME}/.cache/wal
+ln -s -f -T"$script_dir"/Fonts ${HOME}/.local/share/fonts
 echo "done"
 
 echo -n "Changing script permissions... "
