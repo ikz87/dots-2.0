@@ -28,7 +28,7 @@ Please note that this rice was made for a single 1080p monitor setup, If you hav
 ### AUR packages
 Just run this for this section (assuming you use yay):
 ```
-yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty light mantablockscreen network-manager-applet pa-applet-git picom-ftlabs-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd sysstat thunar tumbler wmctrl wpgtk-git xclip xdotool xprintidle xwinfo-git --needed
+yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty light lxappearance mantablockscreen network-manager-applet pa-applet-git picom-ftlabs-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd sysstat thunar tumbler wmctrl wpgtk-git xclip xdotool xprintidle xwinfo-git --needed
 ```
 If you're not using arch, this is the dependency list, install in wathever way you want:
 - acpi
@@ -46,6 +46,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - kitty
 - light
 - lm_sensors
+- lxappearance
 - mantablockscreen
 - network-manager-applet
 - pa-applet
@@ -81,11 +82,29 @@ If you're not using arch, this is the dependency list, install in wathever way y
 Please let me know if any packages are still missing.
 
 ## Installing
-Just run install.sh:
+Install process functions a little different since I refactored the whole repo (see this [PR](https://github.com/ikz87/dots-2.0/pull/34)), but it still includes a handy script that automates most things.
+
+Run install.sh:
 ``` 
 chmod +x install.sh
 ./install.sh
 ```
+
+Additional step for configuring a colorscheme based Gtk theme:
+1. Run `lxappearance`
+2. Select "FlatColor" in the widgets section 
+<img src="https://user-images.githubusercontent.com/98569017/217688736-09199751-0e3d-4c43-8114-11694ddbb948.png" width=50%>
+And that's it, this will make all your Gtk applications follow the colorscheme extracted from your wallpaper.
+
+If you had previously installed this rice, you might wanna delete the following folders and its contents:
+- `~/Documents/Sounds`
+- `~/Pictures/Important`
+- `~/Pictures/Wallpapers`
+
+All those files are now stored at `~/.config/rice_assets`.
+
+## Updating
+Since the install script now uses symbolic links instead of copied files, all you have to do to update your configs to the latest version is to update the repo with `git pull`.
 
 ## Keybinds
 | Key combo               | Action |
