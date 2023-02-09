@@ -121,6 +121,14 @@ alt+shift+period
 alt+shift+comma
 	~/.bscripts/brightness.sh down
 
+# Raise the monitor gamma by 5%
+control+alt+x
+    ~/.bscripts/gamma.sh up
+
+# Lower the monitor gamma by 5%
+control+alt+z
+    ~/.bscripts/gamma.sh down
+
 # Toggle media playing
 Pause
 	playerctl play-pause
