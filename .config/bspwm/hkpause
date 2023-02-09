@@ -1,5 +1,0 @@
-#Paused state for sxhkd
-
-#Undo the pause
-super+Return
-	killall sxhkd && sxhkd -c ~/.config/bspwm/sxhkdrc& dunstify "Resumed simple X hotkey daemon" -i ~/Pictures/Important/icons/other/resume.png -t 1500 --replace=420 -u critical&

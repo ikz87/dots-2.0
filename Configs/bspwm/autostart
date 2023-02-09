@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# Source colorscheme
+source "${HOME}/.cache/wal/colors.sh"
+
+# Compositor
+picom &
+
+# Set cursor
+xsetroot -cursor_name left_ptr &
+
+# Set Wallpaper
+hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png
+
+# Cache lockscreen 
+mantablockscreen -i ~/.config/rice_assets/Images/lockscreen.png&
+
+# Authentication agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
+
+# Statusbar
+killall workspaces    
+killall media_info    
+killall layout  
+eww -c ~/.config/eww/mybar kill 
+eww -c ~/.config/eww/mybar daemon    
+~/.config/eww/mybar/scripts/ewwcolorscheme  
+eww -c ~/.config/eww/mybar open bar_right
+eww -c ~/.config/eww/mybar open bar_center
+eww -c ~/.config/eww/mybar open bar_left
+killall polybar
+polybar -c ~/.config/eww/mybar/polybar_tray.ini tray& > /dev/null
+
+#Applets
+killall blueman-applet
+killall pa-applet
+killall nm-applet
+killall flameshot
+blueman-applet&
+pa-applet --disable-key-grabbing --disable-notifications& 
+nm-applet&
+flameshot&
+    
+# daemons
+killall dunst
+dunst > /dev/null 2> /dev/null &
+thunar --daemon&
+killall sxhkd
+sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
+
+# Window event monitoring
+killall winevents.sh
+~/.bscripts/winevents.sh&
+
+# Autosuspend
+killall idle.sh
+pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
