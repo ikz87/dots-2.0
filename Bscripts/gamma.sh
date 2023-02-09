@@ -12,7 +12,7 @@ function get_gamma {
 function send_notification {
     gamma=`get_gamma`
     gamma=`echo $gamma | awk '{printf $1*100}'`
-    icon_name="${HOME}/.config/rice_assets/gamma.png"
+    icon_name="${HOME}/.config/rice_assets/Icons/gamma.png"
 
     # Send the notification
     dunstify "Gamma: $gamma%" -h int:value:$gamma -i "$icon_name" -t 1000 --replace=555 -u critical
