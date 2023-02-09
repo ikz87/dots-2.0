@@ -90,7 +90,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-Additional step for configuring a colorscheme based Gtk theme:
+Additional steps for configuring a colorscheme based Gtk theme:
 1. Run `lxappearance`
 2. Select "FlatColor" in the widgets section 
 <img src="https://user-images.githubusercontent.com/98569017/217688736-09199751-0e3d-4c43-8114-11694ddbb948.png" width=50%>
