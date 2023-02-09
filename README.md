@@ -97,7 +97,7 @@ Additional steps for configuring a colorscheme based Gtk theme:
 And that's it, this will make all your Gtk applications follow the colorscheme extracted from your wallpaper.
 
   <br></br>
-If you had previously installed this rice, I'd advice you reinstall and then probably delete the following folders and its contents:
+If you had previously installed this rice, I'd advice you reinstall and then probably delete the following folders and their contents:
 - `~/Documents/Sounds`
 - `~/Pictures/Important`
 - `~/Pictures/Wallpapers`
