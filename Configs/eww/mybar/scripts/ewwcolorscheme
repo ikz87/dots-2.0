@@ -4,6 +4,9 @@ source "${HOME}/.cache/wal/colors.sh"
 
 eww="eww -c ${HOME}/.config/eww/mybar"
 
+$eww update left_bg=$color0
+$eww update center_bg=$color0
+$eww update right_bg=$color0
 $eww update color0=$color0
 $eww update color1=$color1
 $eww update color2=$color2
@@ -21,8 +24,6 @@ $eww update color13=$color13
 $eww update color14=$color14
 $eww update color15=$color15
 
-$eww update left_bg=$color0
-$eww update center_bg=$color0
-$eww update right_bg=$color0
-
 cp ~/.cache/wal/colors.scss ~/.config/eww/mybar/colors.scss
+
+$eww reload
