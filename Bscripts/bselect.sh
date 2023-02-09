@@ -1,10 +1,31 @@
 #!/bin/sh
 
-# Select window using cardinal directions in bspwm.
-# This is an edited version of "bsmove.sh"
-# credits can be found on that file.
-# You can call this script like this:
-# bselect.sh [north|east|south|west]
+# A more fluid way of moving windows with BSPWM, which is meant to be
+# implemented in SXHKD.  If there is a window in the given direction,
+# swap places with it.  Else if there is a receptacle move to it
+# ("consume" its place).  Otherwise create a receptacle in the given
+# direction by splitting the entire viewport (circumvents the tiling
+# scheme while respecting the current split ratio configuration).  In
+# the latter scenario, inputting the direction twice will thus move the
+# focused window out of its current layout and into the receptacle.
+#
+# Part of my dotfiles: https://gitlab.com/protesilaos/dotfiles
+#
+# Copyright (c) 2019 Protesilaos Stavrou <info@protesilaos.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 
 [ "$#" -eq 1 ] || { echo "Pass only one argument: north,east,south,west"; exit 1; }
 

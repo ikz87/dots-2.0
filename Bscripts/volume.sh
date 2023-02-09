@@ -1,10 +1,9 @@
 #!/bin/sh
 
-# Changes de volume of the default sink
-# Warning: This script offers no cap for volume, 
-# I'd advice to not go above 150% (which is the standard cap).
 # You can call this script like this:
-# volume.sh [up|down|mute]
+# $./volume.sh up
+# $./volume.sh down
+# $./volume.sh mute
 
 function get_volume {
 	pactl get-sink-volume @DEFAULT_SINK@ | awk '{printf $5}' | cut -d '%' -f 1
@@ -16,23 +15,24 @@ function is_mute {
 
 function send_notification {
 
+    DIR=`dirname "$0"`
     overvolume=`get_volume`
     [[ $overvolume -gt 100 ]] && volume=100 || volume=$overvolume
     #Set correct icon
     if [[ $volume -eq 0 ]]
         then
-            icon_name="${HOME}/.config/rice_assets/Icons/nov.png"
+            icon_name="${HOME}/Pictures/Important/icons/other/nov.png"
         elif [[ $volume -lt 35 ]] 
         then
-            icon_name="${HOME}/.config/rice_assets/Icons/vlow.png"
+            icon_name="${HOME}/Pictures/Important/icons/other/vlow.png"
         elif [[ $volume -lt 70 ]]
         then 
-            icon_name="${HOME}/.config/rice_assets/Icons/vmid.png"
+            icon_name="${HOME}/Pictures/Important/icons/other/vmid.png"
         elif [[ $volume -lt 100 ]]
         then 
-            icon_name="${HOME}/.config/rice_assets/Icons/vhigh.png"
+            icon_name="${HOME}/Pictures/Important/icons/other/vhigh.png"
         else
-            icon_name="${HOME}/.config/rice_assets/Icons/vthigh.png"
+            icon_name="${HOME}/Pictures/Important/icons/other/vthigh.png"
     fi;
     #bn=$(( (volume + 5) / 5 ))
                                                                                                                                                                     
@@ -65,9 +65,10 @@ case $1 in
     	# Toggle mute
 	    pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null
 	    if [[ `is_mute` == "Mute: yes" ]] ; then
-    		dunstify -i "${HOME}/.config/rice_assets/Icons/mute.png" --replace=555 -u normal "Volume: Mute" -t 1000 -u critical
+    	DIR=`dirname "$0"`
+    	dunstify -i "${HOME}/Pictures/Important/icons/other/mute.png" --replace=555 -u normal "Volume: Mute" -t 1000 -u critical
 	    else
-	    	send_notification
+	    send_notification
 	    fi
 	;;
 esac

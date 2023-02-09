@@ -1,10 +1,5 @@
 #!/bin/sh
 
-# Switches workspaces an sends a pop up message
-# using pop_report.
-# You can call this script like this:
-# wpm_reports.sh [move|select|jump] [(+1|-1)|(+1|-1)|(0|1|2|3|4)]
-
 # Glyphs
 selected="●"
 wp="○" 
@@ -54,7 +49,6 @@ function report_move {
     done            
 }
 
-# Old hacky pseudo animations
 function bsmove {
 #    # Exit if last move hasn't finished
 #	`cat /tmp/moving` && exit 1

@@ -1,18 +1,14 @@
 #!/bin/sh 
 
-# Sets a wallpaper, updates the colorscheme and restarts bspwm.
-# you can call this script like this:
-# wallset <path_to_wallpaper>
-
-[[ $# -ne 1 ]] && echo "Usage: wallset <path_to_wallpaper>" && exit
+[[ $# -ne 1 ]] && echo "Usage: wallset [path_to_wallpaper]" && exit 1
 
 wallpaper=$1
 
 if ! [[ -f $wallpaper ]] || ! identify $wallpaper > /dev/null 2> /dev/null; 
     then
         echo "$wallpaper is not a valid image"
-        exit
+        exit 2
 fi;
-cp $wallpaper ~/.config/rice_assets/Images/wallpaper.png
+cp $wallpaper ~/Pictures/Important/wallpaper.png
 
 bspc wm -r

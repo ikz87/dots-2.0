@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Script that tells you the 16 colors of your 
-# current wpgtk colorscheme
-
 source "${HOME}/.cache/wal/colors.sh"
 
 echo color0 is $color0

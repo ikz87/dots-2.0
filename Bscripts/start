@@ -1,0 +1,86 @@
+function print_centered { # function by trinitycoder
+     [[ $# == 0 ]] && return 1
+
+     declare -i TERM_COLS="$(tput cols)"
+     declare -i str_len="${#1}"
+     [[ $str_len -ge $TERM_COLS ]] && {
+          echo "$1";
+          return 0;
+     }
+     declare -i filler_len="$(( (TERM_COLS - str_len) / 2 ))"
+     [[ $# -ge 2 ]] && ch="${2:0:1}" || ch=" "
+     filler=""
+     for (( i = 0; i < filler_len; i++ )); do
+          filler="${filler}${ch}"
+     done
+     printf "%s%s%s" "$filler" "$1" "$filler"
+     [[ $(( (TERM_COLS - str_len) % 2 )) -ne 0 ]] && printf "%s" "${ch}"
+}
+
+print_option() {
+    tput reset
+    lines=`tput lines`
+    cols=`tput cols`
+    side_padding=`python3 -c "print(round($cols/2)-1)"`
+    top_padding=`python3 -c "print(round($lines/2)-4)"` 
+    tput cup $top_padding 0
+    print_centered "Select an interface to run Xorg with:"
+    tput cup $(( 2 + top_padding )) 0
+    print_centered "$1"
+    tput cup $(( top_padding + 3 )) $side_padding
+}
+
+function read_key()
+{
+	if read -rsn1 input
+	then
+		if [ "$input" = $'\x1B' ] # ESC ASCII code (https://dirask.com/posts/ASCII-Table-pJ3Y0j)
+		then
+			read -rsn1 -t 0.1 input
+			if [ "$input" = "[" ]
+			then
+				read -rsn1 -t 0.1 input
+				case "$input"
+				in
+					A) echo '[Arrow Up]'   ;;
+					B) echo '[Arrow Down]' ;;
+					C) echo '[Arrow Right]' ;;
+					D) echo '[Arrow Left]' ;;
+				esac
+			fi
+			read -rsn5 -t 0.1   # flushing stdin
+		else
+			echo "$input"
+		fi
+		return 0
+	fi
+	return 1
+}
+
+
+interfaces=( bspwm plasma awesome leftwm gnome dwm none ) 
+clear
+index=0
+GUI=""
+while [[ $GUI == "" ]];
+do 
+    ninterfaces=${#interfaces[@]}
+    print_option "${interfaces[$index]}"
+    option=`read_key`
+    case $option in
+        "[Arrow Left]" )
+            index=$(( index - 1 ))
+            ;;
+        "[Arrow Right]" )
+            index=$(( index + 1 ))
+            ;;
+        "" )
+            export GUI="${interfaces[$index]}"
+            ;;
+    esac
+    index=$(( index % ninterfaces ))
+done;
+clear
+print_padding 5
+echo "Starting Xorg with session $GUI..."
+startx 

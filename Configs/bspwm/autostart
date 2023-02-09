@@ -1,30 +1,52 @@
-#!/bin/sh
-
-# Source colorscheme
-source "${HOME}/.cache/wal/colors.sh"
+#!/usr/bin/env bash
 
 # Compositor
 picom &
 
-# Set cursor
+# Lockscreen
+pgrep sxhkd || suspend.sh
+
+# Splashscreen
+killall unclutter
+unclutter --start-hidden &
+pgrep sxhkd || mplayer ~/Videos/Renders/splash.mp4 
+
+
+# cursor
 xsetroot -cursor_name left_ptr &
 
-# Set Wallpaper
-hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png
+# apply colorscheme to spotify
+~/.bscripts/wal_spotify.sh > /dev/null&
 
-# Cache lockscreen 
-mantablockscreen -i ~/.config/rice_assets/Images/lockscreen.png&
+# Source the colorscheme
+echo alpha="ff" >> "${HOME}/.cache/wal/colors.sh"
+source "${HOME}/.cache/wal/colors.sh"
+
+# Walllpaper
+hsetroot -cover ~/Pictures/Important/wallpaper.png
+
+# Cache lockscreen
+mantablockscreen -i ~/Pictures/Important/lockscreen.png&
 
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
+# mapcheck
+killall osucheck.sh
+killall inotifywait
+~/.osuthings/osucheck.sh "/home/$USER/.osutmp"&
+~/.osuthings/osucheck.sh "/home/$USER/Downloads"&
+
+# Tablet drivers
+otd&
+
 # Statusbar
-killall workspaces    
-killall media_info    
-killall layout  
-eww -c ~/.config/eww/mybar kill 
-eww -c ~/.config/eww/mybar daemon    
-~/.config/eww/mybar/scripts/ewwcolorscheme  
+killall workspaces
+killall media_info
+killall layout
+eww -c ~/.config/eww/mybar kill
+eww -c ~/.config/eww/mybar daemon
+~/.config/eww/mybar/scripts/ewwcolorscheme
 eww -c ~/.config/eww/mybar open bar_right
 eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
@@ -43,15 +65,26 @@ flameshot&
     
 # daemons
 killall dunst
-dunst > /dev/null 2> /dev/null &
+dunst > /dev/null 2>&1 &
 thunar --daemon&
-killall sxhkd
-sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
 
-# Window event monitoring
+
+# Master layout
+for (( i=1; i < 10; i++));do
+    #bsp-layout set tiled $i
+    true
+done
+
+# Window events
 killall winevents.sh
 ~/.bscripts/winevents.sh&
 
-# Autosuspend
-killall idle.sh
-pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
+# idle
+pkill -9 idle.sh
+~/.bscripts/idle.sh > /dev/null 2> /dev/null&
+
+# borders
+#.bscripts/borders.sh&
+
+# Launch keybinding daemon
+sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&

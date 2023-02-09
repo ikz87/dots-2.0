@@ -1,15 +1,16 @@
 #!/bin/sh
-
-# This script is used to run rofi with different configurations
-# based on desired usage.
-# You can call this script like this:
-# rofi.sh [drun|config|window|outopts]
-
+source "${HOME}/.cache/wal/colors.sh" 
 roficonf="$HOME/.config/rofi/"
+color0=\#$alpha`echo $color0 | sed 's/\#//g'`
 
 case $1 in 
     drun)    
         rofi -config $roficonf/drun.rasi -show drun
+    ;;
+    config)
+        program=`cat ~/.config/programlist | \
+        rofi -config $roficonf/drun.rasi -dmenu -no-show-icons  -p "Configure"`
+        kitty config $program 
     ;;
     window)
         (rofi -config $roficonf/window.rasi -show windowcd; xdotool keyup Tab)&
@@ -17,8 +18,7 @@ case $1 in
         xdotool keydown Tab
     ;;
     outopts)
-        option=`printf "\n\n\n⏻\n" | \
-        rofi -config $roficonf/logout.rasi -dmenu -p "Select logout" -font "Caskaydia Cove Nerd Font 18"`
+        option=`printf "\n\n\n⏻\n" | rofi -config $roficonf/logout.rasi -dmenu -p "Select logout" -font "Caskaydia Cove Nerd Font 18"`
         case $option in
             "")
                 bspc wm -r

@@ -1,181 +1,156 @@
-# Config file for simple X hotkey daemon
+#Config file for simple X hotkey daemon
 
-# "Pausing" sxhkd
+#"Pausing" sxhkd
 super+Return
-	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 --replace=420 -u critical&
+	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace=420 -u critical&
 
 
-# Apps and programs
+#Apps and programs
 
-# Open web browser
+#Open Browser
 control+alt+w  
 	brave
 
-# Open terminal
+#Open Terminal
 control+alt+t  
 	kitty
 
-# Open file manager	
+#Open file manager
 control+alt+f 
 	thunar 
+
+
+#rofi things
+
+#Launch apps
+super+shift+e 
+	~/.bscripts/rofi.sh drun
+	
+#Window switcher
+alt+Tab
+	~/.bscripts/rofi.sh window
+
+#Configuration launcher
+super+shift+s
+	~/.bscripts/rofi.sh config
+
+super+shift+q
+    ~/.bscripts/rofi.sh outopts
+
+#Screenshot
+Print  
+	~/.bscripts/ss.sh
+
+#Delayed screenshot
+super+Print
+    sleep 3 && ~/.bscripts/ss.sh
+
+
+#Color picker
+control+alt+c
+	echo -n `colorpicker --short --one-shot` | xclip -selection "clipboard"
+
+
+#Lock (and suspend) the pc
+super+o
+	~/.bscripts/lock.sh
+
+#Osu stuff
+control+alt+o 
+    xsetwacom --set "HUION 420 Pen stylus" Area 1000 0 5000 3700
+shift+control+o 
+	xsetwacom set "HUION 420 Pen stylus" ResetArea
+#super+x 
+#	~/.osuthings/surfdirect.sh raise
+#super+z
+#	~/.osuthings/surfdirect.sh lower
+
+#Window and workspace shenanigans
+super+c 
+	wmctrl -c `xdotool getwindowfocus` -i 
+alt+F4 
+	xdotool getwindowfocus windowclose
+control+period
+	~/.bscripts/wpm_reports.sh move +1
+control+comma
+	~/.bscripts/wpm_reports.sh move -1
+control+alt+period
+	~/.bscripts/wpm_reports.sh select +1
+control+alt+comma
+	~/.bscripts/wpm_reports.sh select -1
+super+{1,2,3,4,5}
+	~/.bscripts/wpm_reports.sh jump {0,1,2,3,4}
+
+#Weeb
+control+alt+b
+	~/.mangaread
+
+#Display stuff
+super+control+p 
+	xrandr --output HDMI1 --auto --left-of eDP1
+super+shift+p
+	xrandr -s 0
 
 # Toggle picom
 super+p
     [[ `pgrep -c picom` -eq 0 ]] && picom || killall picom
     
-
-# Rofi things
-
-# Launch apps
-super+shift+e 
-	~/.bscripts/rofi.sh drun	
-
-# Window switcher
-alt+Tab
-	~/.bscripts/rofi.sh window
-
-# Logout options
-super+shift+q
-    ~/.bscripts/rofi.sh outopts
-
-
-# Utilities
-
-# Screenshot
-Print  
-	~/.bscripts/ss.sh
-
-# Delayed screenshot
-super+Print
-    sleep 3 && ~/.bscripts/ss.sh
-
-# Color picker
-control+alt+c
-	echo -n	`colorpicker --short --one-shot` | xclip -selection "clipboard"
-
-# Suspend the pc
-super+o
-	~/.bscripts/lock.sh
-
-# Change keyboard layout
+#Keyboard layouts
 super+space 
-    ~/.config/eww/mybar/scripts/kb_layouts cycle es us
+	  ~/.config/eww/mybar/scripts/kb_layouts cycle es us
 
-
-# Window and workspace shenanigans
-
-# Close window
-super+c 
-	wmctrl -c `xdotool getwindowfocus` -i 
-
-# Kill window (for frozen apps)
-alt+F4 
-	xdotool getwindowfocus windowclose
-
-# Move window to the next workspace
-control+period
-	~/.bscripts/wpm_reports.sh move +1
-
-# Move window to the previous workspace
-control+comma
-	~/.bscripts/wpm_reports.sh move -1
-
-# Go to the next workspace
-control+alt+period
-	~/.bscripts/wpm_reports.sh select +1
-
-# Go to previous workspace
-control+alt+comma
-	~/.bscripts/wpm_reports.sh select -1
-
-# Go to workspaces 1 through 5
-super+{1,2,3,4,5}
-	~/.bscripts/wpm_reports.sh jump {0,1,2,3,4}
-
-
-# Media controls
-
-# Raise the volume by 5%
+#Media controls
 alt+period
-	~/.bscripts/volume.sh up
-XF86AudioRaiseVolume 
-    ~/.bscripts/volume.sh up
-
-# Lower the volume by 5%
+	~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
 alt+comma 
-	~/.bscripts/volume.sh down
-XF86AudioLowerVolume 
-    ~/.bscripts/volume.sh down
-
-# Toggle mute
+	~/.bscripts/volume.sh down #&& pkill -RTMIN+2 i3blocks 
 alt+m
 	~/.bscripts/volume.sh mute 
+XF86AudioRaiseVolume 
+    ~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
+XF86AudioLowerVolume 
+    ~/.bscripts/volume.sh down #&& pkill -RTMIN+2 i3blocks 
 XF86AudioMute
-    ~/.bscripts/volume.sh mute  
-
-# Raise the brightness by 5%
+    ~/.bscripts/volume.sh mute #&& pkill -RTMIN+2 i3blocks 
 alt+shift+period
 	~/.bscripts/brightness.sh up
-
-# Lower the brightness by 5%
 alt+shift+comma
 	~/.bscripts/brightness.sh down
-
-# Raise the monitor gamma by 5%
 control+alt+x
-    ~/.bscripts/gamma.sh up
-
-# Lower the monitor gamma by 5%
+	~/.bscripts/gamma.sh up
 control+alt+z
-    ~/.bscripts/gamma.sh down
-
-# Toggle media playing
+	~/.bscripts/gamma.sh down
 Pause
 	playerctl play-pause
 XF86AudioPlay
 	playerctl play-pause
 XF86AudioPause 
 	playerctl play-pause
-
-# Go to next media content
 XF86AudioNext
 	playerctl next
-
-# Go to previous media content
 XF86AudioPrev
 	playerctl previous
-
 	
-# EWW stuff
-
-# Toggle bar 
+#Open-close eww
 control+alt+e
 	~/.bscripts/toggle_bar.sh auto
-
-# Music popup
 super+m 
 	~/.config/eww/mybar/scripts/popup_music
 
-
-# BSPWM stuff
-
-# Cycle layouts (tiled and monocle)
+#bspwm stuff
 super+s
-    bspc desktop focused --layout next
-
-# Toggle floating windows
+    bspc desktop focused --layout next && polybar-msg hook layout 1 
+XF86PowerOff
+    ~/.bscripts/rofi.sh outopts
+#super+shift+r
+#	bspc wm -r
 control+alt+space
 	~/.bscripts/toggle_winprops.sh float
-
-# Move windows in workspace
 super+shift+{k,j,h,l}
-	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& ~/.bscripts/bsmove.sh {north,south,west,east}
-
-# Select windows in workspace
+	play -v 0.4 ~/Documents/Sounds/tile.wav& ~/.bscripts/bsmove.sh {north,south,west,east}
 super+{k,j,h,l}
 	~/.bscripts/bselect.sh {north,south,west,east}
 	
-# Grow windows
 super+alt+l
 	bspc node focused -z right 15 0
 super+alt+h
@@ -184,8 +159,13 @@ super+alt+k
 	bspc node focused -z top 0 -15
 super+alt+j
 	bspc node focused -z bottom 0 15
+super+{d,a}
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node @/ -C {forward,backward}
+alt+{d,a}
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
+super+e
+	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor --balance 
 
-# Shrink windows
 control+shift+h
 	bspc node focused -z right -15 0
 control+shift+l
@@ -194,35 +174,34 @@ control+shift+j
 	bspc node focused -z top 0 15
 control+shift+k
 	bspc node focused -z bottom 0 -15
-
-# Rotate tree
-super+{d,a}
-	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node @/ -C {forward,backward}
-
-# Rotate windows 
-alt+{d,a}
-	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
-
-# Equalize window sizes
-super+e
-	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node first_ancestor --balance 
-
-# Toggle fullscreen
+	
 super+f
 	~/.bscripts/toggle_winprops.sh fullscreen
-
-# Raise window gap by 5px
 super+KP_Add
 	bspc config window_gap $(( 5 + `bspc config window_gap` ))
-
-# Lower window gap by 5px
 super+KP_Subtract
 	bspc config window_gap $(( -5 + `bspc config window_gap` ))
 
-# Preselect direction for next window
 control+alt+{k,j,h,l}
 	bspc node --presel-dir \~{north,south,west,east}
 
-# Cycle through window layers (above, normal or below)
 control+alt+a
 	~/.bscripts/toggle_winprops.sh layer
+
+#Mouse clicks
+#q
+#	xdotool click --clearmodifiers 1
+
+#Autistic sounds
+alt+e
+	play ~/Documents/Sounds/sound1.wav
+
+alt+p
+	play -v 0.4 ~/Documents/Sounds/sound2.wav
+alt+r
+	play ~/Documents/Sounds/sound1.wav
+
+alt+space
+	play ~/Documents/Sounds/sound3.wav
+
+
