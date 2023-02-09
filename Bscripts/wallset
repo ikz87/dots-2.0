@@ -9,6 +9,6 @@ if ! [[ -f $wallpaper ]] || ! identify $wallpaper > /dev/null 2> /dev/null;
         echo "$wallpaper is not a valid image"
         exit 2
 fi;
-cp $wallpaper ~/Pictures/Important/wallpaper.png
+cp $wallpaper ~/.config/rice_assets/Images/wallpaper.png
 
 bspc wm -r

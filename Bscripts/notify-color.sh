@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-notify-send "Colorscheme updated!" -i ~/Pictures/Important/icons/colors.png
+notify-send "Colorscheme updated!" -i ~/.config/rice_assets/Icons/colors.png

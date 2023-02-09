@@ -23,10 +23,10 @@ echo alpha="ff" >> "${HOME}/.cache/wal/colors.sh"
 source "${HOME}/.cache/wal/colors.sh"
 
 # Walllpaper
-hsetroot -cover ~/Pictures/Important/wallpaper.png
+hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png
 
 # Cache lockscreen
-mantablockscreen -i ~/Pictures/Important/lockscreen.png&
+mantablockscreen -i ~/.config/rice_assets/Images/lockscreen.png&
 
 # Authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&

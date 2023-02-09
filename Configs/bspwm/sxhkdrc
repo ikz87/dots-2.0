@@ -2,7 +2,7 @@
 
 #"Pausing" sxhkd
 super+Return
-	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/Pictures/Important/icons/other/stop.png -t 1500 --replace=420 -u critical&
+	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 --replace=420 -u critical&
 
 
 #Apps and programs
@@ -147,7 +147,7 @@ XF86PowerOff
 control+alt+space
 	~/.bscripts/toggle_winprops.sh float
 super+shift+{k,j,h,l}
-	play -v 0.4 ~/Documents/Sounds/tile.wav& ~/.bscripts/bsmove.sh {north,south,west,east}
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& ~/.bscripts/bsmove.sh {north,south,west,east}
 super+{k,j,h,l}
 	~/.bscripts/bselect.sh {north,south,west,east}
 	
@@ -160,11 +160,11 @@ super+alt+k
 super+alt+j
 	bspc node focused -z bottom 0 15
 super+{d,a}
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node @/ -C {forward,backward}
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node @/ -C {forward,backward}
 alt+{d,a}
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node first_ancestor -R {90,270}
 super+e
-	play -v 0.4 ~/Documents/Sounds/tile.wav& bspc node first_ancestor --balance 
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node first_ancestor --balance 
 
 control+shift+h
 	bspc node focused -z right -15 0
@@ -194,14 +194,14 @@ control+alt+a
 
 #Autistic sounds
 alt+e
-	play ~/Documents/Sounds/sound1.wav
+	play ~/.config/rice_assets/Sounds/sound1.wav
 
 alt+p
-	play -v 0.4 ~/Documents/Sounds/sound2.wav
+	play -v 0.4 ~/.config/rice_assets/Sounds/sound2.wav
 alt+r
-	play ~/Documents/Sounds/sound1.wav
+	play ~/.config/rice_assets/Sounds/sound1.wav
 
 alt+space
-	play ~/Documents/Sounds/sound3.wav
+	play ~/.config/rice_assets/Sounds/sound3.wav
 
 

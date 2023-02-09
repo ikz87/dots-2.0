@@ -21,18 +21,18 @@ function send_notification {
     #Set correct icon
     if [[ $volume -eq 0 ]]
         then
-            icon_name="${HOME}/Pictures/Important/icons/other/nov.png"
+            icon_name="${HOME}/.config/rice_assets/Icons/nov.png"
         elif [[ $volume -lt 35 ]] 
         then
-            icon_name="${HOME}/Pictures/Important/icons/other/vlow.png"
+            icon_name="${HOME}/.config/rice_assets/Icons/vlow.png"
         elif [[ $volume -lt 70 ]]
         then 
-            icon_name="${HOME}/Pictures/Important/icons/other/vmid.png"
+            icon_name="${HOME}/.config/rice_assets/Icons/vmid.png"
         elif [[ $volume -lt 100 ]]
         then 
-            icon_name="${HOME}/Pictures/Important/icons/other/vhigh.png"
+            icon_name="${HOME}/.config/rice_assets/Icons/vhigh.png"
         else
-            icon_name="${HOME}/Pictures/Important/icons/other/vthigh.png"
+            icon_name="${HOME}/.config/rice_assets/Icons/vthigh.png"
     fi;
     #bn=$(( (volume + 5) / 5 ))
                                                                                                                                                                     
@@ -66,7 +66,7 @@ case $1 in
 	    pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null
 	    if [[ `is_mute` == "Mute: yes" ]] ; then
     	DIR=`dirname "$0"`
-    	dunstify -i "${HOME}/Pictures/Important/icons/other/mute.png" --replace=555 -u normal "Volume: Mute" -t 1000 -u critical
+    	dunstify -i "${HOME}/.config/rice_assets/Icons/mute.png" --replace=555 -u normal "Volume: Mute" -t 1000 -u critical
 	    else
 	    send_notification
 	    fi

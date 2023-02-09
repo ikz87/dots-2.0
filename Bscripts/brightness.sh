@@ -12,7 +12,7 @@ function get_brightness {
 function send_notification {
     DIR=`dirname "$0"`
     brightness=`get_brightness`
-    icon_name="${HOME}/Pictures/Important/icons/other/b.png"
+    icon_name="${HOME}/.config/rice_assets/Icons/b.png"
 
     # Send the notification
     dunstify "Brightness: $brightness%" -h int:value:$brightness -i "$icon_name" -t 1000 --replace=555 -u critical
