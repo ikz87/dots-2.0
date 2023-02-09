@@ -38,7 +38,7 @@ create_backup()
     cp -r ~/.config/picom.conf $old/Configs/ 2> /dev/null
     cp -r ~/.config/rice_assets/ $old/Assets/ 2> /dev/null
     cp -r ~/.local/share/fonts/ "$script_dir"/Fonts 2> /dev/null
-    cp -r ~/.local/share/fonts/ $old/Fonts 2> /dev/null
+    cp -r ~/.local/share/fonts/* $old/Fonts 2> /dev/null
     cp -r ~/.cache/wal/ $old/Walcache/ 2> /dev/null
     echo "done, you can find your backups at $old/"
 }
