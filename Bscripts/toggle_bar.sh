@@ -2,7 +2,7 @@
 
 # Toggles bar on and off.
 # You can call this script like this:
-# toggle_bar auto|on|off
+# toggle_bar auto|on|off|test_fullscreen
 
 auto(){
     (xdotool search --onlyvisible --class eww- || \
@@ -32,6 +32,15 @@ off(){
         xdotool windowunmap --sync $wid
     done;
     xdotool search --class Polybar windowunmap 
+}
+ 
+test_fullscreen(){
+    if [[ -z "$(bspc query -N -n focused.fullscreen)" ]]
+    then
+        on
+    else
+        off
+    fi;
 }
 
 $1
