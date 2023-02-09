@@ -192,16 +192,4 @@ control+alt+a
 #q
 #	xdotool click --clearmodifiers 1
 
-#Autistic sounds
-alt+e
-	play ~/.config/rice_assets/Sounds/sound1.wav
-
-alt+p
-	play -v 0.4 ~/.config/rice_assets/Sounds/sound2.wav
-alt+r
-	play ~/.config/rice_assets/Sounds/sound1.wav
-
-alt+space
-	play ~/.config/rice_assets/Sounds/sound3.wav
-
 
