@@ -26,20 +26,20 @@ create_backup()
     echo "done"
 
     echo -n "Backing up current configs... "
-    cp -r ~/.config/rice_assets $old/Assets/ 2> /dev/null
-    cp -r ~/.bscripts/ $old/Bscripts/ 2> /dev/null
-    cp -r ~/.config/bspwm $old/Configs/ 2> /dev/null
-    cp -r ~/.config/eww $old/Configs/ 2> /dev/null
-    cp -r ~/.config/dunst $old/Configs/ 2> /dev/null
-    cp -r ~/.config/kitty $old/Configs/ 2> /dev/null
-    cp -r ~/.config/rofi $old/Configs/ 2> /dev/null
-    cp -r ~/.config/pop_report $old/Configs/ 2> /dev/null
-    cp -r ~/.config/wpg $old/Configs/ 2> /dev/null
-    cp -r ~/.config/picom.conf $old/Configs/ 2> /dev/null
-    cp -r ~/.config/rice_assets/ $old/Assets/ 2> /dev/null
-    cp -r ~/.local/share/fonts/ "$script_dir"/Fonts 2> /dev/null
-    cp -r ~/.local/share/fonts/* $old/Fonts 2> /dev/null
-    cp -r ~/.cache/wal/ $old/Walcache/ 2> /dev/null
+    mv ~/.config/rice_assets $old/Assets/ 2> /dev/null
+    mv ~/.bscripts/ $old/Bscripts/ 2> /dev/null
+    mv ~/.config/bspwm $old/Configs/ 2> /dev/null
+    mv ~/.config/eww $old/Configs/ 2> /dev/null
+    mv ~/.config/dunst $old/Configs/ 2> /dev/null
+    mv ~/.config/kitty $old/Configs/ 2> /dev/null
+    mv ~/.config/rofi $old/Configs/ 2> /dev/null
+    mv ~/.config/pop_report $old/Configs/ 2> /dev/null
+    mv ~/.config/wpg $old/Configs/ 2> /dev/null
+    mv ~/.config/picom.conf $old/Configs/ 2> /dev/null
+    mv ~/.config/rice_assets/ $old/Assets/ 2> /dev/null
+    mv ~/.local/share/fonts/* "$script_dir"/Fonts 2> /dev/null
+    mv ~/.local/share/fonts/ $old/Fonts 2> /dev/null
+    mv ~/.cache/wal/ $old/Walcache/ 2> /dev/null
     echo "done, you can find your backups at $old/"
 }
 
