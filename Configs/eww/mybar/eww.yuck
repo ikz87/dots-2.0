@@ -25,6 +25,9 @@
 
 ;; VARS
 (defvar eww "eww -c $HOME/.config/eww/mybar")
+(defvar left_class "win_normal")
+(defvar center_class "win_normal")
+(defvar right_class "win_normal")
 (defvar music_reveal false)
 (defvar cover "images/music.png")
 (defvar cpu_reveal false)
@@ -271,16 +274,15 @@
 ;; Left widgets
 (defwidget widgets_left []
   (eventbox
-    :onhover "${eww} update left_bg=\"${color8}\""
-    :onhoverlost "${eww} update left_bg=\"${color0}\""
+    :onhover "${eww} update left_class=\"win_hovered\""
+    :onhoverlost "${eww} update left_class=\"win_normal\""
     (box 
       :spacing 0
       :space-evenly "false"
-      :class "bars"
+      :class left_class
       :orientation "h"
       :valign "fill"
       :hexpand "false"
-      :style "background-color: ${left_bg}"
       (workspaces)
       (layout)
       (music))))
@@ -447,17 +449,16 @@
 ;; Central widgets
 (defwidget widgets_center []
   (eventbox
-    :onhover "${eww} update center_bg=\"${color8}\""
-    :onhoverlost "${eww} update center_bg=\"${color0}\""
+    :onhover "${eww} update center_class=\"win_hovered\""
+    :onhoverlost "${eww} update center_class=\"win_normal\""
     (box 
       :spacing 0
       :space-evenly "true"
-      :class "bars"
+      :class center_class
       :orientation "h"
       :valign "fill"
       :halign "fill"
       :hexpand "false"
-      :style "background-color: ${center_bg}"
       (box
         :space-evenly "true"
         :orientation "h"
@@ -757,16 +758,15 @@
 ;; Right widgets
 (defwidget widgets_right []
   (eventbox
-    :onhover "${eww} update right_bg=\"${color8}\""
-    :onhoverlost "${eww} update right_bg=\"${color0}\""
+    :onhover "${eww} update right_class=\"win_hovered\""
+    :onhoverlost "${eww} update right_class=\"win_normal\""
     (box 
       :spacing 0
       :space-evenly "false"
-      :class "bars"
+      :class right_class
       :orientation "h"
       :valign "fill"
       :hexpand "false"
-      :style "background-color: ${right_bg}"
       (power_button)
       (time)
       (keyboard)

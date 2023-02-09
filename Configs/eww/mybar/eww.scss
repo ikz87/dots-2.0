@@ -9,13 +9,19 @@
     font-weight: 800;
 }
 
-.bars {
+.win_normal {
     background-image: url("images/background.png");
     background-color: $color0;
     border: 5px solid $color9;
     border-radius: 40px;
 }
 
+.win_hovered {
+    background-image: url("images/background.png");
+    background-color: $color8;
+    border: 5px solid $color9;
+    border-radius: 40px;
+}
 
 // LEFT MODULES
 // Workspaces
