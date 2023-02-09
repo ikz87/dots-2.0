@@ -29,6 +29,7 @@ eww -c ~/.config/eww/mybar open bar_right
 eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
 killall polybar
+xdotool search --sync --onlyvisible --class "eww-bar_right" 
 polybar -c ~/.config/eww/mybar/polybar_tray.ini tray& > /dev/null
 
 #Applets
