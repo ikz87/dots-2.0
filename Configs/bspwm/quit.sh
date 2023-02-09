@@ -11,3 +11,4 @@ killall workspaces
 killall layout
 killall winevents.sh
 bspc quit
+killall bspwm
