@@ -3,6 +3,9 @@
 # Compositor
 picom &
 
+# cursor
+xsetroot -cursor_name left_ptr &
+
 # Lockscreen
 pgrep sxhkd || lock.sh
 
@@ -10,10 +13,6 @@ pgrep sxhkd || lock.sh
 killall unclutter
 unclutter --start-hidden &
 pgrep sxhkd || mplayer ~/Videos/Renders/splash.mp4 
-
-
-# cursor
-xsetroot -cursor_name left_ptr &
 
 # apply colorscheme to spotify
 ~/.bscripts/wal_spotify.sh > /dev/null&
