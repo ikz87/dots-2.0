@@ -1,7 +1,7 @@
 configuration {
   display-windowcd: "Focus window";
   window-format: "{t}";
-  font: "Nova Mono Bold 12";
+  font: "Iosevka Bold 12";
   modi: "window,run,drun";
   show-icons: true;
   location: 1;

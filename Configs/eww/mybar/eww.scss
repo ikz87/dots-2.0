@@ -5,7 +5,7 @@
 
 *{
     all: unset;
-    font-family: "Nova Mono";
+    font-family: "Iosevka";
     font-weight: 800;
 }
 
@@ -39,6 +39,7 @@
 // Layout
 .layout {
     all: unset;
+    font-family: "Nova Mono";
     color: $color15;
     font-size: 25;
     margin: -6 0 -6 10;
@@ -78,7 +79,7 @@
     //font-family: "Meiryo";
     font-size: 15px;
     color: $color15;
-    margin-top: -100px;
+    margin-top: -96px;
     margin-bottom: -70px;
     margin-right: -1000px;
     margin-left: -1000px;
@@ -98,7 +99,7 @@
 }
 .media_buttons {
     font-size: 20px;
-    margin-bottom: 2px;
+    margin-top: -2px;
     min-height: 22px;
 }
 .playpause_popup {
@@ -223,7 +224,7 @@
 }
 .time_box {
     margin-top: -10px;
-    margin-bottom: -10px;
+    margin-bottom: -12px;
 }
 .time {
     color: $color15;
@@ -234,7 +235,7 @@
 .date {
     color: $color15;
     font-size: 25px;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 .kb_box {
     color: $color15;

@@ -1,7 +1,7 @@
 configuration {
   display-drun: "Run app";
   drun-display-format: "{name}";
-  font: "Nova Mono Bold 12";
+  font: "Iosevka Bold 12";
   modi: "window,run,drun";
   show-icons: true;
   location: 2;

@@ -95,7 +95,10 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec start 
 else
   # Add image
-  icat --place 24x24@1x1 ~/.pfp.png
+  #icat --place 24x24@1x1 ~/.pfp.png
+  echo ""
+  chafa ~/.pfp.png -s 24x24 --polite true
+  tput cup 0 0
   # Bash greeter
   macchina -o host -o kernel -o packages -o terminal -o uptime
   printf "${NC}おかえりなさい、 kz87-さま。\n"
