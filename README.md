@@ -5,13 +5,12 @@
 Dotfiles for this [post](https://www.reddit.com/r/unixporn/comments/wosl44/bspwm_decided_to_finally_learn_how_to_use_eww/).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/98569017/188286072-d91b2027-7fc7-4a65-a45b-223d378afca0.png" width=30% height=30%>
-  <img src="https://user-images.githubusercontent.com/98569017/188286092-9131b97a-aa50-4fe8-9179-3cda440c1abc.png" width=30% height=30%>
-  <img src="https://user-images.githubusercontent.com/98569017/188286460-d450f8b0-545d-4612-9a8b-99dafe223ed5.png" width=30% height=30%>
+  <img src="https://user-images.githubusercontent.com/98569017/219496787-6d14d6a3-77ed-4f01-a8e3-433e3e80c0ab.png" width=49%>
+  <img src="https://user-images.githubusercontent.com/98569017/219498744-971e60ad-af74-427b-be08-1623c4e3bb2d.png" width=49%>
 </p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/98569017/188286589-7b0fea41-b8f9-42f8-b376-175a13ef8fd7.gif" 
+<img src="https://user-images.githubusercontent.com/98569017/219504476-708ef653-1a1b-40de-ba00-3bdbf7b30c0f.gif" width=100%> 
 </p>
 
 I started using eww as a bar so I wrote everything from scratch and took the opportunity to be more organized.
@@ -82,7 +81,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 Please let me know if any packages are still missing.
 
 ## Installing
-Install process functions a little different since I refactored the whole repo (see this [PR](https://github.com/ikz87/dots-2.0/pull/34)), but it still includes a handy script that automates most things.
+Install process functions a little different since I refactored the whole repo, but it still includes a handy script that automates most things.
 
 Run install.sh:
 ``` 
@@ -93,11 +92,11 @@ chmod +x install.sh
 Additional steps for configuring a colorscheme based Gtk theme:
 1. Run `lxappearance`
 2. Select "FlatColor" in the widgets section 
-<img src="https://user-images.githubusercontent.com/98569017/217688736-09199751-0e3d-4c43-8114-11694ddbb948.png" width=50%>
+<img src="https://user-images.githubusercontent.com/98569017/217688736-09199751-0e3d-4c43-8114-11694ddbb948.png" width=80%>
 And that's it, this will make all your Gtk applications follow the colorscheme extracted from your wallpaper.
 
   <br></br>
-If you had previously installed this rice, I'd advice you reinstall and then probably delete the following folders and their contents:
+If you had previously installed this rice before the [refactor PR merge](https://github.com/ikz87/dots-2.0/pull/34), I'd advice you reinstall and then probably delete the following folders and their contents:
 - `~/Documents/Sounds`
 - `~/Pictures/Important`
 - `~/Pictures/Wallpapers`
