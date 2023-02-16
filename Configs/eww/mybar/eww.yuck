@@ -388,44 +388,59 @@
           :hexpand "false"
           :valign "end"
           :halign "start"
-          (label
-            :class "media_title"
-            :halign "center"
-            :markup title_parsed
-            :limit-width 15
-            :wrap "true"
-            :show_truncated "true")
-          (revealer
-            :reveal music_reveal
-            :transition "slideup"
-            :duration "350ms"
-            (box 
-              :orientation "h"
-              :halign "center"
-              :space-evenly "false"
-              :class "media_buttons"
-              :space-evenly "false"
-              (eventbox 
-                :cursor "pointer"
-                (button 
-                  :class "prev_button"
-                  :onclick "scripts/media_control --prev" 
-                  :tooltip "Previous"
-                  ""))
-              (eventbox 
-                :cursor "pointer"
-                (button 
-                  :class "toggle_button"
-                  :onclick "scripts/media_control --toggle" 
-                  :tooltip "Play/Pause"
-                  "${media_status}"))
-              (eventbox
-                :cursor "pointer"
-                (button 
-                  :class "next_button"
-                  :onclick "scripts/media_control --next" 
-                  :tooltip "Next"
-                  ""))))
+          (box
+            :orientation "v"
+            :space-evenly "false"
+            :vexpand "true"
+            :hexpand "true"
+            :valign "end"
+            :halign "fill"
+            (revealer
+              :reveal "${!music_reveal}"
+              :transition "slidedown"
+              :duration "350ms"
+              (box
+                :orientation "v"
+                :valign "fill"
+                :halign "fill"
+              (label
+                :class "media_title"
+                :halign "center"
+                :markup title_parsed
+                :limit-width 15
+                :wrap "true"
+                :show_truncated "true")))
+            (revealer
+              :reveal music_reveal
+              :transition "slideup"
+              :duration "350ms"
+              (box 
+                :orientation "h"
+                :halign "center"
+                :space-evenly "false"
+                :class "media_buttons"
+                :space-evenly "false"
+                (eventbox 
+                  :cursor "pointer"
+                  (button 
+                    :class "prev_button"
+                    :onclick "scripts/media_control --prev" 
+                    :tooltip "Previous"
+                    ""))
+                (eventbox 
+                  :cursor "pointer"
+                  (button 
+                    :class "toggle_button"
+                    :onclick "scripts/media_control --toggle" 
+                    :tooltip "Play/Pause"
+                    "${media_status}"))
+                (eventbox
+                  :cursor "pointer"
+                  (button 
+                    :class "next_button"
+                    :onclick "scripts/media_control --next" 
+                    :tooltip "Next"
+                    "")))))
           (box 
             :space-evenly "false"
             :class media_bar_class

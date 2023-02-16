@@ -5,7 +5,7 @@
 
 *{
     all: unset;
-    font-family: "Nova Mono";
+    font-family: "Iosevka Curly";
     font-weight: 800;
 }
 
@@ -39,6 +39,7 @@
 // Layout
 .layout {
     all: unset;
+    font-family: "Nova Mono";
     color: $color15;
     font-size: 25;
     margin: -6 0 -6 10;
@@ -76,22 +77,18 @@
 }
 .media_title {
     //font-family: "Meiryo";
-    font-size: 15px;
+    font-size: 16px;
     color: $color15;
-    margin-top: -100px;
-    margin-bottom: -70px;
+    margin-bottom: 2px;
     margin-right: -1000px;
     margin-left: -1000px;
 }
 .media_title_popup {
-    font-size: 18px;
-    margin: 0 15 -30 10;
-    margin-right: -1000px;
-    margin-left: -1000px;
+    font-size: 22px;
     color: $color15;
 }
 .media_artist_popup {
-    font-size: 14px;
+    font-size: 15px;
     margin: 0 15 0 10;
     color: $color12;
 //    background-color: #31225a;
@@ -99,7 +96,6 @@
 .media_buttons {
     font-size: 20px;
     margin-bottom: 2px;
-    min-height: 22px;
 }
 .playpause_popup {
     font-size: 30px;
@@ -187,7 +183,7 @@
     margin-left: 15px;
 }
 .center_labels {
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: -3px;
     margin-top: 1px;
     color: $color15;
@@ -223,39 +219,39 @@
 }
 .time_box {
     margin-top: -10px;
-    margin-bottom: -10px;
+    margin-bottom: -12px;
 }
 .time {
     color: $color15;
-    font-size: 25px;
+    font-size: 30px;
     margin-bottom: -20px;
     margin-top: -20px;
 }
 .date {
     color: $color15;
-    font-size: 25px;
+    font-size: 30px;
     margin-top: 8px;
 }
 .kb_box {
     color: $color15;
-    font-size: 15px;
-    margin-left: 2px;
+    font-size: 16px;
+    margin-left: 1px;
     margin-right: 10px;
 }
 .kb_button_active {
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: -3px;
     margin-top: -3px;
     color: rgba($color15, 1);
 }
 .kb_button_inactive {
-    font-size: 15px;
+    font-size: 16px;
     margin-top: -3px;
     margin-bottom: -3px;
     color: rgba($color15, 0.4);
 }
 .cal {
-    font-size: 16px;
+    font-size: 18px;
     background-color: $color0;
     background-image: url("images/background.png");
     color: $color15;
