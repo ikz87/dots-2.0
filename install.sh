@@ -37,7 +37,7 @@ create_backup()
     mv ~/.config/wpg $old/Configs/ 2> /dev/null
     mv ~/.config/picom.conf $old/Configs/ 2> /dev/null
     mv ~/.config/rice_assets/ $old/Assets/ 2> /dev/null
-    mv ~/.local/share/fonts/ "$script_dir"/Fonts 2> /dev/null
+    cp ~/.local/share/fonts/ "$script_dir"/Fonts 2> /dev/null
     mv ~/.local/share/fonts/ $old/Fonts 2> /dev/null
     mv ~/.cache/wal/ $old/Walcache/ 2> /dev/null
     echo "done, you can find your backups at $old/"
