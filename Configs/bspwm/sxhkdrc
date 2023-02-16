@@ -41,10 +41,15 @@ super+shift+q
 Print  
 	~/.bscripts/ss.sh
 
+control+alt+p
+	~/.bscripts/ss.sh
+
 #Delayed screenshot
 super+Print
     sleep 3 && ~/.bscripts/ss.sh
 
+control+shift+p
+	sleep 3 && ~/.bscripts/ss.sh
 
 #Color picker
 control+alt+c

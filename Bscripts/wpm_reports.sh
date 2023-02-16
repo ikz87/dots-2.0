@@ -144,6 +144,7 @@ case $1 in
         pop_report -m "$message" -d $duration -t $topic -o\
             "font-size: $font_size\px"\
             "padding: 0"\
+            "padding-bottom: 5px"\
             "padding-right: 40px"\
             "padding-left: 40px"&
         bselect
@@ -156,6 +157,7 @@ case $1 in
         pop_report -m "$message" -d $duration -t $topic -o\
             "font-size: $font_size\px"\
             "padding: 0"\
+            "padding-bottom: 5px"\
             "padding-right: 43px"\
             "padding-left: 40px"&
         bselect
@@ -170,6 +172,7 @@ case $1 in
         pop_report -m "$message" -d $duration -t $topic -o\
             "font-size: $font_size\px"\
             "padding: 0"\
+            "padding-bottom: 5px"\
             "padding-right: 40px"\
             "padding-left: 40px"&
         bsmove  
