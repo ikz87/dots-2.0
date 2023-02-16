@@ -118,7 +118,7 @@
 
     ### Text ###
 
-    font = Iosevka Curly Bold 12
+    font = Iosevka Curly Bold 13
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.

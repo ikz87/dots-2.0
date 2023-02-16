@@ -2,6 +2,6 @@ border: 5px solid {color9};
 border-radius: 20px;
 background-color: {color0};
 color: {color15};
-font-family: Hack;
+font-family: Nova Mono;
 font-size: 70px;
 padding: 20px;
