@@ -94,13 +94,15 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec start 
 else
+  clear
   # Add image
   #icat --place 24x24@1x1 ~/.pfp.png
-  echo ""
-  chafa ~/.pfp.png -s 24x24 --polite true
-  tput cup 0 0
-  # Bash greeter
   macchina -o host -o kernel -o packages -o terminal -o uptime
+  tput cup 0 0
+  chafa ~/.pfp.png -s 24x24 --polite false
+  echo ""
+  # Bash greeter
   printf "${NC}おかえりなさい、 kz87-さま。\n"
+  :
 fi
 
