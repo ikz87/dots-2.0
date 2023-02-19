@@ -417,9 +417,8 @@
               (box 
                 :orientation "h"
                 :halign "center"
-                :space-evenly "false"
                 :class "media_buttons"
-                :space-evenly "false"
+                :space-evenly false
                 (eventbox 
                   :cursor "pointer"
                   (button 

@@ -76,7 +76,7 @@ while true; do
 		# Update status button
 		if [[ $status == "Playing" ]]
 		then
-			$eww update media_status=""
+			$eww update media_status=""
 		else
 			$eww update media_status=""
 		fi;

@@ -1,7 +1,7 @@
 // EWW.SCSS 
 // GLOBALS
 
-@import "../../../.cache/wal/colors.scss";
+@import "colors.scss";
 
 *{
     all: unset;
@@ -97,6 +97,13 @@
     font-size: 20px;
     margin-bottom: 2px;
 }
+
+.prev_button, .toggle_button, .next_button {
+    font-size: 20px;
+    min-width: 30px;
+//    background-color: #ffffff;
+}
+
 .playpause_popup {
     font-size: 30px;
     margin-right: 10px;
