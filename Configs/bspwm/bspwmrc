@@ -34,7 +34,6 @@ bspc rule --add Polybar                     layer=below manage=off
 bspc rule --add kozu                        state=floating rectangle=1910x200+0+870 layer=above
 bspc rule --add cava                        state=floating manage=off rectangle=1920x1050+0+50 border=off sticky=on locked=on layer=below focus=off 
 bspc rule --add Nautilus                    state=floating
-bspc rule --add mpv                         state=floating border=off
 bspc rule --add Rofi 						manage=off
 bspc rule --add Pavucontrol					state=floating rectangle=610x610+650+235
 bspc rule --add Yad                         state=floating

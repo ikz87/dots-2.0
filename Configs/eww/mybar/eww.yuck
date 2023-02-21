@@ -59,12 +59,14 @@
 (defvar position 0) 
 (defvar us_class "kb_button_active") 
 (defvar es_class "kb_button_inactive") 
+(defvar cpu_percent "0.00") 
 
 (deflisten launch1 "scripts/workspaces")
 (deflisten launch2 "scripts/layout")
 (deflisten launch3 "scripts/media_info")
+(deflisten launch4 "scripts/cpu_info")
 
-(defpoll cpu_percent :interval "1s" "scripts/cpu_info")
+;;(defpoll cpu_percent :interval "1s" "scripts/cpu_info")
 (defpoll disk_all :interval "1s" "scripts/disk_info --all")
 (defpoll disk_used :interval "1s" "scripts/disk_info --used")
 (defpoll disk_free :interval "1s" "scripts/disk_info --free")
@@ -297,7 +299,7 @@
         :orientation "h"
         :spacing 5
         :space-evenly "false"
-        :class "${launch1}, ${launch2}, ${launch3}"
+        :class "${launch1}, ${launch2}, ${launch3}, ${launch4}"
         (eventbox
           :cursor "pointer"
           (button 

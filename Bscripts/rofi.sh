@@ -27,11 +27,11 @@ case $1 in
                 ~/.config/bspwm/quit.sh
             ;;
             "")
-                confirm=`printf "Confirm reboot" | rofi -config $roficonf/logout.rasi -dmenu -font "Nova Mono 15"`
+                confirm=`printf "Confirm reboot" | rofi -config $roficonf/logout.rasi -dmenu -font "Iosevka Curly 16"`
             [[ $confirm == "Confirm reboot" ]] && reboot
             ;;
             "⏻")
-                confirm=`printf "Confirm shut down" | rofi -config $roficonf/logout.rasi -dmenu -font "Nova Mono 15"`
+                confirm=`printf "Confirm shut down" | rofi -config $roficonf/logout.rasi -dmenu -font "Iosevka Curly 16"`
                 [[ $confirm == "Confirm shut down" ]] && shutdown now
             ;;
         esac

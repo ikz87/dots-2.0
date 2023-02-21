@@ -1,21 +1,11 @@
 #!/bin/sh
-cpu_usage=$(mpstat 1 1 | awk '/Average:/ {printf("%s\n", $(NF-9))}')
+eww="eww -c ${HOME}/.config/eww/mybar" 
 
-cpu_whole=`printf ${cpu_usage%.*}`
 
-if [[ $cpuwhole -ge 80 ]]
-then
-    true
-    #update var
-elif [[ $cpuwhole -ge 70 ]]
-then
-    true
-    #update var
-else
-    true
-    #update var
-fi;
-
-echo $cpu_usage
+mpstat 2 | while read line; 
+do
+    cpu_usage=`echo $line | awk '{printf $4}' 2> /dev/null` 
+    $eww update cpu_percent=$cpu_usage
+done;
 
 
