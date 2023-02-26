@@ -6,7 +6,7 @@ notify()
             if  [[ $lstate -ne 3 ]]
             then
                 echo 3 > /tmp/batstate 
-                pop_report -d 800 -m "<span>Charging</span><font size=\"-1\"> ﮣ</font>$icon" -t battery_charging -o "font-size: 70px" "font-family: CaskaydiaCoveNerdFont" "padding-right: 30px"
+                pop_report -d 800 -m "<span>Charging</span><font size=\"-1\"> ﮣ</font>$icon" -t battery_charging -o "font-size: 70px" "font-family: Iosevka Curly" "padding-right: 30px"
             fi;       
         ;;
         high)
