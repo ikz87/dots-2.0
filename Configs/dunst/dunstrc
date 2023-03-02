@@ -24,7 +24,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 480
+    width = 380
 
     # The maximum height of a single notification, excluding the frame.
     height = 1080
@@ -49,17 +49,22 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 20
+    progress_bar_height = 14
 
     # Set the frame width of the progress bar
-    progress_bar_frame_width = 5
+    progress_bar_frame_width = 0
 
     # Set the minimum width for the progress bar
-    progress_bar_min_width = 420
+    progress_bar_min_width = 380
 
     # Set the maximum width for the progress bar
-    progress_bar_max_width = 420
+    progress_bar_max_width = 380
 
+    # Corner radius for the progress bar. 0 disables rounded corners.
+    progress_bar_corner_radius = 7
+
+    # Corner radius for the icon image.
+    icon_corner_radius = 3
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -196,7 +201,7 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    # icon_theme = bold-colors-gray
+    # icon_theme = bold-colors-gray, Adwaita
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Adwaita, breeze"
 

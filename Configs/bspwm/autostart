@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
 # Compositor
+killall picom
+while pgrep picom > /dev/null; 
+do
+    # Wait for picom process to end
+    # Hacky, but apparently there's not a better way
+    # to do this
+    sleep 0.1
+done;
 picom &
 
 # cursor
