@@ -88,6 +88,7 @@ Run install.sh:
 chmod +x install.sh
 ./install.sh
 ```
+*Disclaimer: While this script does attempt to create a backup of all files that will be rewritten and asks what to do when a backup already exists, I do not take responsibility for any lost config files as consequence of running this script. You are strongly advised to read the insides of the script before running.*
 
 Additional steps for configuring a colorscheme based Gtk theme:
 1. Run `lxappearance`
