@@ -26,6 +26,8 @@ bspc config ignore_ewmh_struts			true
 bspc config top_padding					70
 
 bspc rule --add Blueman-manager             state=floating rectangle=610x610+650+235
+bspc rule --add love						border=off
+bspc rule --add Pqiv						border=off
 bspc rule --add Surf                        layer=above border=off rectangle=415x1100+0+0 
 bspc rule --add Surfdload                   state=floating layer=above border=off rectangle=415x75+0+0 sticky=on focus=off
 bspc rule --add Brave-browser               rectangle=1130x800+395+140

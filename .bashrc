@@ -32,6 +32,7 @@ fi
 # Add custom directories to PATH
 export PATH=$PATH:/home/kz87/.ricing
 export PATH=$PATH:/home/kz87/.bscripts
+export PATH=$PATH:/home/kz87/.scripts
 export PATH=$PATH:/home/kz87/.osuthings
 export PATH=$PATH:/home/kz87/
 export PATH=$PATH:/home/kz87/.is
@@ -90,7 +91,7 @@ PROMPT_COMMAND=set_prompt
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
 
-# Auto login
+# Run Xorg
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec start 
 else

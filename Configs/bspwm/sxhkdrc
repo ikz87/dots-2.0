@@ -98,7 +98,7 @@ super+shift+p
 
 # Toggle picom
 super+p
-    [[ `pgrep -c picom` -eq 0 ]] && picom || killall picom
+    [[ `pgrep -c picom` -eq 0 ]] && picom --animations || killall picom
     
 #Keyboard layouts
 super+space 

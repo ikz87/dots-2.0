@@ -15,6 +15,10 @@ export TERMINAL=/usr/bin/kitty
 # Colorscheme
 source "${HOME}/.cache/wal/colors.sh"
 
+# Editor
+export EDITOR='nvim'
+export SUDO_EDITOR='nvim'
+
 xset -b
 xset b 0 0 0
 setterm -blenghth 0

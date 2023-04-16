@@ -9,13 +9,16 @@ do
     # to do this
     sleep 0.1
 done;
-picom &
+picom --animations &
 
 # cursor
 xsetroot -cursor_name left_ptr &
 
 # Lockscreen
 pgrep sxhkd || lock.sh
+
+# Walllpaper
+(sleep 2 && hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png)& 
 
 # Splashscreen
 killall unclutter
@@ -28,9 +31,6 @@ pgrep sxhkd || mplayer ~/Videos/Renders/splash.mp4
 # Source the colorscheme
 echo alpha="ff" >> "${HOME}/.cache/wal/colors.sh"
 source "${HOME}/.cache/wal/colors.sh"
-
-# Walllpaper
-hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png
 
 # Cache lockscreen
 mantablockscreen -i ~/.config/rice_assets/Images/lockscreen.png&

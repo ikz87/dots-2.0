@@ -317,7 +317,7 @@
     foreground = "{color15}"
     highlight = "{color14}"
     timeout = 5
-    fullscreen = delay
+    fullscreen = pushback
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -326,7 +326,7 @@
     foreground = "{color15}"
     highlight = "{color14}"
     timeout = 5
-    fullscreen = delay
+    fullscreen = pushback
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
