@@ -19,7 +19,7 @@ For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to wallpa
 
 The profile picture shown in the lockscreen can be changed by putting the desired image in `~/.face`.
 
-Please note that this rice was made for a single 1080p monitor setup, If you have anything different than that you'll have to tweak some things on your own.
+Please note that this rice was made for a single 1920x1080 monitor setup, If you have anything different than that you'll have to tweak some things on your own.
 
 ~~The picom fork used for animations might be a little unstable~~ (shouldn't be anymore). For any graphical glitches you may be having, toggle it off and on again with `super+p`.
 
@@ -92,6 +92,16 @@ chmod +x install.sh
 ./install.sh
 ```
 *Disclaimer: While this script does attempt to create a backup of all files that will be rewritten and asks what to do when a backup already exists, I do not take responsibility for any lost config files as consequence of running this script. You are strongly advised to read the insides of the script before running.*
+
+The install script should do the following changes to your files:
+1. Move every file/folder that will be changed to `~/.rice-old` in an attempt to create a backup
+2. Link every folder/file in `Configs` to `~/.config/<folder/file>`
+3. Link `Assets` to `~/.config/rice_assets`
+4. Link `Bscripts` to `~/.bscripts`
+5. Link `Walcache` to `~/.cache/wal`
+6. Copy every font at `~/.local/share/fonts/` to `Fonts`
+7. Link `Fonts` to `~/.local/share/fonts`
+8. Change permissions of all scripts in the repo to be executable
 
 Additional steps for configuring a colorscheme based Gtk theme:
 1. Run `lxappearance`
