@@ -52,89 +52,12 @@ function report_move {
 }
 
 function bsmove {
-#    # Exit if last move hasn't finished
-#	`cat /tmp/moving` && exit 1
-#	
-#	# Register move
-#	echo true > /tmp/moving
-#
-#	# Get current window state 
-#	for i in tiled pseudo_tiled floating fullscreen; 
-#	do
-#	     if [ -z "$(bspc query -N -n focused.$i)" ]
-#	    then
-#	        true
-#	    else
-#	        currstate=$i && break
-#	    fi;
-#    done
-#
-#	# Get window ID and geometry
-#    currwin=`xdotool getwindowfocus`
-#    geometry=`xwinfo -g $currwin`
-#    width=`echo $geometry | awk '{printf $1}'`
-#    height=`echo $geometry | awk '{printf $2}'`
-#    xpos=`echo $geometry | awk '{printf $3}'`
-#    ypos=`echo $geometry | awk '{printf $4}'`
-#    
-#    if [[ $currstate != "fullscreen" ]]
-#    then
-#        # Put window in floating mode
-#        bspc node focused -t floating; xdotool windowsize $currwin $width $height; xdotool windowmove $currwin $xpos $(( ypos + 100))
-#	
-#    fi;
-#	# Set it to be sticky
-#    bspc node focused -g sticky=on -l above;
-    # Move the window
 	bspc node -d ^$(( target + 1 )) --follow
-#	
-#	# Reset state and flag accordingly
-#	bspc node focused -t $currstate;
-#	bspc node focused -g sticky=off -l normal;
-#    xdotool windowmove $currwin $xpos $ypos
-#	
-#	echo false > /tmp/moving 
 }
 
 bselect()
 {
-    # Exit if last move hasn't finished    
-#    `cat /tmp/moving` && exit 1    
-#
-#    # Set it to be sticky    
     bspc desktop -f ^$(( target + 1 ))    
-#
-#    # Register move    
-#    echo true > /tmp/moving    
-#
-#    # Get current window state     
-#    for i in tiled pseudo_tiled floating fullscreen;     
-#    do  
-#        if [[ `bspc query -N -n focused.$i` == "" ]]    
-#        then    
-#            true
-#        else    
-#            currstate=$i && break    
-#        fi;    
-#    done
-#
-#    # Get window ID and geometry
-#    currwin=`xdotool getwindowfocus`
-#    geometry=`xwinfo -g $currwin`
-#    width=`echo $geometry | awk '{printf $1}'`
-#    height=`echo $geometry | awk '{printf $2}'`
-#    xpos=`echo $geometry | awk '{printf $3}'`
-#    ypos=`echo $geometry | awk '{printf $4}'`
-#    if [[ currstate != "fullscreen" ]] 
-#    then
-#        # Put window in floating mode    
-#        bspc node focused -t floating; xdotool windowsize $currwin $width $height; xdotool windowmove $currwin $xpos $(( ypos + 100 ))
-#        # Reset state and flag accordingly    
-#        xdotool windowmove $currwin $xpos $ypos
-#        bspc node focused -t $currstate 
-#    fi;
-#        
-#    echo false > /tmp/moving 
 }
 
 case $1 in
@@ -161,7 +84,6 @@ case $1 in
             "padding-right: 43px"\
             "padding-left: 40px"&
         bselect
-        #wmctrl -s $target    
         ;;
     move)
         currwin=`xdotool getwindowfocus`
