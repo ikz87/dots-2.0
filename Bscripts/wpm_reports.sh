@@ -52,7 +52,7 @@ function report_move {
 }
 
 function bsmove {
-	bspc node -d ^$(( target + 1 )) --follow
+	bspc node -d ^$(( target + 1 )) --follow || bselect
 }
 
 bselect()
