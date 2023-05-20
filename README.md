@@ -15,7 +15,7 @@ Dotfiles for this [post](https://www.reddit.com/r/unixporn/comments/wosl44/bspwm
 
 I started using eww as a bar so I wrote everything from scratch and took the opportunity to be more organized.
 
-For the wallpaper dependant colorschemes use: `.bscripts/wallset <path to wallpaper>`.
+For the wallpaper dependent colorschemes use: `.bscripts/wallset <path to wallpaper>`.
 
 The profile picture shown in the lockscreen can be changed by putting the desired image in `~/.face`.
 
