@@ -35,8 +35,8 @@ update_cover () {
 		curl "$newimg" -o "/tmp/currmedia.png" -s --max-time 5
 		if [[ $? -eq 0 ]]
 		then
-			#convert "/tmp/currmedia.png" -resize 130x130 "$imgdir/currmedia.png"
-			cp /tmp/currmedia.png "$imgdir/currmedia.png"
+			convert "/tmp/currmedia.png" -resize 130x130 "$imgdir/currmedia.png"
+			#cp /tmp/currmedia.png "$imgdir/currmedia.png"
 			echo "Image succesfully downloaded"
 		else
 			cp "$imgdir/music.png" "$imgdir/currmedia.png"

@@ -60,14 +60,17 @@
     background-color: $color9;
     margin-left: 14px;
     margin-right: 3px;
+    min-width: 40px;
+    min-height: 40px;
 }
 .media_art_popup {
     border: solid 5px $color14;
     border-radius: 5px;
 }
 .media_art_popup_box {
-    margin: 15 0 15 15;
+    min-width: 140px;
     min-height: 140px;
+    margin: 15 0 15 15;
 }
 .media_data { 
     margin-left: 10px;
