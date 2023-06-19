@@ -16,7 +16,7 @@ configuration {
 
 window {
   width: 415;
-  border: 5;
+  border: 6;
   border-radius: 0 0 20 20;
   border-color: @borders;
 }
@@ -32,7 +32,7 @@ element {
 element selected {
   text-color: @bg;
   background-color: @fg-alt;
-  border: 5;
+  border: 6;
   border-color: @borders-alt;
 }
 
