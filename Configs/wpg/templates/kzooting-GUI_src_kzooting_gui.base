@@ -1,0 +1,739 @@
+#!/bin/python3
+
+import kzserial
+import os
+import sys
+import serial
+import inotify.adapters
+import json
+import keycodes
+import collections
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt, pyqtSignal, QObject, QTimer
+
+PROGRAM_DIR = os.path.dirname(os.path.abspath(sys.argv[0]))
+
+
+class State(QObject):
+    """
+    Implementation of the Observer Pattern to control application
+    state in a centralized manner. Callbacks are always executed
+    on the main thread of the application using Qt Signals.
+    """
+
+    __update_signal = pyqtSignal(str, object)
+
+    def __init__(self):
+        super(QObject, self).__init__()
+        self.__dict__["listeners"] = collections.defaultdict(list)
+        self.__update_signal.connect(self.__execute_callbacks)
+
+    def attach_listener(self, property_name, callback):
+        self.listeners[property_name].append(callback)
+
+    def setter(self, property_name):
+        return lambda value: self.__setattr__(property_name, value)
+
+    def __execute_callbacks(self, property_name, value):
+        for callback in self.listeners.get(property_name, []):
+            callback(value)
+
+    def __setattr__(self, property_name, value):
+        self.__dict__[property_name] = value
+        self.__update_signal.emit(property_name, value)
+
+
+class Filler(QLabel):
+    """
+    Filler class only containing a label
+    To be removed when actual widgets are added
+    """
+
+    def __init__(self):
+        super(Filler, self).__init__()
+        self.setText("Some filler")
+
+
+class GeneralInfo(QWidget):
+    """
+    Top left quadrant of the window
+    """
+
+    def __init__(self, state):
+        super(GeneralInfo, self).__init__()
+
+        # Set up dropdown menu for ports
+        ports_menu = QComboBox()
+        ports_menu.textActivated.connect(state.setter("selected_port"))
+        self.was_empty = True
+
+        def update_ports(ports):
+            ports_menu.clear()
+            for port in ports:
+                ports_menu.addItem(port)
+            if self.was_empty and len(ports):
+                ports_menu.setCurrentText(ports[0])
+                state.selected_port = ports[0]
+                self.was_empty = False
+            elif len(ports) == 0:
+                self.was_empty = True
+
+        state.attach_listener("available_ports", update_ports)
+
+        # Set up info strings
+        info_strings = QLabel()
+        info_strings.setText(
+            "Internal temperature: 0.00°C\n" "Reports per second: 000 (0.00ms)\n"
+        )
+        info_strings.setFixedWidth(300)
+
+        state.attach_listener(
+            "info",
+            lambda info: info_strings.setText(
+                f"Internal temperature: {{info['temperature']:.1f}}°C\n"
+                f"Reports per second: {{1000/info['report_time']:.0f}} ({{info['report_time']:.2f}}ms)"
+            ),
+        )
+
+        # Populate grid
+        general_info_grid = QGridLayout()
+        general_info_grid.addWidget(ports_menu, 0, 0, 1, 2)
+        general_info_grid.addWidget(info_strings, 1, 0)
+        self.setLayout(general_info_grid)
+
+
+class GeneralConfigs(QWidget):
+    """
+    Bottom left quadrant of the window
+    """
+
+    def __init__(self, state):
+        super(GeneralConfigs, self).__init__()
+        self.state = state
+        state.out_configs["general"] = {{}}
+
+        # Add check boxes and input fields
+        rapid_trigger_rb = QRadioButton("Rapid trigger")
+        rapid_trigger_rb.setChecked(True)
+        fixed_actuation_rb = QRadioButton("Fixed actuation")
+
+        actuation_method_vbox = QVBoxLayout()
+        actuation_method_vbox.addWidget(rapid_trigger_rb)
+        actuation_method_vbox.addWidget(fixed_actuation_rb)
+        actuation_method_vbox.addStretch()
+
+        actuation_method = QGroupBox("Actuation method")
+        actuation_method.setLayout(actuation_method_vbox)
+
+        # Rapid trigger specific options
+        sensitivity = QDoubleSpinBox()
+        sensitivity.setSuffix("mm")
+        sensitivity.setDecimals(2)
+        sensitivity.setRange(0.1, 1)
+        sensitivity.setSingleStep(0.05)
+        sensitivity_label = QLabel()
+        sensitivity_label.setText("Sensitivity")
+        sensitivity_label.setBuddy(sensitivity)
+
+        top_deadzone = QDoubleSpinBox()
+        top_deadzone.setSuffix("mm")
+        top_deadzone.setDecimals(2)
+        top_deadzone.setRange(0.1, 1)
+        top_deadzone.setSingleStep(0.05)
+        top_deadzone_label = QLabel()
+        top_deadzone_label.setText("Top deadzone")
+        top_deadzone_label.setBuddy(top_deadzone)
+
+        bottom_deadzone = QDoubleSpinBox()
+        bottom_deadzone.setSuffix("mm")
+        bottom_deadzone.setDecimals(2)
+        bottom_deadzone.setRange(0.1, 1)
+        bottom_deadzone.setSingleStep(0.05)
+        bottom_deadzone_label = QLabel()
+        bottom_deadzone_label.setText("Bottom deadzone")
+        bottom_deadzone_label.setBuddy(bottom_deadzone)
+
+        rt_options_vbox = QVBoxLayout()
+        rt_options_vbox.addWidget(sensitivity_label)
+        rt_options_vbox.addWidget(sensitivity)
+        rt_options_vbox.addWidget(top_deadzone_label)
+        rt_options_vbox.addWidget(top_deadzone)
+        rt_options_vbox.addWidget(bottom_deadzone_label)
+        rt_options_vbox.addWidget(bottom_deadzone)
+        rt_options_vbox.addStretch()
+
+        rt_options = QGroupBox("Rapid trigger options")
+        rt_options.setLayout(rt_options_vbox)
+
+        # Fixed actuation scpecific options
+        actuation_point = QDoubleSpinBox()
+        actuation_point.setSuffix("mm")
+        actuation_point.setDecimals(2)
+        actuation_point.setRange(0.5, 3.5)
+        actuation_point.setSingleStep(0.05)
+        actuation_point_label = QLabel()
+        actuation_point_label.setText("Actuation point")
+        actuation_point_label.setBuddy(actuation_point)
+
+        actuation_reset = QDoubleSpinBox()
+        actuation_reset.setSuffix("mm")
+        actuation_reset.setDecimals(2)
+        actuation_reset.setRange(0.1, 0.3)
+        actuation_reset.setSingleStep(0.05)
+        actuation_reset_label = QLabel()
+        actuation_reset_label.setText("Actuation reset")
+        actuation_reset_label.setBuddy(actuation_reset)
+
+        fa_options_vbox = QVBoxLayout()
+        fa_options_vbox.addWidget(actuation_point_label)
+        fa_options_vbox.addWidget(actuation_point)
+        fa_options_vbox.addWidget(actuation_reset_label)
+        fa_options_vbox.addWidget(actuation_reset)
+
+        fa_options = QGroupBox("Fixed actuation options")
+        fa_options.setLayout(fa_options_vbox)
+        fa_options_vbox.addStretch()
+
+        # Populate grid
+        sub_options = QStackedWidget()
+        sub_options.addWidget(rt_options)
+        sub_options.addWidget(fa_options)
+
+        general_configs_grid = QGridLayout()
+        general_configs_grid.addWidget(actuation_method, 0, 0)
+        general_configs_grid.addWidget(sub_options, 1, 0)
+        self.setLayout(general_configs_grid)
+
+        def update_options_from_dict(configs):
+            sensitivity.setValue(configs["general"]["sensitivity"])
+            top_deadzone.setValue(configs["general"]["top_deadzone"])
+            bottom_deadzone.setValue(configs["general"]["bottom_deadzone"])
+            actuation_point.setValue(configs["general"]["actuation_point"])
+            actuation_reset.setValue(configs["general"]["actuation_reset"])
+
+            # Update group box that is shown
+            if configs["general"]["rapid_trigger"]:
+                rapid_trigger_rb.setChecked(True)
+                sub_options.setCurrentWidget(rt_options)
+            else:
+                fixed_actuation_rb.setChecked(True)
+                sub_options.setCurrentWidget(fa_options)
+
+        def update_dict_from_options():
+            state.out_configs["general"]["rapid_trigger"] = rapid_trigger_rb.isChecked()
+            state.out_configs["general"]["sensitivity"] = sensitivity.value()
+            state.out_configs["general"]["top_deadzone"] = top_deadzone.value()
+            state.out_configs["general"]["bottom_deadzone"] = bottom_deadzone.value()
+            state.out_configs["general"]["actuation_point"] = actuation_point.value()
+            state.out_configs["general"]["actuation_reset"] = actuation_reset.value()
+
+            # Update group box that is shown
+            if rapid_trigger_rb.isChecked():
+                sub_options.setCurrentWidget(rt_options)
+            else:
+                sub_options.setCurrentWidget(fa_options)
+
+        rapid_trigger_rb.toggled.connect(update_dict_from_options)
+        sensitivity.valueChanged.connect(update_dict_from_options)
+        top_deadzone.valueChanged.connect(update_dict_from_options)
+        bottom_deadzone.valueChanged.connect(update_dict_from_options)
+        actuation_point.valueChanged.connect(update_dict_from_options)
+        actuation_reset.valueChanged.connect(update_dict_from_options)
+        state.attach_listener("in_configs", update_options_from_dict)
+
+
+class RemapperComboBox(QComboBox):
+    """
+    The QComboBoxes shown in the remapper
+    selection
+    """
+
+    def __init__(self, keycode):
+        super(RemapperComboBox, self).__init__()
+
+        for key_string in keycodes.values:
+            self.addItem(key_string)
+        self.setCurrentText(keycodes.strings[keycode])
+        self.view().setMinimumWidth(170)
+        self.setStyleSheet("QComboBox{{width: 40px;}}")
+        # Alignment
+        # self.setEditable(True)
+        # self.lineEdit().setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        # self.lineEdit().setReadOnly(True)
+
+
+class RemapperHBox(QHBoxLayout):
+    """
+    The QHBoxLayout containing all keys
+    of an action
+    """
+
+    def __init__(self, j, state, remap_sl, box_keycodes):
+        super(RemapperHBox, self).__init__()
+
+        current_combo_boxes = box_keycodes[state.selected_key]
+        # Add label at the left
+        number_label = QLabel(f"{{j+1}}:")
+        number_label.setStyleSheet("background-color: {color8};")
+        self.addWidget(number_label)
+
+        def update_dict_from_options():
+            # Updates the out configs according to
+            # the RemapperComboBoxes
+            curr_key = int(state.selected_key[-1]) - 1
+
+            # Get vbox
+            curr_vbox = remap_sl.widget(curr_key).layout()
+
+            # Get actions count, that is:
+            # total items - stretch, buttons hbox (2)
+            actions_count = curr_vbox.count() - 2
+            for j in range(actions_count):
+                # Get hbox
+                curr_hbox = curr_vbox.itemAt(j).layout()
+
+                # Get the keycode count. That is:
+                # total items - label, stretch, buttons (4)
+                keycode_count = curr_hbox.count() - 4
+
+                # If there are less keycodes now, delete the old
+                # remaining ones from the dict
+                actions = state.out_configs[state.selected_key]["actions"][j]
+                actions_length = len(actions)
+                while keycode_count < actions_length:
+                    actions.pop(-1)
+
+                # Change the dict's keycodes
+                for k in range(keycode_count):
+                    curr_combo_box = curr_hbox.itemAt(k + 1).widget()
+                    curr_keycode = keycodes.values[curr_combo_box.currentText()]
+                    # If an index is already there, just change the
+                    # value
+                    if k < actions_length:
+                        actions[k] = curr_keycode
+                    # Else, append it
+                    else:
+                        actions.append(curr_keycode)
+
+                state.out_configs[state.selected_key]["actions"][j] = actions
+
+        # Add all combo boxes from the dict
+        for k in range(len(current_combo_boxes[j])):
+            new_remapper = RemapperComboBox(current_combo_boxes[j][k])
+            self.addWidget(new_remapper)
+            new_remapper.currentTextChanged.connect(update_dict_from_options)
+
+        self.addStretch()
+
+        def add_key():
+            # Get items
+            item_count = self.count()
+            add_button_item = self.takeAt(item_count - 1)
+            remove_button_item = self.takeAt(item_count - 2)
+            stretch_item = self.takeAt(item_count - 3)
+
+            # Remove buttons and stretch from layout
+            self.removeItem(add_button_item)
+            self.removeItem(remove_button_item)
+            self.removeItem(stretch_item)
+
+            # Add the new RemapperComboBox
+            new_remapper = RemapperComboBox(4)
+            self.addWidget(new_remapper)
+            new_remapper.currentTextChanged.connect(update_dict_from_options)
+
+            # Add buttons and stretch again
+            self.addItem(stretch_item)
+            self.addItem(add_button_item)
+            self.addItem(remove_button_item)
+
+            # Reflect the changes made in
+            # the box_keycodes dict
+            box_keycodes[state.selected_key][j].append(4)
+
+        def remove_key():
+            # Only remove if there is at least 2
+            # keys
+            item_count = self.count()
+            if item_count < 6:
+                return
+
+            # Remove the last key from the layout
+            last_key = self.takeAt(item_count - 4)
+            self.removeItem(last_key)
+            last_key_widget = last_key.widget()
+            last_key_widget.deleteLater()
+
+            # Reflect the changes made in
+            # the box_keycodes dict
+            box_keycodes[state.selected_key][j].pop(-1)
+            update_dict_from_options()
+
+        # Add buttons at the right
+        remove_button = QPushButton("-")
+        remove_button.clicked.connect(remove_key)
+        self.addWidget(remove_button)
+
+        add_button = QPushButton("+")
+        add_button.clicked.connect(add_key)
+        self.addWidget(add_button)
+
+
+class KeyConfigs(QWidget):
+    """
+    Top right quadrant of the window
+    """
+
+    def __init__(self, state):
+        super(KeyConfigs, self).__init__()
+        state.selected_key = "key_1"
+
+        # Set up dropdown menu for keys
+        keys_menu = QComboBox()
+        keys_menu.setStyleSheet("QComboBox {{margin-bottom: 15px;}}")
+
+        for i in range(9):
+            state.out_configs[f"key_{{i+1}}"] = {{}}
+            keys_menu.addItem(f"key_{{i+1}}")
+
+        # Remapper
+        box_keycodes = {{"key_1": [[4]]}}
+        remap_sl = QStackedWidget()
+        for i in range(9):
+            remap_gb = QGroupBox(f"Key_{{i+1}} actions:")
+            remap_gb.setStyleSheet("QGroupBox {{min-height: 250px;}}")
+            remap_gb.setLayout(QVBoxLayout())
+            remap_sl.addWidget(remap_gb)
+
+        # Populate grid
+        key_configs_grid = QGridLayout()
+        key_configs_grid.addWidget(keys_menu, 0, 0)
+        key_configs_grid.addWidget(remap_sl, 1, 0)
+        self.setLayout(key_configs_grid)
+
+        def update_keycodes(configs):
+            # This function wouldn't be here if
+            # the keycodes were the value held by
+            # "key_id" keys, but I chose to put them
+            # inside another key called "actions" in case
+            # I ever wanna add per key configurations
+            state.out_configs = configs
+            for i in range(9):
+                actions = configs[f"key_{{i+1}}"]["actions"]
+                box_keycodes[f"key_{{i+1}}"] = actions
+
+            update_options_from_key(int(state.selected_key[-1]) - 1)
+
+        def empty_layout(layout):
+            # Empties a layout recursively
+            while layout.count():
+                to_delete = layout.itemAt(0)
+                if to_delete is not None:
+                    child_layout = to_delete.layout()
+                    if child_layout is not None:
+                        empty_layout(child_layout)
+                    child_widget = to_delete.widget()
+                    if child_widget is not None:
+                        child_widget.deleteLater()
+                    layout.removeItem(to_delete)
+
+        def update_options_from_key(key_index):
+            key_string = f"key_{{key_index+1}}"
+            state.setter("selected_key")(key_string)
+            remap_sl.setCurrentIndex(key_index)
+            group_box = remap_sl.currentWidget()
+            actions_vbox = group_box.layout()
+            current_combo_boxes = box_keycodes[key_string]
+
+            # First delete all previous widgets
+            empty_layout(actions_vbox)
+
+            # Then populate the grid again
+            for j in range(len(current_combo_boxes)):
+                keys_hbox = RemapperHBox(j, state, remap_sl, box_keycodes)
+                actions_vbox.addLayout(keys_hbox)
+            actions_vbox.addStretch()
+
+            def add_action():
+                # Update box_keycodes dict
+                box_keycodes[state.selected_key].append([4])
+
+                # Get items
+                item_count = actions_vbox.count()
+                buttons_item = actions_vbox.takeAt(item_count - 1)
+                stretch_item = actions_vbox.takeAt(item_count - 2)
+
+                # Remove buttons from layout
+                actions_vbox.removeItem(buttons_item)
+                actions_vbox.removeItem(stretch_item)
+
+                # Add the new RemapperHBox
+                actions_vbox.addLayout(
+                    RemapperHBox(item_count - 2, state, remap_sl, box_keycodes)
+                )
+
+                # Add buttons and stretch again
+                actions_vbox.addItem(stretch_item)
+                actions_vbox.addItem(buttons_item)
+
+            def remove_action():
+                # Only remove if there are at least
+                # two actions
+                item_count = actions_vbox.count()
+                if item_count < 4:
+                    return
+
+                # Remove the last action from the layout
+                last_action = actions_vbox.takeAt(item_count - 3)
+                last_action_layout = last_action.layout()
+                empty_layout(last_action_layout)
+                actions_vbox.removeItem(last_action)
+
+                # Reflect the changes on the
+                # box_keycodes dict
+                box_keycodes[state.selected_key].pop(-1)
+
+            # Now add buttons
+            buttons_hbox = QHBoxLayout()
+            add_button = QPushButton("Add action")
+            add_button.clicked.connect(add_action)
+            remove_button = QPushButton("Remove action")
+            remove_button.clicked.connect(remove_action)
+            buttons_hbox.addWidget(remove_button)
+            buttons_hbox.addWidget(add_button)
+            actions_vbox.addLayout(buttons_hbox)
+
+        keys_menu.currentIndexChanged.connect(update_options_from_key)
+
+        state.attach_listener("in_configs", update_keycodes)
+
+
+class Visualizer(QWidget):
+    """
+    Bottom right quadrant of the window
+    """
+
+    def __init__(self, state):
+        super(Visualizer, self).__init__()
+
+        # Set up the progress bar
+        bar = QProgressBar()
+        bar.setTextVisible(False)
+        bar.setOrientation(Qt.Vertical)
+        bar.setMaximum(400)
+        bar.setMinimum(0)
+        bar.setInvertedAppearance(True)
+        bar_label = QLabel()
+        bar_label.setStyleSheet("font-size: 11px;")
+        bar_label.setText("0.0 mm")
+        bar_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        bar_label.setBuddy(bar)
+        bar_vbox = QVBoxLayout()
+        bar_vbox.addWidget(bar_label)
+        bar_vbox.addWidget(bar)
+
+        # Set up switch icon
+        # The switch is divided in 3 to create an
+        # up and down motion
+        switch_top = QPixmap(PROGRAM_DIR + "/../assets/switch_top.png").scaledToWidth(
+            100, Qt.SmoothTransformation
+        )
+        switch_top_label = QLabel()
+        switch_top_label.setPixmap(switch_top)
+
+        switch_mid = QPixmap(PROGRAM_DIR + "/../assets/switch_mid.png").scaledToWidth(
+            100, Qt.SmoothTransformation
+        )
+        switch_mid_label = QLabel()
+        switch_mid_label.setPixmap(switch_mid)
+        switch_mid_height = 25
+        switch_mid_label.setFixedHeight(switch_mid_height)
+
+        switch_bottom = QPixmap(
+            PROGRAM_DIR + "/../assets/switch_bottom.png"
+        ).scaledToWidth(100, Qt.SmoothTransformation)
+        switch_bottom_label = QLabel()
+        switch_bottom_label.setPixmap(switch_bottom)
+        switch_bottom_label.setStyleSheet("padding: 0 0 12 0")
+
+        switch_vbox = QVBoxLayout()
+        switch_vbox.addStretch()
+        switch_vbox.addWidget(switch_top_label)
+        switch_vbox.addWidget(switch_mid_label)
+        switch_vbox.addWidget(switch_bottom_label)
+
+        # Populate grid
+        hbox = QHBoxLayout()
+        hbox.addStretch()
+        hbox.addLayout(bar_vbox)
+        hbox.addLayout(switch_vbox)
+        self.setLayout(hbox)
+        hbox.addStretch()
+
+        def update_bar_contents(info):
+            distance = info[state.selected_key]["distance"]
+            bar.setValue(round(distance * 100))
+            bar_label.setText("{{:.1f}}".format(distance) + "mm")
+            switch_mid_label.setFixedHeight(
+                round(switch_mid_height - switch_mid_height * distance / 4)
+            )
+
+            # Update color
+            if info[state.selected_key]["state"]:
+                bar.setStyleSheet("QProgressBar::chunk{{background-color: {color10}}}")
+            else:
+                bar.setStyleSheet("QProgressBar::chunk{{background-color: #555555}}")
+
+        state.attach_listener("info", update_bar_contents)
+
+
+class MainWindow(QMainWindow):
+    """
+    Main aplication window
+    """
+
+    def __init__(self):
+        super(MainWindow, self).__init__()
+        state = State()
+        self.state = state
+        state.in_configs = {{}}
+        state.out_configs = {{}}
+
+        # Use local qss
+        self.setStyleSheet(open(PROGRAM_DIR + "/style.qss", "r").read())
+
+        # Add a grid
+        self.root_grid = QGridLayout()
+        self.root_window = QWidget()
+        self.root_window.setLayout(self.root_grid)
+        self.setCentralWidget(self.root_window)
+
+        # Create widgets
+        general_info = GeneralInfo(state)
+        general_configs = GeneralConfigs(state)
+        key_configs = KeyConfigs(state)
+        visualizer = Visualizer(state)
+
+        # Lower side
+        save_button = QPushButton("&Save", self)
+        save_button.setStyleSheet(
+            "QPushButton {{padding: 5 0 8 0; margin: 0 0 5 0;}}"
+            "QPushButton:pressed {{padding: 7 0 5 0;background-color: {color10};color: {color8};}}"
+        )
+        save_button.clicked.connect(self.send_configs_to_pico)
+        kz_icon = QPixmap(PROGRAM_DIR + "/../assets/kz_icon.jpeg").scaled(
+            32, 32, Qt.IgnoreAspectRatio, Qt.SmoothTransformation
+        )
+        kz_label = QLabel()
+        kz_label.setStyleSheet("border: 2px solid {color10};" "margin: 0 0 5 5;")
+        kz_label.setFixedWidth(41)
+        kz_label.setPixmap(kz_icon)
+
+        degen_icon = QPixmap(PROGRAM_DIR + "/../assets/degen_icon.png").scaled(
+            32, 32, Qt.IgnoreAspectRatio, Qt.SmoothTransformation
+        )
+        degen_label = QLabel()
+        degen_label.setStyleSheet("border: 2px solid {color10};" "margin: 0 5 5 0;")
+        degen_label.setFixedWidth(41)
+        degen_label.setPixmap(degen_icon)
+
+        lower_side = QHBoxLayout()
+        lower_side.addWidget(kz_label)
+        lower_side.addWidget(save_button)
+        lower_side.addWidget(degen_label)
+
+        # Left side
+        left_side = QVBoxLayout()
+        left_side.addWidget(general_info)
+        left_side.addWidget(general_configs)
+
+        # Right side
+        right_side = QVBoxLayout()
+        right_side.addWidget(key_configs)
+        right_side.addWidget(visualizer)
+
+        # Populate grid
+        self.root_grid.addLayout(left_side, 0, 0)
+        self.root_grid.addLayout(right_side, 0, 1)
+        self.root_grid.addLayout(lower_side, 2, 0, 1, 2)
+
+        # Watch for changes in ports directory
+        self.rpp = None
+
+        watcher = inotify.adapters.Inotify(block_duration_s=0.01)
+        watcher.add_watch("/dev/")
+
+        def watch_ports():
+            """
+            Watches for changes in /dev/tty and
+            updates ports accordingly
+            """
+            for event in watcher.event_gen(yield_nones=False, timeout_s=0.01):
+                (_, event_types, path, filename) = event
+                if "ttyA" in filename:
+                    if "IN_CLOSE_NOWRITE" in event_types or "IN_DELETE" in event_types:
+                        self.state.available_ports = kzserial.get_serial_ports()
+
+        state.attach_listener("selected_port", lambda port: self.update_open_port(port))
+
+        self.state.available_ports = kzserial.get_serial_ports()
+        timer1 = QTimer(self)
+        timer1.timeout.connect(watch_ports)
+        timer1.start(500)
+
+        timer2 = QTimer(self)
+        timer2.timeout.connect(self.get_info_from_pico)
+        timer2.start(16)
+
+    def send_configs_to_pico(self):
+        """
+        Sends a configs to the pico to be rewritten
+        """
+        try:
+            # Temp code until key configs are also updated
+            # configs_dict = self.state.in_configs
+            configs_dict = self.state.out_configs
+            configs_json = json.dumps(configs_dict)
+            self.rpp.write((configs_json + "\n").encode())
+        except:
+            pass
+
+    def update_open_port(self, port):
+        """
+        Opens a new port and closes the last one
+        """
+        try:
+            if self.rpp != None:
+                self.rpp.close()
+            self.rpp = serial.Serial(port, timeout=1)
+            response = kzserial.get_response_from_request(self.rpp, "configs_request")
+            self.state.in_configs = response
+        except (OSError, serial.SerialException, json.JSONDecodeError) as e:
+            self.rpp = None
+
+    def get_info_from_pico(self):
+        """
+        Updates general information
+        """
+        try:
+            if self.rpp != None:
+                response = kzserial.get_response_from_request(self.rpp, "info_request")
+                self.state.info = response
+        except (OSError, serial.SerialException, json.JSONDecodeError) as e:
+            pass
+
+    def closeEvent(self, a0: QCloseEvent):
+        return super().closeEvent(a0)
+
+
+def main():
+    app = QApplication(sys.argv)
+    main_window = MainWindow()
+    main_window.setWindowTitle("kzooting - GUI")
+    main_window.show()
+    sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()
