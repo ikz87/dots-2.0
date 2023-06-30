@@ -45,7 +45,7 @@ killall inotifywait
 ~/.osuthings/osucheck.sh "/home/$USER/Downloads"&
 
 # Tablet drivers
-otd&
+#otd&
 
 # Statusbar
 killall workspaces
