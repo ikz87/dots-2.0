@@ -1,6 +1,6 @@
 #!/bin/sh
 
-raw=`df -h / | grep /dev/`
+raw=`df -H / | grep /dev/`
 
 case $1 in
     "--used" )

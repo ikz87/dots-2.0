@@ -580,7 +580,7 @@
               :valign "start"
               (label
                 :class "center_labels"
-                :text "${disk_used}G/${disk_all}G"
+                :text "${disk_used}Gb/${disk_all}Gb"
                 :halign "center")
               (scale
                 :min 0
