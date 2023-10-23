@@ -1,17 +1,21 @@
 #!/bin/sh
 
+kill_and_wait () {
+    if [[ `pgrep -c "$1"` -gt 0 ]]
+    then
+        killall "$1"
+        while [[ `pgrep -c "$1"` -gt 0 ]];
+        do
+            sleep 0.1
+        done;
+    fi;
+}
+
 # Source colorscheme
 source "${HOME}/.cache/wal/colors.sh"
 
 # Compositor
-killall picom 
-while pgrep picom > /dev/null;
-do
-    # Wait for picom process to end
-    # Hacky, but apparently there isn't a better way
-    # to do this
-    sleep 0.1
-done;
+kill_and_wait picom
 picom &
 
 # Set cursor
@@ -27,40 +31,40 @@ mantablockscreen -i ~/.config/rice_assets/Images/lockscreen.png&
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
 # Statusbar
-killall workspaces    
-killall media_info    
-killall layout  
+kill_and_wait workspaces    
+kill_and_wait media_info    
+kill_and_wait layout  
 eww -c ~/.config/eww/mybar kill 
 eww -c ~/.config/eww/mybar daemon    
 ~/.config/eww/mybar/scripts/ewwcolorscheme  
 eww -c ~/.config/eww/mybar open bar_right
 eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
-killall polybar
+kill_and_wait polybar
 xdotool search --sync --onlyvisible --class "eww-bar_right" 
 polybar -c ~/.config/eww/mybar/polybar_tray.ini tray& > /dev/null
 
 #Applets
-killall blueman-applet
-killall pa-applet
-killall nm-applet
-killall flameshot
+kill_and_wait blueman-applet
+kill_and_wait pa-applet
+kill_and_wait nm-applet
+kill_and_wait flameshot
 blueman-applet&
 pa-applet --disable-key-grabbing --disable-notifications& 
 nm-applet&
 flameshot&
     
 # daemons
-killall dunst
+kill_and_wait dunst
 dunst > /dev/null 2> /dev/null &
 thunar --daemon&
-killall sxhkd
+kill_and_wait sxhkd
 sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&
 
 # Window event monitoring
-killall winevents.sh
+kill_and_wait winevents.sh
 ~/.bscripts/winevents.sh&
 
 # Autosuspend
-killall idle.sh
-pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
+kill_and_wait idle.sh
+~/.bscripts/idle.sh > /dev/null 2> /dev/null&
