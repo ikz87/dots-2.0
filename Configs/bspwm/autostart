@@ -16,7 +16,7 @@ source "${HOME}/.cache/wal/colors.sh"
 
 # Compositor
 kill_and_wait picom
-picom &
+picom --animations &
 
 # Set cursor
 xsetroot -cursor_name left_ptr &
@@ -41,7 +41,7 @@ eww -c ~/.config/eww/mybar open bar_right
 eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
 kill_and_wait polybar
-xdotool search --sync --onlyvisible --class "eww-bar_right" 
+xdotool search --sync --onlyvisible --name "Eww - bar_right" 
 polybar -c ~/.config/eww/mybar/polybar_tray.ini tray& > /dev/null
 
 #Applets
