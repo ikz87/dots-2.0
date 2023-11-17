@@ -23,7 +23,9 @@ pgrep sxhkd || lock.sh
 # Splashscreen
 killall unclutter
 unclutter --start-hidden &
-pgrep sxhkd || mplayer ~/Videos/Renders/splash.mp4 
+pgrep sxhkd || \
+    #mplayer ~/Videos/Renders/splash.mp4 
+    mpv --no-input-default-bindings --cursor-autohide=no --osc=no --fullscreen --on-all-workspaces ~/Videos/Renders/splash.mp4
 
 # apply colorscheme to spotify
 ~/.bscripts/wal_spotify.sh > /dev/null&

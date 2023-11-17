@@ -12,6 +12,9 @@ export PATH=$PATH:/home/kz87/.local/bin
 export PATH=$PATH:/home/kz87/.cargo/bin
 export TERMINAL=/usr/bin/kitty
 
+#Matlab fix
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Colorscheme
 source "${HOME}/.cache/wal/colors.sh"
 

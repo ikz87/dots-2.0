@@ -43,7 +43,8 @@ bspc rule --add Thunar 					    rectangle=650x500+635+290
 bspc rule --add flameshot                   state=floating border=off
 bspc rule --add MPlayer                     manage=off
 bspc rule --add ru-turikhay-tlauncher-bootstrap-Bootstrap state=floating
-bspc rule --add kzooting_gui state=floating
+bspc rule --add kzooting_gui				state=floating
+bspc rule --add osu_kzooting_gui			state=floating rectangle=290x234+1620+836
 
 
 # Colors

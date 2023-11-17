@@ -12,6 +12,7 @@ function get_brightness {
 function send_notification {
     DIR=`dirname "$0"`
     brightness=`get_brightness`
+    [[ $brightness == "0" ]] && brightness=0.1
     icon_name="${HOME}/.config/rice_assets/Icons/b.png"
 
     # Send the notification
@@ -35,7 +36,7 @@ case $1 in
         rem=$(( (brightness - 5) % 5 ))         
         inc=$(( 5 + rem ))                                    
         brightness=$(( brightness - inc ))    
-        [[ $brightness -eq 0 ]] && brightness=1    
+        [[ $brightness -eq 0 ]] && brightness=0.2
         light -S $brightness > /dev/null
 	    send_notification
 	;;

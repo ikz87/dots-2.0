@@ -193,10 +193,12 @@ control+alt+{k,j,h,l}
 control+alt+a
 	~/.bscripts/toggle_winprops.sh layer
 
+super+control+f
+	~/.bscripts/agnostic_fullscreen.sh
+
 #Mouse clicks
 #q
 #	xdotool click --clearmodifiers 1
+control+alt+m
+	xdotool mousedown 3
 
-# Temporary shit for micropython 
-control+alt+o
-	~/Code/rpp-osu-keypad/mpcp

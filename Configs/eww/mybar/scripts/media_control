@@ -40,6 +40,7 @@ seek () {
     if [[ $? -eq 0 ]]
     then
         playerctl --player=$player position $seekt 2> /dev/null
+		#notify-send "seek"
     fi;
 }
 
@@ -62,7 +63,8 @@ case $1 in
         toggle
         ;;
 	--seek )
-		[[ $3 == "true" ]] && seek $2
+		#notify-send "$3"
+		[[ "$3" == "true" ]] && seek $2
 		;;
 	--move )
 		move $2
