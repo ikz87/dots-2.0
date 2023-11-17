@@ -94,7 +94,7 @@ while true; do
 			done;
 
 			title_len=${#title}
-			if [[ $title_len -gt 21 ]] 
+			if [[ $title_len -gt 20 ]] 
 			then
 				echo "Started a text scroll job for title" 
 				scroll_text "$title" "$title_len" "title" &

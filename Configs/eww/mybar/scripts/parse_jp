@@ -35,7 +35,7 @@ def cjk_substrings(string):
     i += 1
 
 ogstring = str(sys.argv[1])
-if len(ogstring) > 21:
+if len(ogstring) > 20:
   ogstring += "        "
 
 scroll = int(sys.argv[2]) 
