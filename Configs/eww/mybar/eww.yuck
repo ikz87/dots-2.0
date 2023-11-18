@@ -389,7 +389,7 @@
           :space-evenly "false"
           :vexpand "false"
           :hexpand "false"
-          :valign "end"
+          :valign "start"
           :halign "start"
           (box
             :orientation "v"

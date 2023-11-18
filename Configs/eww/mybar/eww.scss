@@ -82,9 +82,10 @@
     //font-family: "Meiryo";
     font-size: 16px;
     color: $color15;
-    margin-bottom: 1px;
-    margin-right: -1000px;
-    margin-left: -1000px;
+    margin-bottom: -1px;
+    margin-right: -5000px;
+    margin-left: -5000px;
+    margin-top: 2px;
 }
 .media_title_popup {
     font-size: 22px;
@@ -104,6 +105,8 @@
 .prev_button, .toggle_button, .next_button {
     font-size: 20px;
     min-width: 30px;
+    margin-top: 2px;
+    margin-bottom: -3px;
 //    background-color: #ffffff;
 }
 
@@ -158,6 +161,10 @@
     border-radius: 15px;
     border: solid 5px $color14;
 }
+.bar_normal {
+    margin-top: -6px;
+    margin-bottom: -20px;
+}
 .bar_normal scale trough highlight {
     all: unset;
     background-color: $color12;
@@ -169,8 +176,10 @@
     min-width: 173px;
     min-height: 10px;
     border-radius: 10px;
-    margin-bottom: 5px;
-    margin-top: 0px;
+}
+.bar_highlighted {
+    margin-top: -6px;
+    margin-bottom: -20px;
 }
 .bar_highlighted scale trough highlight {
     all: unset;
@@ -183,8 +192,6 @@
     min-width: 173px;
     min-height: 10px;
     border-radius: 10px;
-    margin-bottom: 5px;
-    margin-top: 0px;
 }
 
 // CENTER MODULES
