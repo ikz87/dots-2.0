@@ -27,7 +27,7 @@ Please note that this rice was made for a single 1920x1080 monitor setup, If you
 ### AUR packages
 Just run this for this section (assuming you use yay):
 ```
-yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty light lxappearance mantablockscreen network-manager-applet pa-applet-git picom-ftlabs-git playerctl polkit-gnome polybar pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd sysstat thunar tumbler ttc-iosevka-curly ttf-hack wmctrl wpgtk-git xclip xdotool xprintidle xorg xorg-xinit xorg-xwininfo --needed
+yay -Sy acpi alsa-utils-git blueman brave-bin bspwm colorpicker dunst eww-git flameshot hsetroot imagemagick jq kitty light lxappearance mantablockscreen network-manager-applet pa-applet-git picom-ftlabs-git playerctl polkit-gnome polybar pqiv pulseaudio python3 rofi scrot sox spicetify-cli spotify sxhkd sysstat thunar tumbler ttc-iosevka-curly ttf-hack wmctrl wpgtk-git xclip xdotool xprintidle xorg xorg-xinit xorg-xwininfo --needed
 ```
 If you're not using arch, this is the dependency list, install in wathever way you want:
 - acpi
@@ -53,6 +53,7 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - playerctl
 - polkit-gnome
 - polybar
+- pqiv
 - pulseaudio
 - python3
 - rofi
