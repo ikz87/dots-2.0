@@ -25,21 +25,25 @@ update_cover () {
     then
 		newimg="$imgdir/music.png"
 		cp "$newimg" "$imgdir/currmedia.png"
+		rm "$imgdir/currmedia_fullsize"
 		echo "Image is unknown, using template"
 	elif [[ `echo $newimg | grep -c "file://"` -gt 0 ]]
 	then
-		cp "`echo $newimg | sed 's/file:\/\///g'`" "$imgdir/currmedia.png"
-		echo "Image is a file, succesfully coppied"
+		cp "`echo $newimg | sed 's/file:\/\///g'`" "$imgdir/currmedia_fullsize.png"
+		convert "$imgdir/currmedia_fullsize.png" -resize 130x130 "$imgdir/currmedia.png"
+		echo "Image is a file, succesfully copied"
 	else
 		echo "Image is an url, trying to download..."
 		curl "$newimg" -o "/tmp/currmedia.png" -s --max-time 5
 		if [[ $? -eq 0 ]]
 		then
+			cp "/tmp/currmedia.png" "$imgdir/currmedia_fullsize.png"
 			convert "/tmp/currmedia.png" -resize 130x130 "$imgdir/currmedia.png"
 			#cp /tmp/currmedia.png "$imgdir/currmedia.png"
 			echo "Image succesfully downloaded"
 		else
 			cp "$imgdir/music.png" "$imgdir/currmedia.png"
+			rm "$imgdir/currmedia_fullsize"
 			echo "Failed to download image, using template"
 		fi;
 	fi;

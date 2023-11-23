@@ -188,13 +188,16 @@
           :height 140
           :width 140
           :class "media_art_popup_box"
-            (image
-              :valign "center"
-              :halign "center"
-              :class "media_art_popup"
-              :tooltip "${title} by ${artist}"
-              :path cover
-            ))
+          (eventbox
+            :cursor "pointer"
+            (button
+              :onclick "pqiv images/currmedia_fullsize.png&"
+              (image
+                :valign "center"
+                :halign "center"
+                :class "media_art_popup"
+                :tooltip "${title} by ${artist}"
+                :path cover))))
         (box
           :valign "center"
           :halign "fill"
