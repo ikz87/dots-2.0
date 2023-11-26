@@ -34,11 +34,11 @@ def cjk_substrings(string):
         yield string[start:i]
     i += 1
 
-ogstring = str(sys.argv[1])
+ogstring = str(sys.argv[1]).replace("\n", " ")
 if len(ogstring) > 20:
   ogstring += "        "
 
-scroll = int(sys.argv[2]) 
+scroll = int(sys.argv[2])
 string = ogstring[scroll:] + ogstring[:scroll]
 string = string[0:20]
 string = string.replace("&", "&amp;")
