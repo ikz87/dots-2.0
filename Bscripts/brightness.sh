@@ -36,7 +36,7 @@ case $1 in
         rem=$(( (brightness - 5) % 5 ))         
         inc=$(( 5 + rem ))                                    
         brightness=$(( brightness - inc ))    
-        [[ $brightness -eq 0 ]] && brightness=0.2
+        [[ $brightness -eq 0 ]] && brightness=0.4
         light -S $brightness > /dev/null
 	    send_notification
 	;;

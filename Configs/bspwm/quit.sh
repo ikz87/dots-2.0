@@ -10,5 +10,6 @@ killall media_info
 killall workspaces
 killall layout
 killall winevents.sh
+killall GLWall
 bspc quit
 killall bspwm

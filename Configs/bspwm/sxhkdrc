@@ -4,6 +4,9 @@
 super+Return
 	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 --replace=420 -u critical&
 
+super+alt+k
+	~/.bscripts/killbloat.sh
+
 
 #Apps and programs
 
@@ -98,7 +101,7 @@ super+shift+p
 
 # Toggle picom
 super+p
-    [[ `pgrep -c picom` -eq 0 ]] && picom --animations || killall picom
+    [[ `pgrep -c picom` -eq 0 ]] && picom || killall picom
     
 #Keyboard layouts
 super+space 
@@ -199,6 +202,15 @@ super+control+f
 #Mouse clicks
 #q
 #	xdotool click --clearmodifiers 1
+#n
+#	python3 ~/click.py 
+#m
+#	xdotool mousedown 3; xdotool mouseup 3;
 control+alt+m
 	xdotool mousedown 3
 
+#openglwall thingy
+super+w
+	pkill -SIGUSR2 GLWall
+control+shift+w
+	pkill -SIGUSR1 GLWall

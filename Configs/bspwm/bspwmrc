@@ -45,6 +45,7 @@ bspc rule --add MPlayer                     manage=off
 bspc rule --add ru-turikhay-tlauncher-bootstrap-Bootstrap state=floating
 bspc rule --add kzooting_gui				state=floating
 bspc rule --add osu_kzooting_gui			state=floating rectangle=290x234+1620+836
+bspc rule --add GLWall						state=floating rectangle=290x234+1620+836 manage=off
 
 
 # Colors

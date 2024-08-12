@@ -18,7 +18,8 @@ xsetroot -cursor_name left_ptr &
 pgrep sxhkd || lock.sh
 
 # Walllpaper
-(sleep 2 && hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png)& 
+GLWall_dir="${HOME}/Code/GLWall"
+(sleep 3 && hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png && (pgrep GLWall || $GLWall_dir/GLWall $GLWall_dir/textured_shaders/melee.glsl $GLWall_dir/textured_shaders/textures/melee_disc.jpeg))&
 
 # Splashscreen
 killall unclutter

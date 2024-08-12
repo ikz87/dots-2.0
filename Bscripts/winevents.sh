@@ -16,9 +16,11 @@ bspc subscribe desktop_focus node_state node_add node_remove| \
             *\ fullscreen\ on)
                 play -v 0.4 ~/.config/rice_assets/Sounds/fullscreen.wav 2> /dev/null&
                 ~/.bscripts/toggle_bar.sh off&
+                pkill -SIGUSR1 GLWall
                 ;;
             *\ fullscreen\ off)
                 ~/.bscripts/toggle_bar.sh on&
+                pkill -SIGUSR2 GLWall
                 ;;
             *\ tiled\ on)
                 play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav 2> /dev/null& 

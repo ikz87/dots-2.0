@@ -1,14 +1,14 @@
 * {
-  bg: #0d0118ff;
-  bg-alt: #27014a;
+  bg: #181a1fff;
+  bg-alt: #2d313b;
 
-  fg: #ffffd2;
-  fg-alt: #D19862;
+  fg: #fef6ff;
+  fg-alt: #B22144;
 
-  text-color: #ffffd2;
+  text-color: #fef6ff;
 
-  borders: #e87f51;
-  borders-alt: #ffc56b;
+  borders: #ff256a;
+  borders-alt: #f51d51;
   background-color: @bg;
   
   border: 0;

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#export TERM=xterm-256color
+
 # Source files for wpgtk colorscheme
 source "${HOME}/.cache/wal/colors.sh" 
 
@@ -47,7 +49,7 @@ for sd_cmd in systemctl systemd-analyze systemd-run; do
 done
 
 # Define editor
-export EDITOR=$EDITOR:nvim
+export EDITOR=nvim
 
 # Color definitions
 RED='\[\033[0;31m\]'
@@ -90,6 +92,10 @@ PROMPT_COMMAND=set_prompt
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
+
+# Postgres
+export di="postgres://postgres:henlo@127.0.0.1/di"
+export rf="postgres://postgres:henlo@127.0.0.1/rf"
 
 # Run Xorg
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then

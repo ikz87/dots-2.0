@@ -23,6 +23,7 @@ on(){
         xdotool windowmap --sync $wid
     done;
     xdotool search --class Polybar windowmap 
+    pkill -SIGUSR2 GLWall
 }
 
 off(){
@@ -32,6 +33,7 @@ off(){
         xdotool windowunmap --sync $wid
     done;
     xdotool search --class Polybar windowunmap 
+    pkill -SIGUSR1 GLWall
 }
  
 test_fullscreen(){
