@@ -9,7 +9,7 @@ do
     # to do this
     sleep 0.1
 done;
-picom --animations &
+picom&
 
 # cursor
 xsetroot -cursor_name left_ptr &
