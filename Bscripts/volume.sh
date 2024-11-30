@@ -39,7 +39,8 @@ function send_notification {
     #bar=$(seq -s "" $bn | sed 's/[0-9]//g')          
                                                                                                          
     # Send the notification                                                      
-    dunstify "Volume: $overvolume%" -h int:value:$volume -i "$icon_name" -t 1000 --replace=555 -u critical
+    notify-send "volume
+$overvolume%" -h int:value:$volume -h int:yawn_type:2 -i "$icon_name" -t 1000 -r 555 -u critical
 }
 
 case $1 in
@@ -66,7 +67,7 @@ case $1 in
 	    pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null
 	    if [[ `is_mute` == "Mute: yes" ]] ; then
     	DIR=`dirname "$0"`
-    	dunstify -i "${HOME}/.config/rice_assets/Icons/mute.png" --replace=555 -u normal "Volume: Mute" -t 1000 -u critical
+    	notify-send -i "${HOME}/.config/rice_assets/Icons/mute.png" -r 555 "Volume: Mute" -t 1000 -h int:yawn_type:2
 	    else
 	    send_notification
 	    fi

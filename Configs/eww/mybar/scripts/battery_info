@@ -6,7 +6,7 @@ notify()
             if  [[ $lstate -ne 3 ]]
             then
                 echo 3 > /tmp/batstate 
-                pop_report -d 800 -m "<span>Charging</span><font size=\"-1\"> ﮣ</font>$icon" -t battery_charging -o "font-size: 70px" "font-family: Iosevka Curly" "padding-right: 30px"
+                notify-send "Charging" -i ${HOME}/.config/rice_assets/Icons/charging_battery.png -r 420 -h int:yawn_type:2 -t 600
             fi;       
         ;;
         high)
@@ -16,14 +16,14 @@ notify()
             if  [[ $lstate -gt 1 ]] 
             then
                 echo 1 > /tmp/batstate
-                dunstify "Warning: $bat_level% Battery left" -i "${HOME}/.config/rice_assets/Icons/battery_mid.png" -t 10000 --replace=550 -u critical
+                notify-send "Warning: $bat_level% Battery left" -i "${HOME}/.config/rice_assets/Icons/battery_mid.png" -t 10000 -r 420 -u critical
             fi;
         ;;
         low)
             if [[ $lstate -gt 0 ]] 
             then 
                 echo 0 > /tmp/batstate
-                pop_report -m "Battery is critically low" -d 5000 -t battery_low
+                notify-send -i ${HOME}/.config/rice_assets/Icons/empty_battery.png "<span style=\"font-size: 25px\">WARNING</span>" "Battery is critically low" -t 10000 -r 420 -u critical -h int:yawn_type:2
             fi;
         ;;
     esac
@@ -44,6 +44,7 @@ if [[ $discharging -eq 0 ]]
 then
     notify charging > /dev/null
     $eww update battery_image="images/battery_charging.png"
+    
 else
     if [[ $bat_level -le 10 ]]
     then

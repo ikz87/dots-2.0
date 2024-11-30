@@ -32,7 +32,7 @@ cycle() {
   set_kbdlayout "$next_layout"
   upper=$(echo $next_layout | tr '[:lower:]' '[:upper:]')
 
-  pop_report -m $upper -t keyboard > /dev/null     
+  notify-send $upper -i ${HOME}/.config/rice_assets/Icons/keyboard.png -h int:yawn_type:2 -r 69 -t 400 > /dev/null     
 }
 
 
