@@ -2,7 +2,7 @@
 
 # "Pausing" sxhkd
 super+Return
-	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 --replace=420 -u critical&
+	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 -r 420 -u critical&
 
 
 # Apps and programs
