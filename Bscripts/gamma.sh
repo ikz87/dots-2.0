@@ -15,7 +15,8 @@ function send_notification {
     icon_name="${HOME}/.config/rice_assets/Icons/gamma.png"
 
     # Send the notification
-    dunstify "Gamma: $gamma%" -h int:value:$gamma -i "$icon_name" -t 1000 --replace=555 -u critical
+    notify-send "Gamma
+$gamma%" -h int:value:$gamma -h int:yawn_type:2 -i "$icon_name" -t 500 -r 555 -u critical
 }
 
 case $1 in

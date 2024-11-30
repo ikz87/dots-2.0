@@ -15,7 +15,8 @@ function send_notification {
     icon_name="${HOME}/.config/rice_assets/Icons/b.png"
 
     # Send the notification
-    dunstify "Brightness: $brightness%" -h int:value:$brightness -i "$icon_name" -t 1000 --replace=555 -u critical
+    notify-send "Brightness
+$brightness%" -h int:value:$brightness -h int:yawn_type:2 -i "$icon_name" -t 1000 -r 555 -u critical
 }
 
 case $1 in

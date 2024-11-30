@@ -8,9 +8,9 @@ right=""
 
 
 # Variables
-total=`xdotool get_num_desktops`
-current=`xdotool get_desktop`
-duration=1000
+total=`wmctrl -d | grep -v Desktop | wc -l`
+current=`wmctrl -d | grep "*" | awk '{print $1}'`
+duration=500
 font_size=90
 topic="workspace"
 separator_size="+0"
