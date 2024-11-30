@@ -11,6 +11,9 @@ case $- in
       *) return;;
 esac
 
+# ssh
+eval "$(ssh-agent -s)"
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -84,7 +87,9 @@ function set_prompt {
     git_branch=" \[\e[1;34m\]$git_branch"
   fi;
 
-  export PS1="$prompt_code\[\e[0;36m\][\[\e[0;00m\]kz87|bash\[\e[0;36m\]]\[\e[0;31m\]\w$git_branch: \[\e[0m\]"
+  env | grep IN_NIX_SHELL > /dev/null 2> /dev/null && nix_status="(nix-shell)"
+
+  export PS1="$prompt_code\[\e[0;36m\][\[\e[0;00m\]kz87$nix_status|bash\[\e[0;36m\]]\[\e[0;31m\]\w$git_branch: \[\e[0m\]"
 }
 PROMPT_COMMAND=set_prompt
 #export PS1='\[\e[0;36m\][\[\e[0;00m\]kz87|bash\[\e[0;36m\]]\[\e[0;31m\]\w: \[\e[0m\]'
@@ -109,7 +114,14 @@ else
   chafa ~/.pfp.png -s 24x24 --polite false
   echo ""
   # Bash greeter
-  printf "${NC}おかえりなさい、 kz87-さま。\n"
-  :
+  curr_date=`date +"%d/%m"`
+  printf "${NC}`shuf -n 1 ~/.coolwords_\:\)`\n"
+  while IFS= read -r line; do
+    first_field=$(echo "$line" | awk '{print $1}')
+    
+    if [[ "$curr_date" == "$first_field" ]]; then
+      echo "${line#* }"
+    fi
+done < ~/.datewords
 fi
 

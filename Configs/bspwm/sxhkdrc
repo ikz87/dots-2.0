@@ -2,7 +2,7 @@
 
 #"Pausing" sxhkd
 super+Return
-	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& dunstify "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 --replace=420 -u critical&
+	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 -r 42069 -u critical -h int:yawn_type:2&
 
 super+alt+k
 	~/.bscripts/killbloat.sh
@@ -79,15 +79,15 @@ super+c
 alt+F4 
 	xdotool getwindowfocus windowclose
 control+period
-	~/.bscripts/wpm_reports.sh move +1
+	~/.bscripts/wp_switcher.sh move +1
 control+comma
-	~/.bscripts/wpm_reports.sh move -1
+	~/.bscripts/wp_switcher.sh move -1
 control+alt+period
-	~/.bscripts/wpm_reports.sh select +1
+	~/.bscripts/wp_switcher.sh select +1
 control+alt+comma
-	~/.bscripts/wpm_reports.sh select -1
+	~/.bscripts/wp_switcher.sh select -1
 super+{1,2,3,4,5}
-	~/.bscripts/wpm_reports.sh jump {0,1,2,3,4}
+	~/.bscripts/wp_switcher.sh jump {0,1,2,3,4}
 
 #Weeb
 control+alt+b
