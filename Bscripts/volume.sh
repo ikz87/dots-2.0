@@ -39,7 +39,7 @@ function send_notification {
     #bar=$(seq -s "" $bn | sed 's/[0-9]//g')          
                                                                                                          
     # Send the notification                                                      
-    notify-send "volume
+    notify-send "Volume
 $overvolume%" -h int:value:$volume -h int:yawn_type:2 -i "$icon_name" -t 1000 -r 555 -u critical
 }
 
