@@ -1,0 +1,178 @@
+* {
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+    font-family: Iosevka Curly;
+    font-size: 16px;
+}
+
+#CornerYawn {
+    background-color: rgba(36, 39, 47, 1);
+    border-radius: 20px;
+    border: 5px solid #FFE001;
+    padding: 10px;
+}
+
+#CornerYawnIcon {
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #0F1013;
+}
+
+#CornerYawnTextContainer {
+    background-color: #0F1013;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#CornerYawnSummary {
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: 700;
+}
+
+#CornerYawnBar {
+    height: 5px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 7.5px;
+    background-color: #0F1013;
+}
+
+#CornerYawnButtonsContainer {
+    background-color: #0F1013;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#CornerYawnActionButton, #CornerYawnCloseButton {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    background-color: #24272F;
+    border: 2px solid #24272F;
+}
+
+#CornerYawnActionButton:hover, #CornerYawnCloseButton:hover {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #ffffff;
+}
+
+#CornerYawnActionButton:pressed, #CornerYawnCloseButton:pressed {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    margin-top: 7px;
+    border: 2px solid #ffffff;
+    margin-bottom: 3px;
+}
+
+#CornerYawnBar::chunk {
+    width: 1px;
+    background-color: #FFE001;
+}
+
+#CenterYawn {
+    background-color: rgba(36, 39, 47, 1);
+    border-radius: 20px;
+    border: 5px solid #FFE001;
+    padding: 10px
+}
+
+#CenterYawnIcon {
+    margin-bottom: 10px;
+}
+
+#CenterYawnTextContainer {
+    background-color: #0F1013;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#CenterYawnSummary {
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: 700;
+}
+
+#CenterYawnBody {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#CenterYawnBar {
+    height: 5px;
+    border-radius: 10px;
+    margin-top: 6px;
+    padding: 7.5px;
+    background-color: #0F1013;
+}
+
+#CenterYawnBar::chunk {
+    width: 1px;
+    background-color: #FFE001;
+}
+
+#MediaYawn {
+    background-color: rgba(36, 39, 47, 1);
+    border-radius: 20px;
+    border: 5px solid #FFE001;
+    padding: 10px;
+}
+
+#MediaYawnIcon {
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #0F1013;
+}
+
+#MediaYawnTextContainer {
+    background-color: #0F1013;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#MediaYawnSummary {
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: 700;
+}
+
+#MediaYawnBar {
+    height: 5px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 7.5px;
+    background-color: #0F1013;
+}
+
+#MediaYawnButtonsContainer {
+    background-color: #0F1013;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#MediaYawnActionButton, #MediaYawnCloseButton {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    background-color: #24272F;
+    border: 2px solid #24272F;
+}
+
+#MediaYawnActionButton:hover, #MediaYawnCloseButton:hover {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #ffffff;
+}
+
+#MediaYawnActionButton:pressed, #MediaYawnCloseButton:pressed {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    margin-top: 7px;
+    border: 2px solid #ffffff;
+    margin-bottom: 3px;
+}
