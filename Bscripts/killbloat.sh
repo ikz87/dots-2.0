@@ -3,7 +3,7 @@
 bspc config top_padding 0
 
 killall picom
-pkill osucheck
+#pkill osucheck
 killall inotifywait
 killall workspaces
 killall media_info

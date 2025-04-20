@@ -48,7 +48,7 @@ killall inotifywait
 ~/.osuthings/osucheck.sh "/home/$USER/Downloads"&
 
 # Tablet drivers
-#otd&
+systemctl --user enable opentabletdriver.service --now
 
 # Statusbar
 killall workspaces
@@ -75,8 +75,7 @@ nm-applet&
 flameshot&
     
 # daemons
-killall dunst
-dunst > /dev/null 2>&1 &
+#yawns > /dev/null 2>&1 &
 thunar --daemon&
 
 

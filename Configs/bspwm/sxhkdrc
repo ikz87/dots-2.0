@@ -214,3 +214,11 @@ super+w
 	pkill -SIGUSR2 GLWall
 control+shift+w
 	pkill -SIGUSR1 GLWall
+
+#Resolutions
+control+alt+1
+	xrandr -s 1920x1080
+control+alt+2
+	xrandr -s 1280x720
+control+alt+3
+	xrandr -s 864x486

@@ -35,6 +35,7 @@ fi
 
 
 # Add custom directories to PATH
+export PATH=~/.npm-global/bin:$PATH
 export PATH=$PATH:/home/kz87/.ricing
 export PATH=$PATH:/home/kz87/.bscripts
 export PATH=$PATH:/home/kz87/.scripts
@@ -101,6 +102,7 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # Postgres
 export di="postgres://postgres:henlo@127.0.0.1/di"
 export rf="postgres://postgres:henlo@127.0.0.1/rf"
+export SENIOR_THRIVE_DB_URL="postgresql://kz87@localhost:5432/seniorthrive"
 
 # Run Xorg
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
@@ -125,3 +127,4 @@ else
 done < ~/.datewords
 fi
 
+. "/home/kz87/.deno/env"

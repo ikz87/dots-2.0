@@ -29,8 +29,9 @@ case $1 in
         gamma=$(( gamma + inc ))
         [[ $gamma -eq 0 ]] && gamma=1
         gamma=`echo $gamma | awk '{printf $1/100}'`
-        for display in `xrandr -q | grep " connected" | awk '{printf $1}'`;
+        xrandr -q | grep " connected" | while read line;
         do
+            display=`echo "${line%% *}"`
             xrandr --output "$display" --gamma $gamma && echo $gamma > $gamma_file
         done;
 	    send_notification
@@ -44,8 +45,9 @@ case $1 in
         gamma=$(( gamma - inc ))    
         [[ $gamma -eq 0 ]] && gamma=1    
         gamma=`echo $gamma | awk '{printf $1/100}'`
-        for display in `xrandr -q | grep " connected" | awk '{printf $1}'`;
+        xrandr -q | grep " connected" | while read line;
         do
+            display=`echo "${line%% *}"`
             xrandr --output "$display" --gamma $gamma && echo $gamma > $gamma_file
         done;
 	    send_notification

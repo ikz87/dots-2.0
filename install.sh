@@ -79,6 +79,9 @@ ln -s -f -T "$script_dir"/Bscripts ${HOME}/.bscripts
 cp -r -f -T "$script_dir"/Walcache ${HOME}/.cache/wal
 ln -s -f -T "$script_dir"/Fonts ${HOME}/.local/share/fonts
 ln -s -f -T "$script_dir"/.xinitrc ${HOME}/.xinitrc
+ln -s -f -T "$script_dir"/.datewords ${HOME}/.datewords
+ln -s -f -T "$script_dir"/.bash_aliases ${HOME}/.bash_aliases
+ln -s -f -T "$script_dir"/.coolwords_\:\) ${HOME}/.coolwords_\:\)
 ln -s -f -T "$script_dir"/.bashrc ${HOME}/.bashrc
 ln -s -f -T "$script_dir"/.pfp.png ${HOME}/.pfp.png
 ln -s -f -T "$script_dir"/.face.png ${HOME}/.face.png
