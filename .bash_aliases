@@ -20,3 +20,4 @@ alias rpp='sudo screen /dev/ttyACM1 9600'
 alias ssh='TERM=xterm && ssh'
 
 #alias startx='startx ~/.xinitrc'
+alias prisma="python -m prisma"

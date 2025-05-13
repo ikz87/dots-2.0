@@ -1,4 +1,5 @@
 #!/bin/sh
+source ~/.cache/wal/colors.sh
 
 # Glyphs
 selected=""
@@ -19,9 +20,9 @@ function report_jump {
     echo -n "<span style=\"color: #00000000; font-size: $font_size\">$padding</span>"
     for (( i = 0; i < $total; i++)); do
         if [[ $i -eq $target ]]; then
-            echo -n "<span style=\"font-size: $font_size\">$selected</span>"
+            echo -n "<span style=\"font-size: $font_size; color: $color15 \">$selected</span>"
         else
-            echo -n "<span style=\"font-size: $font_size\">$wp</span>"
+            echo -n "<span style=\"font-size: $font_size; color: $color15 \">$wp</span>"
         fi;
         [[ $i < $(( total - 1 )) ]] && echo -n "<span style=\"color: #00000000; font-size: $font_size\">$right</span>"
     done
@@ -42,15 +43,15 @@ function report_move {
     for (( i = 0; i < $total; i++ )); do
         separator="<span style=\"color: #00000000; font-size: $font_size\">$main</span>"
         if [[ $i -eq $target ]]; then
-            echo -n "<span style=\"font-size: $font_size\">$selected</span>"
-            [[ $main == $left ]] && separator="<span style=\"font-size: $font_size\">$main</span>"
+            echo -n "<span style=\"font-size: $font_size; color: $color15 \">$selected</span>"
+            [[ $main == $left ]] && separator="<span style=\"font-size: $font_size; color: $color9 \">$main</span>"
 
         else
-            echo -n "<span style=\"font-size: $font_size\">$wp</span>"
+            echo -n "<span style=\"font-size: $font_size; color: $color15\">$wp</span>"
         fi;
         [[ $main == $right ]] && [[ $((i + 1)) -eq $target ]] && separator="<span style=\"font-size: $font_size\">$main</span>"
         ([[ $((current - target)) -eq $((total - 1)) ]] || [[ $((target - current)) -eq $((total - 1)) ]]) && separator="<span style=\"font-size: $font_size\">$sec</span>"
-        [[ $i -lt $((total - 1)) ]] && echo -n "<span style=\"font-size: $font_size\">$separator</span>"
+        [[ $i -lt $((total - 1)) ]] && echo -n "<span style=\"font-size: $font_size; color: $color9\">$separator</span>"
     done            
     echo -n "<span style=\"color: #00000000; font-size: $font_size\">$padding</span>"
 }

@@ -1,4 +1,41 @@
 #!/bin/sh
-temp=$(sensors | grep 'Package id 0:\|Tdie' | grep ':[ ]*+[0-9]*.[0-9]*°C' -o | grep '[0-9]*.[0-9]*°C' -o)
-temp=${temp::-4}
-echo "$temp"
+
+# Run sensors once and store the output
+sensors_output=$(sensors)
+if [ $? -ne 0 ]; then
+    echo "Error: 'sensors' command failed!" >&2
+    exit 1
+fi
+
+# --- CPU Temperature ---
+# 1. Find the first line containing Tctl: (more common/reliable than Tdie usually)
+# 2. Extract the number (allows optional +/- sign)
+# 3. Use head -n 1 just in case multiple Tctl lines somehow appeared
+tempcpu_raw=$(echo "$sensors_output" | \
+              grep 'Tctl:' | \
+              head -n 1 | \
+              grep -o '[+-]\?[0-9]\+\.[0-9]\+')
+
+# --- GPU Temperature ---
+# 1. Find the specific GPU block first to avoid ambiguity
+# 2. Within that block (-A 4), find the first line starting with edge:
+# 3. Extract the number
+# 4. Use head -n 1 (likely redundant for edge: within a block, but safe)
+tempgpu_raw=$(echo "$sensors_output" | \
+              grep -A 4 'amdgpu-pci-0800' | \
+              grep '^edge:' | \
+              head -n 1 | \
+              grep -o '[+-]\?[0-9]\+\.[0-9]\+')
+
+# Assign default "N/A" if extraction failed
+tempcpu=${tempcpu_raw:-N/A}
+tempgpu=${tempgpu_raw:-N/A}
+
+# Optional: Remove leading '+' sign if present
+tempcpu=${tempcpu#+}
+tempgpu=${tempgpu#+}
+
+# Print the final result, adding °C back as in your example
+echo "${tempcpu}°C | ${tempgpu}°C"
+
+exit 0

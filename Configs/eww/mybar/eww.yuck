@@ -636,13 +636,9 @@
               :valign "start"
               (label
                 :class "center_labels"
-                :text "${temperature}°C"
+                :text "${temperature}"
                 :halign "center")
-              (scale
-                :min 0
-                :max 100
-                :value temperature
-                :orientation "h")))
+                ))
           (revealer
             :reveal temperature_reveal
             :transition "slideup"

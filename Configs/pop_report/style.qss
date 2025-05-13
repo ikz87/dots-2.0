@@ -1,7 +1,7 @@
-border: 5px solid #ffffc4; 
+border: 5px solid #ff564c; 
 border-radius: 20px;
-background-color: #bb1b1925;
-color: #edffff;
+background-color: #bb0d181c;
+color: #d7ffff;
 font-family: Nova Mono;
 font-size: 70px;
 padding: 20px;

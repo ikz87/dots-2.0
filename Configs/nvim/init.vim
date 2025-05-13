@@ -3,6 +3,7 @@
 " --- Core Vim Settings ---
 set nocompatible            " Use Neovim defaults, not vi compatible
 set encoding=utf-8          " Set default encoding to UTF-8
+set nowrap
 syntax on                   " Enable syntax highlighting
 filetype plugin indent on   " Enable filetype detection, plugins, and indentation
 
@@ -55,6 +56,7 @@ endif
 " --- Plugin Manager: vim-plug ---
 call plug#begin('~/.local/share/nvim/plugged') " Specify plugin directory
 
+
 " LSP, Completion & Snippets
 Plug 'neovim/nvim-lspconfig'             " LSP configuration utility
 Plug 'williamboman/mason.nvim'           " Package manager for LSPs, DAPs, linters, formatters
@@ -83,7 +85,8 @@ Plug 'pseewald/vim-anyfold'              " Automatic folding based on indentatio
 Plug 'deviantfero/wpgtk.vim'             " Colorscheme based on wpgtk
 
 " --- Potentially Unused/Commented Plugins (Consider removing if not needed) ---
-" Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' } " AI code completion (Alternative to cmp/LSP)
+Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' } " AI code completion (Alternative to cmp/LSP)
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 " Plug 'hrsh7th/cmp-vsnip'               " cmp source for vim-vsnip (if you switch snippet engines)
 " Plug 'hrsh7th/vim-vsnip'               " Alternative snippet engine
 " Plug 'neoclide/coc.nvim', {'branch': 'release'} " Completion framework (Alternative to nvim-cmp/LSP)
@@ -287,6 +290,16 @@ end
 --   capabilities = capabilities -- Ensure capabilities are passed if using this
 -- }
 
+local tabnine = require('tabnine')
+tabnine.setup({
+  disable_auto_comment = true,
+  accept_keymap = "<Tab>",
+  dismiss_keymap = "<C-]>",
+  debounce_ms = 800,
+  suggestion_color = {gui = "#808080", cterm = 244},
+  exclude_filetypes = {"TelescopePrompt", "NvimTree"},
+  log_file_path = nil,
+})
 
 -- --- nvim-cmp (Completion) ---
 local cmp = require'cmp'
@@ -317,6 +330,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },    -- LSP suggestions
     { name = 'ultisnips' },   -- Snippet suggestions
+    { name = 'tabnine' },   -- Snippet suggestions
     { name = 'buffer' },      -- Suggestions from words in current buffer
     { name = 'path' }         -- Suggestions for file paths
   })
@@ -342,17 +356,6 @@ cmp.setup.cmdline(':', {
   matching = { disallow_symbol_nonprefix_matching = false }
 })
 
--- --- TabNine Config (Plugin is commented out) ---
--- require('tabnine').setup({
---   disable_auto_comment=true,
---   accept_keymap="<C-Enter>",
---   dismiss_keymap = "<C-BS>",
---   debounce_ms = 800,
---   suggestion_color = {gui = "#808080", cterm = 244},
---   exclude_filetypes = {"TelescopePrompt", "NvimTree"},
---   log_file_path = nil, -- absolute path to Tabnine log file
---   ignore_certificate_errors = false,
--- })
 
 EOF
 

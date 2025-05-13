@@ -5,7 +5,7 @@
 # toggle_bar auto|on|off|test_fullscreen
 
 auto(){
-    (xdotool search --onlyvisible --class eww- || \
+    (xdotool search --onlyvisible "Eww -" || \
         xdotool search --onlyvisible --class Polybar)
 
     if [[ $? -eq 0 ]] 
@@ -18,7 +18,7 @@ auto(){
 
 on(){
     bspc config top_padding 70
-    for wid in `xdotool search --class eww-`; 
+    for wid in `xdotool search "Eww -"`; 
     do 
         xdotool windowmap --sync $wid
     done;
@@ -28,7 +28,7 @@ on(){
 
 off(){
     bspc config top_padding 0
-    for wid in `xdotool search --class eww-`; 
+    for wid in `xdotool search "Eww -"`; 
     do 
         xdotool windowunmap --sync $wid
     done;

@@ -71,6 +71,8 @@ xset b 0 0 0
 # Autocompletion
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
+[[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
+
 bind -f  ~/.inputrc
 
 # Custom prompt
@@ -106,7 +108,8 @@ export SENIOR_THRIVE_DB_URL="postgresql://kz87@localhost:5432/seniorthrive"
 
 # Run Xorg
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    exec start 
+    #exec start 
+    :
 else
   clear
   # Add image
@@ -127,4 +130,3 @@ else
 done < ~/.datewords
 fi
 
-. "/home/kz87/.deno/env"

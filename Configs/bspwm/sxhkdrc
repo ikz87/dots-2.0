@@ -4,7 +4,7 @@
 super+Return
 	killall sxhkd && sxhkd -c ~/.config/bspwm/hkpause& notify-send "Paused simple X hotkey daemon" -i ~/.config/rice_assets/Icons/stop.png -t 1500 -r 42069 -u critical -h int:yawn_type:2&
 
-super+alt+k
+control+shift+k
 	~/.bscripts/killbloat.sh
 
 
@@ -108,9 +108,9 @@ super+space
 	  ~/.config/eww/mybar/scripts/kb_layouts cycle es us
 
 #Media controls
-alt+period
+control+Up
 	~/.bscripts/volume.sh up #&& pkill -RTMIN+2 i3blocks 
-alt+comma 
+control+Down 
 	~/.bscripts/volume.sh down #&& pkill -RTMIN+2 i3blocks 
 alt+m
 	~/.bscripts/volume.sh mute 

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sxhkd -c ~/.config/bspwm/sxhkdrc&
 # Compositor
 killall picom
 while pgrep picom > /dev/null; 
@@ -18,15 +19,17 @@ xsetroot -cursor_name left_ptr &
 pgrep sxhkd || lock.sh
 
 # Walllpaper
-#GLWall_dir="${HOME}/Code/GLWall"
-(sleep 3 && hsetroot -cover ~/.config/rice_assets/Images/wallpaper.png && (pgrep GLWall || $GLWall_dir/GLWall $GLWall_dir/textured_shaders/melee.glsl $GLWall_dir/textured_shaders/textures/melee_disc.jpeg))&
+GLWall_dir="${HOME}/Code/GLWall"
+#hsetroot -cover ~/.config/rice_assets/Images/lockscreen.png 
+pgrep GLWall || $GLWall_dir/GLWall $GLWall_dir/regular_shaders/balatro.glsl&
+
 
 # Splashscreen
 killall unclutter
 unclutter --start-hidden &
-pgrep sxhkd || \
+#pgrep sxhkd || \
     #mplayer ~/Videos/Renders/splash.mp4 
-    mpv --no-input-default-bindings --cursor-autohide=no --osc=no --fullscreen --on-all-workspaces ~/Videos/Renders/splash.mp4
+    #mpv --no-input-default-bindings --cursor-autohide=no --osc=no --fullscreen --on-all-workspaces ~/Videos/Renders/splash.mp4
 
 # apply colorscheme to spotify
 ~/.bscripts/wal_spotify.sh > /dev/null&
@@ -54,15 +57,15 @@ systemctl --user enable opentabletdriver.service --now
 killall workspaces
 killall media_info
 killall layout
+killall polybar
 eww -c ~/.config/eww/mybar kill
 eww -c ~/.config/eww/mybar daemon
 ~/.config/eww/mybar/scripts/ewwcolorscheme
 eww -c ~/.config/eww/mybar open bar_right
 eww -c ~/.config/eww/mybar open bar_center
 eww -c ~/.config/eww/mybar open bar_left
-killall polybar
-xdotool search --sync --onlyvisible --class "eww-bar_right" 
-polybar -c ~/.config/eww/mybar/polybar_tray.ini tray& > /dev/null
+xdotool search --sync --onlyvisible "bar_right" 
+polybar -c ~/.config/eww/mybar/polybar_tray.ini tray&
 
 #Applets
 killall blueman-applet
@@ -91,10 +94,11 @@ killall winevents.sh
 
 # idle
 pkill -9 idle.sh
-~/.bscripts/idle.sh > /dev/null 2> /dev/null&
+~/.bscripts/idle.sh&
+
+yawns&
+pacmd load-module module-alsa-source device=hw:Loopback,1,0&
 
 # borders
 #.bscripts/borders.sh&
 
-# Launch keybinding daemon
-sxhkd -c ~/.config/bspwm/sxhkdrc > /dev/null 2> /dev/null&

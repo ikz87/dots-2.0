@@ -17,6 +17,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Colorscheme
 source "${HOME}/.cache/wal/colors.sh"
+export GTK_THEME=FlatColor
 
 # Editor
 export EDITOR='nvim'
@@ -43,6 +44,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
     done
     unset f
 fi
+
 
 # merge in defaults and keymaps
 
@@ -72,6 +74,16 @@ if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
       ## if not found, launch a new one
       eval `dbus-launch --sh-syntax`
       echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
+fi
+
+# Attempt to set XDG_SESSION_PATH if XDG_SESSION_ID is set
+if [ -n "$XDG_SESSION_ID" ]; then
+  export XDG_SESSION_PATH="/org/freedesktop/login1/session/$XDG_SESSION_ID"
+  # You might also need to ensure the D-Bus session environment is aware of it
+  # This is often helpful for services started within the X session
+  dbus-update-activation-environment --systemd XDG_SESSION_ID XDG_SESSION_PATH > /dev/null 2>&1
+else
+  echo "Warning: XDG_SESSION_ID is not set. light-locker might not function correctly." >&2
 fi
 
 systemctl --user import-environment DISPLAY XAUTHORITY

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ~/.cache/wal/colors.sh
+
 # Glyphs
 selected=""
 wp=""
@@ -19,7 +21,7 @@ space_size="+0"
 function report_jump {
     for (( i = 0; i < $total; i++)); do
         if [[ $i -eq $target ]]; then
-            echo -n $selected
+            echo -n "henlo"
         else
             echo -n $wp
         fi;

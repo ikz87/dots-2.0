@@ -1,14 +1,14 @@
 * {
     background-color: rgba(0, 0, 0, 0);
-    color: #ffffff;
+    color: #d7ffff;
     font-family: Iosevka Curly;
     font-size: 16px;
 }
 
 #CornerYawn {
-    background-color: rgba(36, 39, 47, 1);
+    background-color: #1c353e;
     border-radius: 20px;
-    border: 5px solid #FFE001;
+    border: 5px solid #3bceff;
     padding: 10px;
 }
 
@@ -16,11 +16,11 @@
     margin-right: 10px;
     border-radius: 10px;
     padding: 10px;
-    background-color: #0F1013;
+    background-color: #0d181c;
 }
 
 #CornerYawnTextContainer {
-    background-color: #0F1013;
+    background-color: #0d181c;
     border-radius: 10px;
     padding: 10px;
 }
@@ -35,11 +35,11 @@
     border-radius: 10px;
     margin-top: 10px;
     padding: 7.5px;
-    background-color: #0F1013;
+    background-color: #0d181c;
 }
 
 #CornerYawnButtonsContainer {
-    background-color: #0F1013;
+    background-color: #0d181c;
     margin-top: 10px;
     border-radius: 10px;
     padding: 5px;
@@ -49,15 +49,15 @@
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
-    background-color: #24272F;
-    border: 2px solid #24272F;
+    background-color: #1c353e;
+    border: 2px solid #1c353e;
 }
 
 #CornerYawnActionButton:hover, #CornerYawnCloseButton:hover {
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
-    border: 2px solid #ffffff;
+    border: 2px solid #d7ffff;
 }
 
 #CornerYawnActionButton:pressed, #CornerYawnCloseButton:pressed {
@@ -65,19 +65,19 @@
     margin: 5px;
     padding: 5px;
     margin-top: 7px;
-    border: 2px solid #ffffff;
+    border: 2px solid #d7ffff;
     margin-bottom: 3px;
 }
 
 #CornerYawnBar::chunk {
     width: 1px;
-    background-color: #FFE001;
+    background-color: #3bceff;
 }
 
 #CenterYawn {
-    background-color: rgba(36, 39, 47, 1);
+    background-color: #1c353e;
     border-radius: 20px;
-    border: 5px solid #FFE001;
+    border: 5px solid #3bceff;
     padding: 10px
 }
 
@@ -86,7 +86,7 @@
 }
 
 #CenterYawnTextContainer {
-    background-color: #0F1013;
+    background-color: #0d181c;
     border-radius: 10px;
     padding: 10px;
 }
@@ -105,18 +105,18 @@
     border-radius: 10px;
     margin-top: 6px;
     padding: 7.5px;
-    background-color: #0F1013;
+    background-color: #0d181c;
 }
 
 #CenterYawnBar::chunk {
     width: 1px;
-    background-color: #FFE001;
+    background-color: #3bceff;
 }
 
 #MediaYawn {
-    background-color: rgba(36, 39, 47, 1);
+    background-color: #1c353e;
     border-radius: 20px;
-    border: 5px solid #FFE001;
+    border: 5px solid #3bceff;
     padding: 10px;
 }
 
@@ -124,11 +124,11 @@
     margin-right: 10px;
     border-radius: 10px;
     padding: 10px;
-    background-color: #0F1013;
+    background-color: #0d181c;
 }
 
 #MediaYawnTextContainer {
-    background-color: #0F1013;
+    background-color: #0d181c;
     border-radius: 10px;
     padding: 10px;
 }
@@ -143,11 +143,11 @@
     border-radius: 10px;
     margin-top: 10px;
     padding: 7.5px;
-    background-color: #0F1013;
+    background-color: #0d181c;
 }
 
 #MediaYawnButtonsContainer {
-    background-color: #0F1013;
+    background-color: #0d181c;
     margin-top: 10px;
     border-radius: 10px;
     padding: 5px;
@@ -157,15 +157,15 @@
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
-    background-color: #24272F;
-    border: 2px solid #24272F;
+    background-color: #1c353e;
+    border: 2px solid #1c353e;
 }
 
 #MediaYawnActionButton:hover, #MediaYawnCloseButton:hover {
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
-    border: 2px solid #ffffff;
+    border: 2px solid #d7ffff;
 }
 
 #MediaYawnActionButton:pressed, #MediaYawnCloseButton:pressed {
@@ -173,6 +173,6 @@
     margin: 5px;
     padding: 5px;
     margin-top: 7px;
-    border: 2px solid #ffffff;
+    border: 2px solid #d7ffff;
     margin-bottom: 3px;
 }
