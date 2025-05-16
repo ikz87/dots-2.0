@@ -7,7 +7,7 @@ half_height=$((height/2))
 
 fg_color=ffffff99
 wrong_color=f82a1188
-highlight_color=FFAA2088
+highlight_color=ffffff
 verif_color=ffffff55
 bg=#00000055
 

@@ -7,6 +7,10 @@ set nowrap
 syntax on                   " Enable syntax highlighting
 filetype plugin indent on   " Enable filetype detection, plugins, and indentation
 
+" Disable help
+nmap <F1> :echo<CR>
+imap <F1> <C-o>:echo<CR>
+
 " --- Appearance ---
 " set termguicolors         " Enable true colors support (Recommended for modern terminals & colorschemes)
 set notermguicolors         " Disable true colors (Keep if you have issues or prefer it)
