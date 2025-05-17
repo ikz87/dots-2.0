@@ -77,14 +77,15 @@ If you're not using arch, this is the dependency list, install in wathever way y
 - xwininfo
 - yawns
 
-### Other 
-- [pop_report](https://github.com/ikz87/pop_report) used in some scripts.
-
-### Optional
+### Optional packages
 - Plasma-integration [AUR package](https://aur.archlinux.org/packages/plasma-integration-git) and [chrome extension](https://chrome.google.com/webstore/detail/plasma-integration/cimiefiiaegbelhefglklhhakcgmhkai/related?hl=es) to better integrate media playing in brave with widgets (like having thumbnails of youtube videos show up in the left bar).
 
-
 Please let me know if any packages are still missing.
+
+### Extra functionality
+If you come here from reddit, youtube, discord or whatever, you might have seen a video of my rice running both a live wallpaper and some custom picom animations. Those are coming from these two repos:
+- [GLWall](https://github.com/ikz87/GLWall)
+- [picom-shaders](https://github.com/ikz87/picom-shaders)
 
 ## Installing
 Install process functions a little different since I refactored the whole repo, but it still includes a handy script that automates most things.
