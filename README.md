@@ -87,6 +87,9 @@ If you come here from reddit, youtube, discord or whatever, you might have seen 
 - [GLWall](https://github.com/ikz87/GLWall)
 - [picom-shaders](https://github.com/ikz87/picom-shaders)
 
+![ezgif-127e8e42ad5d12](https://github.com/user-attachments/assets/5b45e615-7dc1-4560-9e45-88a993547721)
+
+
 ## Installing
 Install process functions a little different since I refactored the whole repo, but it still includes a handy script that automates most things.
 
