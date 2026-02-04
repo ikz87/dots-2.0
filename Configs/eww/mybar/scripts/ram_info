@@ -1,16 +1,32 @@
 #!/bin/sh
 
+# Turns out, getting actual available ram on linux is a bit weirder?
+# Real way to get it is by doing total - available from free's output
+# Using the "used" column in the output also shows ram used by the 
+# ... *checks notes* "Kernal Page Cache", which will actually be freed 
+# the moment its needed by another process
+#
+# Anyway, the script now actually shows the correct amount of ram being used
+
 case $1 in
     "--used")
-        free -t --mega | grep Total | awk '{printf $3/100}'
+        # (Total - Available) / 10^9
+        free -b | awk '/Mem:/ {printf "%.1fGb", ($2 - $7) / 1000^3}'
         ;;
     "--all")
-        free -t --mega | grep Total | awk '{printf $2/100}'
+        # Total / 10^9
+        free -b | awk '/Mem:/ {printf "%.1fGb", $2 / 1000^3}'
         ;;
     "--parsed")
-        free -t -h --si | grep Total | awk '{printf $3 "b/" $2 "b"}'
+        # Format: 2.2Gb/15.0Gb
+        free -b | awk '/Mem:/ {
+            used = ($2 - $7) / 1000^3;
+            total = $2 / 1000^3;
+            printf "%.1fGb/%.1fGb", used, total
+        }'
         ;;
     *)
-        true
+        exit 0
         ;;
 esac
+
