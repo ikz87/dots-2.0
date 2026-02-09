@@ -11,11 +11,11 @@
 case $1 in
     "--used")
         # (Total - Available) / 10^9
-        free -b | awk '/Mem:/ {printf "%.1fGb", ($2 - $7) / 1000^3}'
+        free -b | awk '/Mem:/ {printf "%.1f", ($2 - $7) / 1000^3}'
         ;;
     "--all")
         # Total / 10^9
-        free -b | awk '/Mem:/ {printf "%.1fGb", $2 / 1000^3}'
+        free -b | awk '/Mem:/ {printf "%.1f", $2 / 1000^3}'
         ;;
     "--parsed")
         # Format: 2.2Gb/15.0Gb
